@@ -10,3 +10,5 @@ This change log is added for any experience backend developer to learn web devel
    2. Move fonts to css.
    3. Remove full reset.
    4. Update welcome text.
+
+4. Add a background color with rounded edges on hovering over navigation tabs.

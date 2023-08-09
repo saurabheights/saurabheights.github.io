@@ -28,6 +28,12 @@ body {
     margin: 0.5rem;
 }
 
+.inner_header a:hover{
+    padding: 20px;
+    background-color: rgba(1, 156, 222, 0.583);
+    border-radius: 2rem;
+}
+
 .logo-container {
     height: 100%;
     display: table;
