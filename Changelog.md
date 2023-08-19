@@ -1,5 +1,9 @@
+--- 
+layout: layout.njk 
+--- 
 # Changelog
-This change log is added for any experience backend developer to learn web development by following along this webpage. 
+
+The path I took in building this website.
 
 1. Added empty index.html file.
 2. Added navigation bar - Follow this [youtube video](https://www.youtube.com/watch?v=GxwHXxumdQk) to add cool header.
@@ -12,3 +16,4 @@ This change log is added for any experience backend developer to learn web devel
 5. Move pages to src, add publications and remove about me page.
 6. Integrate [11ty](https://www.11ty.dev/) to convert markdown blogs into static site.
 7. Add github actions to build website and deploy.
+8. Merge Changelog onto the website main page.
