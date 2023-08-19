@@ -16,12 +16,15 @@
             </div>
             <ul class="navigation">
                 <a href="/"><li>Home</li></a>
-                <a href="../blog"><li>Blog</li></a>
-                <a href="."><li>Publications</li></a>
-                <a href="../contact"><li>Contact Me</li></a>
+                <a href="./pages/blog"><li>Blog</li></a>
+                <a href="./pages/publications"><li>Publications</li></a>
+                <a href="./pages/contact"><li>Contact Me</li></a>
             </ul>
         </div>
     </div>
+    <main> 
+        {{ content | safe }}
+    </main> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
