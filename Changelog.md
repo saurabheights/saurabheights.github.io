@@ -11,3 +11,4 @@ This change log is added for any experience backend developer to learn web devel
 4. Add a background color with rounded edges on hovering over navigation tabs.
 5. Move pages to src, add publications and remove about me page.
 6. Integrate [11ty](https://www.11ty.dev/) to convert markdown blogs into static site.
+7. Add github actions to build website and deploy.
