@@ -5,7 +5,6 @@ body {
     margin: auto;
     padding: 0%;
     list-style: none;
-    text-decoration: none;
     font-family: "Mulish";
     background: papayawhip;
     max-width: 1000px;
@@ -28,12 +27,6 @@ body {
     margin: 0.5rem;
 }
 
-.inner_header a:hover{
-    padding: 20px;
-    background-color: rgba(1, 156, 222, 0.583);
-    border-radius: 2rem;
-}
-
 .logo-container {
     height: 100%;
     display: table;
@@ -51,18 +44,28 @@ body {
     height: 100%;
 }
 
+.navigation li {
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    font-size: 24px;
+}
+
 .navigation a {
     height: 100%;
     display: table;
     float: left;
     padding: 0px 20px;
+    text-decoration: none;
 }
 
-.navigation a li {
-    display: table-cell;
-    vertical-align: middle;
-    color: white;
-    font-size: 24px;
+/* ToDo - Adding focus leads to a side-effect where two different elements gets highlighted due to both hover and focus. See similar issue - https://stackoverflow.com/questions/59876952/ */
+.navigation a:hover {
+    background-color: rgba(1, 156, 222, 0.583);
+    border-radius: 2rem;
+    border-style: hidden;
+    padding: 20px;
+    outline: 0;
 }
 
 p {
