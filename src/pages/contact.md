@@ -1,3 +1,3 @@
 --- 
-layout: layout.njk 
+layout: layouts/layout.njk 
 --- 
