@@ -1,5 +1,5 @@
 --- 
-layout: layouts/layout.njk 
+layout: layout.njk 
 --- 
 # Ladies and gentlemen, astronomers and stargazers, welcome aboard the interstellar expedition to the portfolio planet of Saurabh! 
 As we navigate the cosmic sea of knowledge, rest assured that I, a seasoned computer vision specialist, shall be your guide on this momentous journey. 

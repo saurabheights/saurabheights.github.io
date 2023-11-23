@@ -1,5 +1,5 @@
 --- 
-layout: layouts/layout.njk 
+layout: layout.njk 
 --- 
 # Changelog
 
