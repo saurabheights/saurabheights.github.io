@@ -4,9 +4,9 @@
   "description": "Saurabh Khanduja Website",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "serve": "npx @11ty/eleventy --serve",
-    "debug": "DEBUG=* npx @11ty/eleventy"
+    "build": "npx @11ty/eleventy --input=. --output=docs/",
+    "serve": "npx @11ty/eleventy --input=. --output=docs/ --serve",
+    "debug": "DEBUG=* npx @11ty/eleventy  --input=. --output=docs/"
   },
   "keywords": [],
   "author": "Saurabh Khanduja",
