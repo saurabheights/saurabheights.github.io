@@ -98,7 +98,17 @@ main > .hero_title {
 
 .two_columns {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.two_columns_with_spacing {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:10px;
+}
+
+form > * {
+    margin-bottom: 10px;
 }
 
 .hero_image {
@@ -110,12 +120,41 @@ main > .hero_title {
 
 .layout_central_left {
     display: flex;
-    justify-content: flex-begin;
     align-items: center;
+}
 
+.layout_central_vertical {
+    display: grid;
+}
+
+.add_left_margin5 {
+    margin-left: 5rem;
+}
+
+.large_text {
     /* typography */
     font-size: 6rem;
     text-align: left;
+}
+
+.normal_text {
+    /* typography */
+    font-size: 1rem;
+    text-align: left;
+}
+
+.inline_anchor {
+    display: inline;
+    color: inherit;
+}
+
+input[type="input"], input[type="email"], input[type="text"], input[type="submit"], textarea {
+    color:inherit;
+    background-color: inherit;
+    border-color: inherit;
+    border: 0px;
+    outline: 2px solid white;
+    outline-offset: 2px;
 }
 
 .translucent_underline {
