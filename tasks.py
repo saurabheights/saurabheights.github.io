@@ -3,7 +3,11 @@ import shlex
 import shutil
 import sys
 import datetime
+import requests
+import zipfile
+import subprocess
 
+from pathlib import Path
 from invoke import task
 from invoke.main import program
 from pelican import main as pelican_main
@@ -29,6 +33,11 @@ CONFIG = {
     "host": "localhost",
     "port": 8000,
 }
+
+FLEX_ZIP_URL = "https://github.com/alexandrevicenzi/Flex/archive/refs/heads/master.zip"
+THEMES_DIR = Path("themes")
+FLEX_DIR = THEMES_DIR/"Flex"
+ZIP_FILE = Path("flex.zip")
 
 
 @task
@@ -156,3 +165,56 @@ def gh_pages(c):
 def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
+
+@task 
+def download_theme(c):   # Download theme in zip
+    print("Downloading Flex theme...")
+    response = requests.get(FLEX_ZIP_URL)
+    with open(ZIP_FILE, "wb") as f:
+        f.write(response.content)
+
+    # 2. Remove old Flex theme if exists
+    if FLEX_DIR.exists():
+        print("🗑 Removing old Flex theme...")
+        shutil.rmtree(FLEX_DIR)
+        
+    # 3. Unzip Flex into themes/Flex
+    print("📦 Extracting Flex theme...")
+    with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
+        zip_ref.extractall(THEMES_DIR)
+
+    # Rename extracted folder (GitHub names it Flex-master)
+    extracted_name = THEMES_DIR/"Flex-master"
+    extracted_name.rename(FLEX_DIR)
+
+    # Remove ZIP file
+    ZIP_FILE.unlink()  # delete zip file
+    print(f"✅ Flex theme installed at {FLEX_DIR}")
+
+@task
+def replace_css(c):
+    source = Path("custom.css")  # file in root folder
+    destination = FLEX_DIR / "static" / "stylesheet" / "style.min.css"  # path inside theme
+    # Copy the file
+    shutil.copy2(source, destination)
+    print(f"✅ Replaced {destination} with {source}")
+
+@task
+def clean_theme(c):
+    """Remove the Flex theme after use"""
+    if THEMES_DIR.exists():
+        shutil.rmtree(THEMES_DIR)
+        print("🧹 Flex theme folder removed.")
+    else:
+        print("⚠️ No Flex theme folder found to delete.")
+
+@task
+def build_flex(c):
+    download_theme(c)
+    replace_css(c)
+    build(c)
+    try:
+        subprocess.run(["pelican", "--listen"])
+    finally:
+        clean_theme(c)
+
