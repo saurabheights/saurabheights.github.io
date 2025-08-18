@@ -209,12 +209,14 @@ def clean_theme(c):
         print("⚠️ No Flex theme folder found to delete.")
 
 @task
-def build_flex(c):
+def download_themes(c):
+    clean_theme(c)
     download_theme(c)
+
+@task
+def build_flex(c):
     replace_css(c)
     build(c)
-    try:
-        subprocess.run(["pelican", "--listen"])
-    finally:
-        clean_theme(c)
+    subprocess.run(["pelican", "--listen"])
+
 
