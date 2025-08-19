@@ -1,7 +1,7 @@
 AUTHOR = 'Saurabh Khanduja'
 SITENAME = 'PixelPerception'
 SITEURL = ""
-SITELOGO ='images/avatar-400x400.jpg'
+SITELOGO ='/images/avatar-400x400.jpg'
 SITETITLE = 'Hey, I am Saurabh Khanduja'
 
 PATH = "content"
@@ -31,8 +31,8 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 5
 THEME="themes/Flex"
-
-
+SUMMARY_MAX_PARAGRAPHS= 1
+DISABLE_URL_HASH = True
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
