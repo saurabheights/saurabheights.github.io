@@ -1,6 +1,8 @@
 AUTHOR = 'Saurabh Khanduja'
 SITENAME = 'PixelPerception'
 SITEURL = ""
+SITELOGO ='images/avatar-400x400.jpg'
+SITETITLE = 'Hey, I am Saurabh Khanduja'
 
 PATH = "content"
 
@@ -16,21 +18,21 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (
-    ("Pelican", "https://getpelican.com/"),
-    ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
+LINKS = (("HOME", "/index.html"),
 )
 
 # Social widget
 SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
+    ("github", "https://github.com/saurabheights"),
+    ("discord", "https://discord.gg/your-link"),
+    ("linkedin", "https://www.linkedin.com/in/saurabheights/?originalSubdomain=de")
+     
 )
 
 DEFAULT_PAGINATION = 5
 THEME="themes/Flex"
+
+
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
