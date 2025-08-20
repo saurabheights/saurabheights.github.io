@@ -1,19 +1,22 @@
-Title: How I Built My Personal Website Using Pelican and GitHub Pages
+Title: How to publish your first blog in less then 10min & that to free of cost.
 Date: 2025-08-19
 Tags: Pelican, Github Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: building-website-using-pelican
 
-If you’ve ever wanted to create a **fast, free, and customizable website** without touching too much backend code, **Pelican** is an amazing choice. In this blog, I’ll walk you through how I made my own site using **Pelican + GitHub Pages**, along with a custom theme.
+Yes you heard it right publishing blog is that easy and it cost not a penny to start. We are not gonna use any AI tools to upload, publish, or build our blogs
 
----
+We are going to do this old school way using static site and static site generator. So suppose you have an idea or you are really good in a perticular niche and you want to start educating people or show your work then blogging is a best way to do it.
 
-## Why I Chose Pelican
+## Roadmap
+Basically what we are going to do here is using static site generator(**pelican**) to build our website and it will also helps us in future to add more blogs fast and in simple easy way. Now for hosting we are going to use github which not only help to publish our website for free but also provide various features like (automation, uploading and managing blogs). Git and github has so many amazing features that we will see and discuss later in this blog.
 
-Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website.  
-The best part? You can host it for free on GitHub Pages.
+Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website.`
 
----
+## Start
+Okay to start building your website you need few things which I guess many people have this already and if you don't have no worries its nothing.
+* Github account
+* Python installed
 
 ## Installing Pelican
 
@@ -105,6 +108,19 @@ Here, you can see I've added a few static pages inside the pages folder. I've al
 
 Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean, responsive design.
 
+### Download or Clone the Theme
+
+You can use Git to clone directly into the themes/ folder:
+```bash
+git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
+```
+### Update Your Configuration
+Open your pelicanconf.py file and set the theme path:
+```
+THEME = "themes/Flex"
+```
+Now generate the site again and see the new theme will be applied.
+
 ## Customize the theme
 
 The theme can be customized by editing the templates and stylesheet present inside the theme folder (/theme/Flex)
@@ -144,3 +160,15 @@ git push origin main
 * Select the main branch and `/ (root)` folder.
 
 * Save the settings, and your site will be live at: `https://username.github.io`
+
+
+After you successfully created your first blog you can try out different from here for example.
+
+* Automate the whole process- Using github actions to upload the blog using pelican and update in the website
+* Play with different theme- To test which theme works best for you, there are many theme provided by pelican which can be customized by our choice.
+* Use the plugins- There are many plugins supported by pelican which can be used to improve your blog. (Adsense, Disqus)
+* Newsletter- You can run newsletter by giving readers the option to subscribe it whenever they land on your homepage.
+
+## Conclusion/ End result
+
+So now you have basic structure of blogging website. Now the things required to grow your blog is your hard work, dedication and blogs.
