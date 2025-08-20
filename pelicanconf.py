@@ -18,8 +18,8 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (("HOME", "/index.html"),
-)
+# LINKS = (("HOME", "/index.html"),
+# )
 
 # Social widget
 SOCIAL = (
