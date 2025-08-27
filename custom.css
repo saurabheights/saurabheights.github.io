@@ -4,11 +4,13 @@ html {
     height: 100%
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
+/* Only apply to headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600; /* make it bold for strong headings */
+  line-height: 1.3; /* good readability */
+}
+
 h6 {
     font-weight: 300;
     line-height: 1.1
@@ -43,18 +45,18 @@ body {
     padding: 0;
     background-color: #fff;
     color: #242121;
-    font-family: Source Sans Pro, Roboto, Open Sans, Liberation Sans, DejaVu Sans, Verdana, Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.02em;
-    line-height: 1.2em
+    line-height: 1.7em
 }
 
 a {
-    color: #531ed9;
+    color: #333;
     text-decoration: none
 }
 
 a:hover {
-    color: #ff5a09
+    color: #258fb8
 }
 
 hr {
@@ -62,8 +64,8 @@ hr {
     background-color: #eee;
     height: 1px;
     border: none;
-    margin-top: 40px;
-    margin-bottom: 40px
+    margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 img {
@@ -71,7 +73,7 @@ img {
 }
 
 aside {
-    background-color: #333;
+    background-color: #2d3339;
     text-align: center
 }
 
@@ -81,7 +83,7 @@ aside a {
 }
 
 aside a:hover {
-    color: #eee
+    color: #258fb8
 }
 
 aside div {
@@ -95,7 +97,9 @@ aside div img {
 }
 
 aside div h1 {
-    margin: 15px 0 5px
+    margin: 15px 0 5px;
+    font-size: 15px;
+    line-height: 1.2em;
 }
 
 aside div p {
@@ -106,7 +110,7 @@ aside div p {
 aside nav ul li {
     display: inline;
     line-height: 1.6em;
-    font-size: 1.28em;
+    font-size: 1em;
     text-transform: uppercase;
 }
 
@@ -304,7 +308,7 @@ main footer span.footer-separator {
 }
 
 .tag-cloud a {
-    background-color: #d9411e;
+    background-color: #6a6a6a;
     padding: .2em .6em;
     font-size: .74em;
     line-height: 1;
@@ -318,7 +322,7 @@ main footer span.footer-separator {
 .tag-cloud a:hover {
     background-color: #ff5a09
 }
-
+a.btn{display: none;}
 a.btn,
 section#isso-thread section.auth-section p.post-action input {
     background-color: #d9411e;
@@ -386,7 +390,7 @@ ul.social {
 }
 
 ul.list {
-    padding: 1em 0
+    padding: 2em 0
 }
 
 ul.list li {
@@ -533,7 +537,7 @@ ul.social a.sc-lastfm {
 
 @media screen and (min-width:768px) {
     aside {
-        width: 25vw;
+        width: 20vw;
         height: 100vh;
         position: fixed;
         z-index: 2;
@@ -551,13 +555,13 @@ ul.social a.sc-lastfm {
     }
 
     aside div ul.social {
-        padding-top: 32px
+        padding-top: 3px
     }
 
     main {
         height: 100vh;
         position: relative;
-        padding-left: 25vw
+        padding-left: 16vw
     }
 
     main article {
@@ -771,4 +775,10 @@ figure.align-right {
     .github-corner .octo-arm {
         animation: a .56s ease-in-out
     }
+}
+.social a, /*to make all icons white*/
+.social a i,
+.social a svg {
+    color: white !important;
+    background: none !important; /* remove background circles if any */
 }
