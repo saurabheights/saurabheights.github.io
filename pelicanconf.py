@@ -2,7 +2,7 @@ AUTHOR = 'Saurabh Khanduja'
 SITENAME = 'PixelPerception'
 SITEURL = ""
 SITELOGO ='/images/avatar-400x400.jpg'
-SITETITLE = 'Hey, I am Saurabh Khanduja'
+SITETITLE = "Hey, my name is Saurabh Khanduja and I'm a Computer Vision & Backend Engineer."
 
 PATH = "content"
 
@@ -17,9 +17,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-# LINKS = (("HOME", "/index.html"),
-# )
 
 # Social widget
 SOCIAL = (

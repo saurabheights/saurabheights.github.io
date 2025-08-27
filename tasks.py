@@ -199,6 +199,15 @@ def replace_css(c):
     shutil.copy2(source, destination)
     print(f"✅ Replaced {destination} with {source}")
 
+    templates = ["index.html", "base.html", "article.html"]
+
+    for tmpl in templates:
+        source1 = Path("custom_temp") / tmpl
+        destination1 = FLEX_DIR / "templates" / tmpl
+        shutil.copy2(source1, destination1)
+        print(f"✅ Replaced {destination1} with {source1}")
+
+
 @task
 def clean_theme(c):
     """Remove the Flex theme after use"""
