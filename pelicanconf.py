@@ -18,13 +18,12 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 
+LINKS = (('My Articles', '/index.html'),)
+
 # Social widget
-SOCIAL = (
-    ("github", "https://github.com/saurabheights"),
-    ("discord", "https://discord.gg/your-link"),
+SOCIAL = (("github", "https://github.com/saurabheights"),
     ("linkedin", "https://www.linkedin.com/in/saurabheights/?originalSubdomain=de")
-     
-)
+     )
 
 DEFAULT_PAGINATION = 5
 THEME="themes/Flex"
