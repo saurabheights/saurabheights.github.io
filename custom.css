@@ -782,3 +782,9 @@ figure.align-right {
     color: white !important;
     background: none !important; /* remove background circles if any */
 }
+
+.highlight-name {
+    color: #ff9800;        /* highlight color */
+    font-weight: 700;      /* make bolder */
+    font-size: 16px;       /* slightly bigger than the rest */
+}

@@ -207,6 +207,13 @@ def replace_css(c):
         shutil.copy2(source1, destination1)
         print(f"✅ Replaced {destination1} with {source1}")
 
+    source2 = Path("custom_temp") / "sidebar.html"
+    destination2 = FLEX_DIR / "templates" / "partial" / "sidebar.html"  # path inside theme
+    # Copy the file
+    shutil.copy2(source2, destination2)
+    print(f"✅ Replaced {destination2} with {source2}")
+
+
 
 @task
 def clean_theme(c):
