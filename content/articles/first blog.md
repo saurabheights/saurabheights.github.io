@@ -1,22 +1,20 @@
-Title: How to publish your first blog in less then 10min & that to free of cost.
+Title: Deploying portfolio website using Pelican and Github Pages, Under 10 minutes.
 Date: 2025-08-19
 Tags: Pelican, Github Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: building-website-using-pelican
 
-Yes you heard it right publishing blog is that easy and it cost not a penny to start. We are not gonna use any AI tools to upload, publish, or build our blogs
+This article provides a step-by-step walkthrough on how to deploy a portfolio website using the Pelican static site generator and GitHub Pages. We'll cover the entire process, from configuration to final publication, allowing you to get your site live in under 10 minutes.
 
-We are going to do this old school way using static site and static site generator. So suppose you have an idea or you are really good in a perticular niche and you want to start educating people or show your work then blogging is a best way to do it.
+If you're an expert in your niche and want to start a blog, using a static site generator is a highly efficient method. We will cover how to build your site the old-school way, giving you full control over your content and platform.
 
 ## Roadmap
-Basically what we are going to do here is using static site generator(**pelican**) to build our website and it will also helps us in future to add more blogs fast and in simple easy way. Now for hosting we are going to use github which not only help to publish our website for free but also provide various features like (automation, uploading and managing blogs). Git and github has so many amazing features that we will see and discuss later in this blog.
+Basically what we are going to do here is using static site generator(**pelican**) to build our website and it will also helps us in future to add more blogs fast and in easy way. Now for hosting we are going to use github which will not only help us to publish our website for free but also provide various features like (automation, uploading and managing blogs). Git and github has so many amazing features that we will see and discuss later in this blog.
 
-Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website.`
+Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website.
 
 ## Start
-Okay to start building your website you need few things which I guess many people have this already and if you don't have no worries its nothing.
-* Github account
-* Python installed
+To get started, you'll need two main prerequisites, which many people already have: a GitHub account and Python installed on your system.
 
 ## Installing Pelican
 
@@ -39,7 +37,7 @@ cd username.github.io
 
 ### Install Pelican
 
- Once we are inside the repository in our local system we will install pelican with markdown support.
+Once we are in the root directory of our local repository, we will install Pelican with Markdown support
 
 ```
 python -m pip install "pelican[markdown]"
@@ -49,9 +47,9 @@ python -m pip install "pelican[markdown]"
 
 ---
 
-### Create a test article and generate site
+### Create a sample article and generate site
 
-We cannot run Pelican until we have created some content. Use your preferred text editor to create your first article with the following content here I am using markdown:
+We cannot run Pelican until we have created some content. Use your preferred text editor to create an article with the following content.
 
 ```
 Title: My First Review
@@ -61,33 +59,31 @@ Category: Review
 Following is a review of my favorite mechanical keyboard.
 ```
 
-Given that this example article is in Markdown format, save it as /username.github.io/content/keyboard-review.md
+Given that is an example article which is in Markdown format, save it as /username.github.io/content/keyboard-review.md
 
-### Generate the site
-
-From the project root directory, run the pelican command to generate your site:
+From the project root directory, run this pelican command to generate the site:
 
 ```bash
 pelican content
 ```
 
-Your site has now been generated inside the output/ directory. To preview the site we can run the following command.
+Your site is now generated inside the output/ directory. To preview the site we can run the following command.
 
 ```bash
 pelican --listen
 ```
 
-The command you just ran generates a local web address. Navigate to `http://localhost:8000/` in your browser to see a preview of your website. Right now, it's using the standard "notmyidea" theme, but we'll be customizing that soon.
+This command generates a local web address. Navigate to `http://localhost:8000/` in your browser to see a preview of your website. Right now, pelican is using the default theme "notmyidea", but we'll be customizing this theme soon.
 
 ---
 
 ## Adding Content
 
-Now we will add content, since Pelican consider Articles to be chronological content such as Blog and Pages is for adding static page like *About* or *Contact* page.
+In Pelican, there are two primary content types: Articles and Pages. Articles are used for chronological content like blog posts, while Pages are used for static content such as an 'About' or 'Contact' page.
 
-So we will make separate folders for them inside the Content folder as pages, articles & images. We added images folder so that we can add the images which are going to be used in future.
+So we will make separate folders for them inside the Content folder as pages, articles & images. We also added an images folder to store all images that will be used in our content.
 
-After adding the folders the structure of the `content` folder will look like this
+After adding the structure of the `content` folder will look like this
 
 ``` vbnet
 content/
@@ -100,17 +96,18 @@ content/
 │   ├── avatar.jpg
 ```
 
-Here, you can see I've added a few static pages inside the pages folder. I've also moved the keyboard-review.md blog post into the articles folder and added my profile picture to the images folder.
+As you can see, I've added a few static pages to the pages directory. The keyboard-review.md blog post has been moved to the articles folder, and my profile picture is now in the images directory.
 
 ---
 
-## Add and configure the theme
+## Adding and Configuring a New Theme
 
-Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean, responsive design.
+Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean and responsive design.
 
 ### Download or Clone the Theme
 
-You can use Git to clone directly into the themes/ folder:
+Create a new themes/ directory in your project's root folder, then clone the theme repository directly into it.
+
 ```bash
 git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
 ```
@@ -144,7 +141,7 @@ We can adjust font size, colors etc in the theme's folder `style.min.css`
 
 ## Commit & Push changes to github
 
-All the changes we've made so far are saved only on our local computer. To update our project on GitHub and add all our new files, we'll use the following commands.
+All our changes are currently saved locally. To sync them with GitHub and update the remote repository, use the following commands
 
 ```bash
 git add .
@@ -162,12 +159,12 @@ git push origin main
 * Save the settings, and your site will be live at: `https://username.github.io`
 
 
-After you successfully created your first blog you can try out different from here for example.
+With your site successfully created, you can now explore the following ways to improve it:
 
-* Automate the whole process- Using github actions to upload the blog using pelican and update in the website
-* Play with different theme- To test which theme works best for you, there are many theme provided by pelican which can be customized by our choice.
-* Use the plugins- There are many plugins supported by pelican which can be used to improve your blog. (Adsense, Disqus)
-* Newsletter- You can run newsletter by giving readers the option to subscribe it whenever they land on your homepage.
+* Automate the Deployment Process- You can use GitHub Actions to automate the entire workflow. This allows you to automatically build and upload your blog to the website whenever you push new content to your repository. This eliminates the need to manually run commands, saving you time
+* Customize Website Appearance- TYou can experiment with different themes to find the best fit for your blog. Pelican offers a wide variety of themes that you can customize to your liking.
+* Add New Features with Plugins- Pelican supports many plugins that can add new functionality to your blog. For example, you can integrate Adsense for ads or Disqus for comments to enhance the user experience.
+* Start a Newsletter- You can set up a newsletter to build an audience. By giving readers the option to subscribe on your homepage, you can easily share new content and updates directly with your followers.
 
 ## Conclusion/ End result
 
