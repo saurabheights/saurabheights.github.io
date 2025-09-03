@@ -33,6 +33,13 @@
       {% endif %}
     </p>
   </header>
+  {% if article.toc %}
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    {{ article.toc }}
+  </div>
+  {% endif %}
+
 
   {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.article_top %}
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

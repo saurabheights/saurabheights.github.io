@@ -39,6 +39,11 @@ THEMES_DIR = Path("themes")
 FLEX_DIR = THEMES_DIR/"Flex"
 ZIP_FILE = Path("flex.zip")
 
+TOC_ZIP_URL = "https://github.com/ingwinlu/pelican-toc/archive/refs/heads/master.zip"
+PLUGINS_DIR = Path("plugins")
+TOC_DIR = PLUGINS_DIR / "pelican-toc"
+ZIP_FILEP = Path("pelican-toc.zip")
+
 
 @task
 def clean(c):
@@ -166,6 +171,43 @@ def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
 
+
+@task
+def download_plugin(c):
+    print("⬇️  Downloading pelican-toc...")
+    response = requests.get(TOC_ZIP_URL)
+    with open(ZIP_FILEP, "wb") as f:
+        f.write(response.content)
+
+    # Remove old pelican-toc if it exists
+    if TOC_DIR.exists():
+        print("🗑 Removing old pelican-toc...")
+        shutil.rmtree(TOC_DIR)
+
+    # Extract new
+    print("📦 Extracting pelican-toc...")
+    with zipfile.ZipFile(ZIP_FILEP, 'r') as zip_ref:
+        zip_ref.extractall(PLUGINS_DIR)
+
+    # Rename extracted folder (GitHub names it pelican-toc-master)
+    extracted_name = PLUGINS_DIR / "pelican-toc-master"
+    extracted_name.rename(TOC_DIR)
+
+    # Cleanup
+    ZIP_FILEP.unlink()
+    print(f"✅ pelican-toc installed at {TOC_DIR}")
+
+@task
+def clean_plugin(c):
+    # Remove the pelican-toc plugin
+    if TOC_DIR.exists():
+        shutil.rmtree(TOC_DIR)
+        print("🧹 pelican-toc plugin removed.")
+    else:
+        print("⚠️ No pelican-toc plugin folder found to delete.")
+
+
+
 @task 
 def download_theme(c):   # Download theme in zip
     print("Downloading Flex theme...")
@@ -227,7 +269,11 @@ def clean_theme(c):
 @task
 def download_themes(c):
     clean_theme(c)
+    clean_plugin(c)
     download_theme(c)
+    download_plugin(c)
+    
+
 
 @task
 def build_flex(c):

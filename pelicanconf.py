@@ -30,5 +30,15 @@ THEME="themes/Flex"
 SUMMARY_MAX_PARAGRAPHS= 1
 DISABLE_URL_HASH = True
 
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["pelican-toc"]
+
+TOC = {
+    'TOC_HEADERS': '^h[2-6]',
+    'TOC_RUN': 'true',
+    'TOC_INCLUDE_TITLE': False,
+}
+
+
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

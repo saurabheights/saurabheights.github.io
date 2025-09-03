@@ -273,9 +273,7 @@ main article section#isso-thread .auth-section .input-wrapper {
     margin-right: 5px
 }
 
-main article .toc {
-    margin-top: 2em
-}
+
 
 main article .toc .toctitle {
     font-size: 1.3em
@@ -787,4 +785,37 @@ figure.align-right {
     color: #ff9800;        /* highlight color */
     font-weight: 700;      /* make bolder */
     font-size: 16px;       /* slightly bigger than the rest */
+}
+@media(min-width: 1322px)
+{
+    main article .toc {
+    margin-top: -6em
+}
+.toc {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 250px;
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc a {
+    text-decoration: none;
+    color: #555;
+}
+
+.toc a:hover {
+    color: #258fb8;
+}
+}
+/* Prevent horizontal white space */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
