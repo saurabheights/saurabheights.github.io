@@ -35,7 +35,7 @@
   </header>
   {% if article.toc %}
   <div class="toc">
-    <h3>Table of Contents</h3>
+    <h3>Contents</h3>
     {{ article.toc }}
   </div>
   {% endif %}
@@ -128,4 +128,44 @@
   {% include "partial/disqus.html" %}
   {% include "partial/isso.html" %}
 </article>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() // To add scroll-spy effect
+{
+  const tocLinks = document.querySelectorAll(".toc a");
+  const sections = Array.from(tocLinks)
+    .map(link => document.querySelector(link.getAttribute("href")))
+    .filter(el => el);
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute("id");
+      if (entry.isIntersecting) {
+        tocLinks.forEach(link => link.classList.remove("active"));
+        const activeLink = document.querySelector(`.toc a[href="#${id}"]`);
+        if (activeLink) activeLink.classList.add("active");
+      }
+    });
+  }, {
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+});
+
+document.addEventListener("DOMContentLoaded", function() { // To add permalink
+  document.querySelectorAll("h2, h3, h4, h5, h6").forEach(function(heading) {
+    if (heading.id) { 
+      let anchor = document.createElement("a");
+      anchor.href = "#" + heading.id;
+      anchor.className = "permalink";
+      anchor.innerHTML = "#";
+      heading.appendChild(anchor);
+    }
+  });
+});
+
+</script>
+
 {% endblock %}

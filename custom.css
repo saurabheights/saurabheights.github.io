@@ -46,7 +46,7 @@ body {
     background-color: #fff;
     color: #242121;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.02em;
+    font-size: 0.9em;
     line-height: 1.7em
 }
 
@@ -818,4 +818,27 @@ figure.align-right {
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+}
+.toc a.active {
+    font-weight: bold;
+    color: #007acc;   /* highlight color */
+    border-left: 3px solid #007acc;
+    padding-left: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.permalink {
+  visibility: hidden;     /* hidden initially */
+  margin-left: 8px;
+  text-decoration: none;
+  opacity: 0.5;
+  font-size: 0.9em;
+}
+
+:where(h2, h3, h4, h5, h6):hover .permalink {
+  visibility: visible;
+}
+
+.permalink:hover {
+  opacity: 1;
+  color: #007acc;
 }
