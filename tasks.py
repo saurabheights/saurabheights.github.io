@@ -44,6 +44,9 @@ PLUGINS_DIR = Path("plugins")
 TOC_DIR = PLUGINS_DIR / "pelican-toc"
 ZIP_FILEP = Path("pelican-toc.zip")
 
+RENDER_MATH_ZIP_URL = "https://github.com/pelican-plugins/render-math/archive/refs/heads/main.zip"
+RENDER_MATH_DIR = PLUGINS_DIR / "render_math"
+ZIP_FILE_RM = Path("render-math.zip")
 
 @task
 def clean(c):
@@ -197,6 +200,37 @@ def download_plugin(c):
     ZIP_FILEP.unlink()
     print(f"✅ pelican-toc installed at {TOC_DIR}")
 
+
+def download_render_math(c):
+    print("⬇️  Downloading render-math...")
+    response = requests.get(RENDER_MATH_ZIP_URL)
+    with open(ZIP_FILE_RM, "wb") as f:
+        f.write(response.content)
+
+    # Remove old render_math if it exists
+    if RENDER_MATH_DIR.exists():
+        print("🗑 Removing old render_math...")
+        shutil.rmtree(RENDER_MATH_DIR)
+
+    # Extract zip into plugins/
+    print("📦 Extracting render-math...")
+    with zipfile.ZipFile(ZIP_FILE_RM, 'r') as zip_ref:
+        zip_ref.extractall(PLUGINS_DIR)
+
+    # Path inside the extracted archive
+    extracted_root = PLUGINS_DIR / "render-math-main" / "pelican" / "plugins" / "render_math"
+
+    if extracted_root.exists():
+        shutil.move(str(extracted_root), str(RENDER_MATH_DIR))
+        print(f"✅ render_math plugin moved to {RENDER_MATH_DIR}")
+    else:
+        print("⚠️ Could not find extracted render_math directory!")
+
+    # Cleanup leftover "render-math-main" and zip
+    shutil.rmtree(PLUGINS_DIR / "render-math-main", ignore_errors=True)
+    ZIP_FILE_RM.unlink()
+
+
 @task
 def clean_plugin(c):
     # Remove the pelican-toc plugin
@@ -205,6 +239,12 @@ def clean_plugin(c):
         print("🧹 pelican-toc plugin removed.")
     else:
         print("⚠️ No pelican-toc plugin folder found to delete.")
+    # Remove render_math
+    if RENDER_MATH_DIR.exists():
+        shutil.rmtree(RENDER_MATH_DIR)
+        print("🧹 render_math plugin removed.")
+    else:
+        print("⚠️ No render_math plugin folder found.")
 
 
 
@@ -272,6 +312,7 @@ def download_themes(c):
     clean_plugin(c)
     download_theme(c)
     download_plugin(c)
+    download_render_math(c)
     
 
 

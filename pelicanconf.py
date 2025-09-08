@@ -31,7 +31,7 @@ SUMMARY_MAX_PARAGRAPHS= 1
 DISABLE_URL_HASH = True
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["pelican-toc"]
+PLUGINS = ["pelican-toc", "render_math"]
 
 TOC = {
     'TOC_HEADERS': '^h[2-6]',
