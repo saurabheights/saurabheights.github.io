@@ -280,6 +280,12 @@ def replace_css(c):
     # Copy the file
     shutil.copy2(source, destination)
     print(f"✅ Replaced {destination} with {source}")
+    
+    source_dark = Path("dark-theme.css") # replace dark theme 
+    destination_dark = FLEX_DIR / "static" / "stylesheet" / "dark-theme.min.css"
+    shutil.copy2(source_dark, destination_dark)
+    print(f"✅ Replaced {destination_dark} with {source_dark}")
+
 
     templates = ["index.html", "base.html", "article.html"]
 

@@ -38,6 +38,7 @@ TOC = {
     'TOC_RUN': 'true',
     'TOC_INCLUDE_TITLE': False,
 }
+THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 
 
 # Uncomment following line if you want document-relative URLs when developing
