@@ -73,8 +73,12 @@ img {
 }
 
 aside {
-    background-color: #2d3339;
-    text-align: center
+  background-color: #0d1b2a;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveGrid 3s linear infinite;
 }
 
 aside,
@@ -92,14 +96,29 @@ aside div {
 }
 
 aside div img {
-    border-radius: 50%;
+     border: 2px solid #00d4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  transition: transform 0.3s ease;
     max-width: 140px
 }
 
 aside div h1 {
     margin: 15px 0 5px;
-    font-size: 15px;
+    font-size: 1.4rem;
     line-height: 1.2em;
+}
+
+.title{
+    font-size: 0.95rem;
+  color: #a9bcd0;
+  margin-bottom: 0.5rem;
+}
+.tagline {
+  font-size: 0.85rem;
+  color: #a9bcd0;
+  /* font-style: italic; */
+  margin-bottom: 1.5rem;
 }
 
 aside div p {
@@ -763,6 +782,11 @@ figure.align-right {
     80% {
         transform: rotate(10deg)
     }
+}
+
+@keyframes moveGrid {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
 }
 
 @media (max-width:500px) {
