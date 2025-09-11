@@ -180,7 +180,18 @@ main article header p {
     color: #999;
     font-size: .86em
 }
+main article a {
+    color: #258fb8;
+    text-decoration: none;
+}
+/* For article titles */
+.article-title {
+  color: #333; 
+}
 
+.article-title:hover {
+  color: #258fb8; 
+}
 main article header .translations {
     float: right
 }
