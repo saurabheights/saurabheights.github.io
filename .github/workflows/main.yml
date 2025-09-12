@@ -60,7 +60,12 @@ jobs:
         id: pages
         uses: actions/configure-pages@d5606572c479bee637007364c6b4800ac4fc8573  #v5
       - name: Install requirements
-        run: pip install {{ inputs.requirements || '-r requirements.txt' }}
+        run: |
+          if [ -n "${{ inputs.requirements }}" ]; then
+            pip install ${{ inputs.requirements }}
+          else
+            pip install -r requirements.txt
+          fi
       - name: Download theme and plugins
         run: invoke download-themes
       - name: Build Pelican site
