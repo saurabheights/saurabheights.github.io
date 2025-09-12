@@ -46,6 +46,11 @@ on:
         description: "Whether to deploy the site. If true then build the site and deploy it. If false then just test that the site builds successfully but don't deploy anything."
         type: boolean
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
