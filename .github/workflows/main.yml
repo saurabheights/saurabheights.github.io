@@ -69,25 +69,23 @@ jobs:
           import subprocess
 
           cmd = "pelican"
-          cmd += " --settings ${{ inputs.settings || publishconf.py }}"
+          cmd += " --settings ${{ inputs.settings || 'publishconf.py' }}"
           cmd += " --extra-settings"
           cmd += """ SITEURL='"${{ inputs.siteurl || steps.pages.outputs.base_url }}"'"""
           cmd += """ FEED_DOMAIN='"${{ inputs.feed_domain || steps.pages.outputs.base_url }}"'"""
-          cmd += " --output ${{ inputs.output-path || output/  }}"
-
-          if "${{ inputs.theme }}":
-              cmd += " --theme-path themes/Flex"
+          cmd += " --output ${{ inputs.output-path || 'output/'  }}"
+          cmd += " --theme-path themes/Flex"
 
           subprocess.run(cmd, shell=True, check=True)
       - name: Fix permissions
         run: |
-          chmod -c -R +rX "${{ inputs.output-path || output/  }}" | while read line; do
+          chmod -c -R +rX "${{ inputs.output-path || 'output/'  }}" | while read line; do
             echo "::warning title=Invalid file permissions automatically fixed::$line"
           done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ inputs.output-path || output/ }}
+          path: ${{ inputs.output-path || 'output/' }}
 
   deploy:
     concurrency:
