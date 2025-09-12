@@ -36,7 +36,7 @@ CONFIG = {
 
 FLEX_ZIP_URL = "https://github.com/alexandrevicenzi/Flex/archive/refs/heads/master.zip"
 THEMES_DIR = Path("themes")
-FLEX_DIR = THEMES_DIR/"Flex"
+FLEX_DIR = THEMES_DIR / "Flex"
 ZIP_FILE = Path("flex.zip")
 
 TOC_ZIP_URL = "https://github.com/ingwinlu/pelican-toc/archive/refs/heads/master.zip"
@@ -44,9 +44,12 @@ PLUGINS_DIR = Path("plugins")
 TOC_DIR = PLUGINS_DIR / "pelican-toc"
 ZIP_FILEP = Path("pelican-toc.zip")
 
-RENDER_MATH_ZIP_URL = "https://github.com/pelican-plugins/render-math/archive/refs/heads/main.zip"
+RENDER_MATH_ZIP_URL = (
+    "https://github.com/pelican-plugins/render-math/archive/refs/heads/main.zip"
+)
 RENDER_MATH_DIR = PLUGINS_DIR / "render_math"
 ZIP_FILE_RM = Path("render-math.zip")
+
 
 @task
 def clean(c):
@@ -109,6 +112,7 @@ def preview(c):
     """Build production version of site"""
     pelican_run("-s {settings_publish}".format(**CONFIG))
 
+
 @task
 def livereload(c):
     """Automatically reload browser tab upon file modification."""
@@ -160,6 +164,7 @@ def publish(c):
         )
     )
 
+
 @task
 def gh_pages(c):
     """Publish to GitHub Pages"""
@@ -169,6 +174,7 @@ def gh_pages(c):
         "-m {commit_message} "
         "{deploy_path} -p".format(**CONFIG)
     )
+
 
 def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
@@ -189,7 +195,7 @@ def download_plugin(c):
 
     # Extract new
     print("📦 Extracting pelican-toc...")
-    with zipfile.ZipFile(ZIP_FILEP, 'r') as zip_ref:
+    with zipfile.ZipFile(ZIP_FILEP, "r") as zip_ref:
         zip_ref.extractall(PLUGINS_DIR)
 
     # Rename extracted folder (GitHub names it pelican-toc-master)
@@ -214,11 +220,13 @@ def download_render_math(c):
 
     # Extract zip into plugins/
     print("📦 Extracting render-math...")
-    with zipfile.ZipFile(ZIP_FILE_RM, 'r') as zip_ref:
+    with zipfile.ZipFile(ZIP_FILE_RM, "r") as zip_ref:
         zip_ref.extractall(PLUGINS_DIR)
 
     # Path inside the extracted archive
-    extracted_root = PLUGINS_DIR / "render-math-main" / "pelican" / "plugins" / "render_math"
+    extracted_root = (
+        PLUGINS_DIR / "render-math-main" / "pelican" / "plugins" / "render_math"
+    )
 
     if extracted_root.exists():
         shutil.move(str(extracted_root), str(RENDER_MATH_DIR))
@@ -247,9 +255,8 @@ def clean_plugin(c):
         print("⚠️ No render_math plugin folder found.")
 
 
-
-@task 
-def download_theme(c):   # Download theme in zip
+@task
+def download_theme(c):  # Download theme in zip
     print("Downloading Flex theme...")
     response = requests.get(FLEX_ZIP_URL)
     with open(ZIP_FILE, "wb") as f:
@@ -259,33 +266,35 @@ def download_theme(c):   # Download theme in zip
     if FLEX_DIR.exists():
         print("🗑 Removing old Flex theme...")
         shutil.rmtree(FLEX_DIR)
-        
+
     # 3. Unzip Flex into themes/Flex
     print("📦 Extracting Flex theme...")
-    with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
+    with zipfile.ZipFile(ZIP_FILE, "r") as zip_ref:
         zip_ref.extractall(THEMES_DIR)
 
     # Rename extracted folder (GitHub names it Flex-master)
-    extracted_name = THEMES_DIR/"Flex-master"
+    extracted_name = THEMES_DIR / "Flex-master"
     extracted_name.rename(FLEX_DIR)
 
     # Remove ZIP file
     ZIP_FILE.unlink()  # delete zip file
     print(f"✅ Flex theme installed at {FLEX_DIR}")
 
+
 @task
 def replace_css(c):
     source = Path("custom.css")  # file in root folder
-    destination = FLEX_DIR / "static" / "stylesheet" / "style.min.css"  # path inside theme
+    destination = (
+        FLEX_DIR / "static" / "stylesheet" / "style.min.css"
+    )  # path inside theme
     # Copy the file
     shutil.copy2(source, destination)
     print(f"✅ Replaced {destination} with {source}")
-    
-    source_dark = Path("dark-theme.css") # replace dark theme 
+
+    source_dark = Path("dark-theme.css")  # replace dark theme
     destination_dark = FLEX_DIR / "static" / "stylesheet" / "dark-theme.min.css"
     shutil.copy2(source_dark, destination_dark)
     print(f"✅ Replaced {destination_dark} with {source_dark}")
-
 
     templates = ["index.html", "base.html", "article.html"]
 
@@ -296,11 +305,12 @@ def replace_css(c):
         print(f"✅ Replaced {destination1} with {source1}")
 
     source2 = Path("custom_temp") / "sidebar.html"
-    destination2 = FLEX_DIR / "templates" / "partial" / "sidebar.html"  # path inside theme
+    destination2 = (
+        FLEX_DIR / "templates" / "partial" / "sidebar.html"
+    )  # path inside theme
     # Copy the file
     shutil.copy2(source2, destination2)
     print(f"✅ Replaced {destination2} with {source2}")
-
 
 
 @task
@@ -312,6 +322,7 @@ def clean_theme(c):
     else:
         print("⚠️ No Flex theme folder found to delete.")
 
+
 @task
 def download_themes(c):
     clean_theme(c)
@@ -319,7 +330,6 @@ def download_themes(c):
     download_theme(c)
     download_plugin(c)
     download_render_math(c)
-    
 
 
 @task
@@ -327,5 +337,3 @@ def build_flex(c):
     replace_css(c)
     build(c)
     subprocess.run(["pelican", "--listen"])
-
-
