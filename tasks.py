@@ -330,6 +330,7 @@ def download_themes(c):
     download_theme(c)
     download_plugin(c)
     download_render_math(c)
+    replace_css(c)
 
 
 @task
