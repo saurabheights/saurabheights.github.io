@@ -1,5 +1,5 @@
 body {
-    background-color: #333;
+    background-color: #0d1117;;
     color: #eee
 }
 
@@ -15,6 +15,14 @@ a {
 hr {
     color: #222
 }
+/* For article titles */
+.article-title {
+  color: #ffffff;
+}
+
+.article-title:hover {
+  color: #258fb8; 
+}
 
 aside,
 hr {
@@ -22,7 +30,12 @@ hr {
 }
 
 aside {
-    color: #fff
+  background-color: #0d1b2a;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveGrid 3s linear infinite;
 }
 
 aside form.navbar-search input#tipue_search_input {

@@ -11,7 +11,7 @@ TIMEZONE = "Europe/Berlin"
 DEFAULT_LANG = "en"
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
+FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
@@ -24,6 +24,7 @@ LINKS = (("My Articles", "/index.html"),)
 SOCIAL = (
     ("github", "https://github.com/saurabheights"),
     ("linkedin", "https://www.linkedin.com/in/saurabheights/?originalSubdomain=de"),
+    ("rss", "https://saurabheights.github.io/feeds/all.atom.xml"),
 )
 
 DEFAULT_PAGINATION = 5
