@@ -117,41 +117,166 @@ div.related-posts {
 }
 
 div.admonition {
-    color: #eee;
-    background-color: #404040
+    margin-bottom: 2.5rem;
+    border-radius: 4px;
+    padding: .5em 1.25em 1.25em
 }
 
-div.admonition.attention,
+div.admonition p.admonition-title:before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-family: FontAwesome;
+}
+
+div.admonition p.admonition-title {
+    font-weight: 600;
+    line-height: 1.25em;
+    margin-bottom: 1.25em;
+    margin-top: inherit
+}
+
+div.admonition div,
+div.admonition p,
+div.admonition pre {
+    margin-bottom: 0
+}
+
+div.admonition {
+    color: #242121;
+    background-color: #ccc
+}
+
+div.admonition.attention {
+    background-color: #fff7ed;           
+    border-left: 4px solid #f97316;     
+    color: #7c2d12;                      
+}
+
+div.admonition.attention p.admonition-title:before {
+    color: #fb923c;
+    content: "\f06a\00a0 ";              /* exclamation-circle icon */
+    font-family: "Font Awesome 5 Free";
+}
+
 div.admonition.caution {
-    color: #fbda7a;
-    background-color: #4a3900
+    background-color: #fef9c3;
+    border-left: 4px solid #eab308;
+    color: #78350f;
 }
 
-div.admonition.danger,
+div.admonition.caution p.admonition-title:before {
+    color: #facc15;
+    content: "\f071\00a0 ";              /* exclamation-triangle icon */
+    font-family: "Font Awesome 5 Free";
+}
+
+div.admonition.danger {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #7f1d1d;
+}
+
+div.admonition.danger p.admonition-title:before {
+    color: #f87171;
+    content: "\f06a\00a0 ";              /* exclamation-circle icon */
+    font-family: "Font Awesome 5 Free";
+}
+
 div.admonition.error {
-    color: #ebadb3;
-    background-color: #28070a
+    background-color: #fee2e2;
+    border-left: 4px solid #dc2626;
+    color: #7f1d1d;
+}
+
+div.admonition.error p.admonition-title:before {
+    color: #ef4444;
+    content: "\f057\00a0 ";              /* times-circle icon */
+    font-family: "Font Awesome 5 Free";
 }
 
 div.admonition.hint {
-    color: #7abaff;
-    background-color: #001933
+    background-color: #e0f2fe;
+    border-left: 4px solid #0284c7;
+    color: #0c4a6e;
 }
 
-div.admonition.important,
+div.admonition.hint p.admonition-title:before {
+    color: #38bdf8;
+    content: "\f0eb\00a0 ";              /* lightbulb icon */
+    font-family: "Font Awesome 5 Free";
+}
+
+div.admonition.important {
+    background-color: #fef2f2;
+    border-left: 4px solid #e11d48;
+    color: #9f1239;
+}
+
+div.admonition.important p.admonition-title:before {
+    color: #fb7185;
+    content: "\f06a\00a0 ";              /* exclamation-circle icon */
+    font-family: "Font Awesome 5 Free";
+}
+
 div.admonition.note {
-    color: #a8eab7;
-    background-color: #122b18
+    background-color: #e0f2fe;
+    border-left: 4px solid #0284c7;
+    color: #0c4a6e;
+}
+
+div.admonition.note p.admonition-title:before {
+    color: #38bdf8;
+    content: "\f05a\00a0 ";              /* info-circle icon */
+    font-family: "Font Awesome 5 Free";
 }
 
 div.admonition.tip {
-    color: #7abaff;
-    background-color: #001933
+    background-color: #ecfdf5;
+    border-left: 4px solid #10b981;
+    color: #065f46;
+}
+
+div.admonition.tip p.admonition-title:before {
+    color: #34d399;
+    content: "\f024\00a0 ";
+    font-family: Font Awesome\ 5 Free
 }
 
 div.admonition.warning {
-    color: #fbda7a;
-    background-color: #4a3900
+    background-color: #fef9c3;
+    border-left: 4px solid #eab308;
+    color: #78350f;
+}
+
+div.admonition.warning p.admonition-title:before {
+    color: #facc15;
+    content: "\f071\00a0 ";              /* exclamation-triangle icon */
+    font-family: "Font Awesome 5 Free";
+}
+
+div.admonition.todo {
+    background-color: #f3f4f6;
+    border-left: 4px solid #6b7280;
+    color: #374151;
+}
+div.admonition.todo p.admonition-title:before {
+    color: #9ca3af;
+    content: "\f0ae\00a0 ";              /* tasks icon */
+    font-family: "Font Awesome 5 Free";
+}
+
+div.admonition.seealso {
+    background-color: #ede9fe;
+    border-left: 4px solid #8b5cf6;
+    color: #4c1d95;
+}
+
+div.admonition.seealso p.admonition-title:before {
+    color: #a78bfa;
+    content: "\f0c1\00a0 ";              /* link icon */
+    font-family: "Font Awesome 5 Free";
 }
 
 div.figure,

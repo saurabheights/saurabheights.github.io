@@ -42,6 +42,11 @@ TOC = {
 }
 THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 
+MARKDOWN = {
+    'extensions': ['admonition']
+}
+
+
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
