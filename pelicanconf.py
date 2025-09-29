@@ -43,10 +43,19 @@ TOC = {
 THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 
 MARKDOWN = {
-    'extensions': ['admonition']
+    'extensions': [
+        'admonition', # Admonition blocks
+        'toc',        # Table of Contents
+        'codehilite', # Syntax highlighting for code
+        'extra',      # Extra markdown features (tables, footnotes, etc.)
+        'smarty',     # Smart quotes, dashes
+    ],
+    'extension_configs': {
+        'toc': {'baselevel': 2}, # start headings at <h2>
+        'codehilite': {'linenums': True, # for code line number
+                       'css_class': 'highlight'}, # css for codeblock
+    }
 }
-
-
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
