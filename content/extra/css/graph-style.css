@@ -1,0 +1,10 @@
+/* D3 Bar Chart Styling */
+#d3-test .bar {
+  fill: #FF8DA1; /* 🎨 Your pink color */
+  transition: fill 0.3s ease, height 0.3s ease;
+}
+
+/* Optional: hover effect */
+#d3-test .bar:hover {
+  fill: #ff6f91; /* slightly darker on hover */
+}
