@@ -180,6 +180,14 @@
     {% block content %}
     {% endblock %}
 
+<!-- D3.js Library -->
+  <link rel="stylesheet" href="extra/css/graph-style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Auto-load all D3 graph scripts -->
+  {% for js_file in js_files %}
+    <script src="{{ SITEURL }}/extra/js/{{ js_file }}"></script>
+  {% endfor %}
+
     <!-- {% include "partial/footer.html" %} -->
   </main>
 

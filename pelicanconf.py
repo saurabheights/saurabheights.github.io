@@ -1,3 +1,4 @@
+import os
 AUTHOR = "Saurabh Khanduja"
 SITENAME = "PixelPerception"
 SITEURL = ""
@@ -55,6 +56,13 @@ MARKDOWN = {
         'codehilite': {'linenums': True, # for code line number
                        'css_class': 'highlight'}, # css for codeblock
     }
+}
+
+STATIC_PATHS = ['extra/js','extra/css',]
+JS_FILES = [f for f in os.listdir('content/extra/js') if f.endswith('.js')]
+# make them accessible in Jinja templates
+JINJA_GLOBALS = {
+    'js_files': JS_FILES
 }
 
 PUBLICATIONS_SRC = "content/reference.bib"
