@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 AUTHOR = "Saurabh Khanduja"
 SITENAME = "PixelPerception"
 SITEURL = ""
@@ -59,7 +59,7 @@ MARKDOWN = {
 }
 
 STATIC_PATHS = ['extra/js','extra/css',]
-JS_FILES = [f for f in os.listdir('content/extra/js') if f.endswith('.js')]
+JS_FILES = [f.name for f in Path('content/extra/js').iterdir() if f.suffix == '.js']
 # make them accessible in Jinja templates
 JINJA_GLOBALS = {
     'js_files': JS_FILES
