@@ -1,4 +1,4 @@
-Title: How to Add D3.js Graphs to Your Pelican Blog for Interactive Visualizations
+Title: Integrating D3.js to our blogs for Interactive Visualizations
 Date: 2025-08-19
 Tags: Pelican, GitHub Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
@@ -8,13 +8,13 @@ In the previous parts, we explored how to add several powerful features to our P
 
 [D3.js](https://d3js.org/) (Data-Driven Documents) is a powerful JavaScript library that lets you create dynamic, interactive visualizations directly in your web pages using HTML, SVG, and CSS.
 
-In this tutorial, we’ll go step-by-step through the process of integrating D3.js into a Pelican site — from setup to displaying your first animated graph — so you can bring your data stories to life.
+In this tutorial, we’ll go step-by-step through the process of integrating D3.js into a Pelican site, from setup to displaying your first animated graph, so you can bring your data stories to life.
 
 ## Project Setup
 
-In the [previous part of this series](https://saurabheights.github.io/enhancing-my-blog-for-scientific-writing-integrate-comments-better-toc-and-latex-support.html), we already set up our Pelican blog — created the content folders, configured the theme, and added features like a table of contents, Giscus comments, and LaTeX rendering.
+In the [previous part of this series](https://saurabheights.github.io/enhancing-my-blog-for-scientific-writing-integrate-comments-better-toc-and-latex-support.html), we already set up our Pelican blog, created the content folders, configured the theme, and added various features like a table of contents, Giscus comments, and LaTeX rendering.
 
-Now, we’ll prepare our project for adding **interactive D3.js graphs.**
+Now, we’ll prepare our project for adding **interactive D3.js graphs**.
 
 Inside the `content` folder, create an `extra` directory that will store everything related to your graphs:
 
@@ -28,23 +28,19 @@ content/
           ├──blog-02-graph.js
       └── css/
           └──graph-style.css
-   
-          
 ```
 
-In the `js` **folder**, we’ll place all our graph scripts, such as
-`blog-01-graph.js`, `blog-02-graph.js`, and so on.
-Each blog can have its own JavaScript file that handles a specific D3 visualization.
+In the `js` **folder**, we’ll place all our graph scripts, such as `blog-01-graph.js`, `blog-02-graph.js`, and so on. Each blog can have its own JavaScript file that handles a specific D3 visualization.
 
-In the `css` **folder**, we’ll include only **one main CSS file** (for example, `graph-style.css`) that defines the styles for all the graphs across the site.
+In the `css` **folder**, we’ll include only **one main CSS file** (for example, `graph-style.css`) that defines the styles for all the graphs across the site. Rather than loading CSS on the fly for each graph, this approach loads all the styles in advance so charts never appear unstyled. Moreover, this ensures that my styling guidelines are applied uniformly across every blog entry and future changes to website themes are easy to make.
 
-This setup keeps things organized — each blog gets its own script file, while all visual styling is handled in one place.
+This setup keeps things organized where each blog gets its own script file, while all visual styling is handled in one place.
 
 ---
 
 ## Include D3.js in Base Template
 
-Previously, we added tools like **Giscus** by modifying `article.html`, which made them available only inside individual posts. However, this time we’ll integrate **D3.js** inside the `base.html` file — allowing us to use graphs anywhere across the website, not just in articles.
+Previously, we added tools like **Giscus** by modifying `article.html`, which made them available only inside individual posts. However, this time we’ll integrate **D3.js** inside the `base.html` file, allowing us to use graphs anywhere across the website, not just in articles.
 
 To make Pelican automatically load every graph script from your `extra/js` folder (without updating `base.html` every time you add a new graph), add the following lines inside your `base.html` file:
 
@@ -71,7 +67,7 @@ JINJA_GLOBALS = {
     'js_files': JS_FILES
 }
 ```
-This setup ensures Pelican dynamically reads all **.js** files from your `extra/js` folder and includes them in your site automatically — so you never need to manually update `base.html` again when adding new graphs.
+This setup ensures Pelican dynamically reads all **.js** files from your `extra/js` folder and includes them in your site automatically, so you never need to manually update `base.html` again when adding new graphs.
 
 ---
 
