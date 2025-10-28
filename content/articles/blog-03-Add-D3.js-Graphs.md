@@ -1,5 +1,5 @@
 Title: Integrating D3.js to our blogs for Interactive Visualizations
-Date: 2025-08-19
+Date: 2025-10-22
 Tags: Pelican, GitHub Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: add-d3.js for interactive visualization
@@ -38,42 +38,38 @@ This setup keeps things organized where each blog gets its own script file, whil
 
 ---
 
-## Include D3.js in Base Template
+## Include D3.js in Article Template
 
-Previously, we added tools like **Giscus** by modifying `article.html`, which made them available only inside individual posts. However, this time we’ll integrate **D3.js** inside the `base.html` file, allowing us to use graphs anywhere across the website, not just in articles.
+Earlier, we added **Giscus** by editing `article.html`. Similarly, for **D3.js**, we include the D3 library and its stylesheet inside `article.html`, allowing each blog to load its own graph scripts independently.
 
-To make Pelican automatically load every graph script from your `extra/js` folder (without updating `base.html` every time you add a new graph), add the following lines inside your `base.html` file:
+However, instead of loading every graph globally, we’ll load only the graphs defined in each article’s metadata (for example, `graph: blog-01-graph.js, blog-01-graph.js`). This keeps pages faster and ensures each post loads just the visualizations it needs.
+
+Add the following code inside your `article.html` file:
 
 ``` html
 <!-- D3.js Library -->
-<link rel="stylesheet" href="extra/css/graph-style.css">
-<script src="https://d3js.org/d3.v7.min.js"></script>
-
-<!-- Auto-load all D3 graph scripts -->
-{% for js_file in js_files %}
-  <script src="{{ SITEURL }}/extra/js/{{ js_file }}"></script>
-{% endfor %}
-
+  <link rel="stylesheet" href="extra/css/graph-style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script> 
+  {% if article.graph %}
+    {% for g in article.graph.split(',') %}
+      <script src="{{ SITEURL }}/extra/js/{{ g|trim }}"></script>
+    {% endfor %}
+  {% endif %}
+  
 ```
-And to make this auto-loading work, include these settings inside your `pelicanconf.py` file:
+We add the Jinja **for loop** to make the setup reusable across multiple blogs. Instead of hardcoding each graph file, this loop automatically loads any number of graph scripts listed in a post’s metadata. This means you can reuse the same visualization (like `blog-01-graph.js`) in different posts without editing the template again, keeping your workflow flexible and scalable.
+
+To let Pelican know where your graph files are stored, add the following settings inside your `pelicanconf.py` file:
+
 
 ``` python
 STATIC_PATHS = ['extra/js', 'extra/css']
-
-JS_FILES = [f for f in os.listdir('content/extra/js') if f.endswith('.js')]
-
-# Make JS files accessible inside Jinja templates
-JINJA_GLOBALS = {
-    'js_files': JS_FILES
-}
 ```
-This setup ensures Pelican dynamically reads all **.js** files from your `extra/js` folder and includes them in your site automatically, so you never need to manually update `base.html` again when adding new graphs.
-
 ---
 
 ## Create Your First Graph Script
 
-Now let’s create our first D3 graph file — for example, `blog-01-graph.js.`
+Now let’s create our first D3 graph file for example, `blog-01-graph.js.`
 Inside your `content/extra/js/` folder, add the following simple script:
 
 ``` js
@@ -90,40 +86,48 @@ document.addEventListener("DOMContentLoaded", function () {
      .attr("fill", "steelblue");
 });
 ```
-Then, in your **Markdown file** where you want the graph to appear, add:
+
+In your **Markdown file**, add the graph name in metadata like:
+```makefile
+Title: Integrating D3.js to our blogs for Interactive Visualizations
+Date: 2025-10-22
+Tags: Pelican, GitHub Pages, SSG, Web Development, Hosting
+Author: Saurabh Khanduja
+Slug: add-d3.js for interactive visualization
+graph: blog-01-graph.js
+```
+Then place a target div where you want it to appear:
 
 ```html 
 <div id="test-graph"></div>
 ```
-Finally, rebuild your Pelican site — and you should see a blue circle rendered on your page!
-
 ---
 
 ## Organize Styles
 
-Keep all your graph-related styles inside a single file — for example, `graph-style.css` — located in your `content/extra/css/` folder.
-This file controls how your D3 charts look — from colors to animations — and keeps everything consistent across your website.
+Keep all your graph-related styles inside a single file for example, `graph-style.css` located in your `content/extra/css/` folder.
+This file controls how your D3 charts look, from colors to animations and keeps everything consistent across your website.
 
 Here’s a simple example you can include in your `graph-style.css`:
 ``` css
 /* D3 Bar Chart Styling */
 #test-graph .bar {
-  fill: #FF8DA1; /* 🎨 Your pink color */
+  fill: #FF8DA1; 
   transition: fill 0.3s ease, height 0.3s ease;
 }
 
 /* Optional: hover effect */
 #test-graph .bar: hover {
-  fill: #ff6f91; /* slightly darker on hover */
+  fill: #ff6f91;
 }
 ```
 
 ### Why one CSS file?
 
-* The browser **downloads and caches** it once — improving load time.
+* The browser **downloads and caches** it once which improves load time.
 
 * You can manage all graph styling in a single place.
 
 * It keeps your repo clean and avoids duplicate rules across files.
 
-So whenever you add a new graph, you can just tweak `graph-style.css` — no need to create or reload multiple CSS files.
+So whenever you add a new graph, you can just tweak `graph-style.css` no need to create or reload multiple CSS files.
