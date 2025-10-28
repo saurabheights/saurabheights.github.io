@@ -143,6 +143,16 @@
         crossorigin="anonymous"
         async>
 </script>
+
+<!-- D3.js Library -->
+  <link rel="stylesheet" href="extra/css/graph-style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script> 
+  {% if article.graph %}
+    {% for g in article.graph.split(',') %}
+      <script src="{{ SITEURL }}/extra/js/{{ g|trim }}"></script>
+    {% endfor %}
+  {% endif %}
+  
 </article>
 
 <script>
