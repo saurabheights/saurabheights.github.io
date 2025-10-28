@@ -59,11 +59,6 @@ MARKDOWN = {
 }
 
 STATIC_PATHS = ['extra/js','extra/css',]
-JS_FILES = [f.name for f in Path('content/extra/js').iterdir() if f.suffix == '.js']
-# make them accessible in Jinja templates
-JINJA_GLOBALS = {
-    'js_files': JS_FILES
-}
 
 PUBLICATIONS_SRC = "content/reference.bib"
 BIBLIOGRAPHY_START = '<section id="references"><h2>References</h2>'
