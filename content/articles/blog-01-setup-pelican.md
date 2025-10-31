@@ -10,7 +10,7 @@ If you're an expert in your niche and want to start a blog, using a static site 
 
 ## Roadmap
 
-Since, I work in python, I chose to go with **Pelican TODO-AddLink** to build my website. Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website. Furthermore, we will use github which will provide:
+Since, I work in python, I chose to go with [Pelican](https://getpelican.com/) to build my website. Pelican is a static site generator written in Python. It lets you write your content in **Markdown** or **reStructuredText**, then generates a fast, lightweight HTML website. Furthermore, we will use github which will provide:
 
 1. Storing source code of our website.
 2. Github actions to automatically build and deploy website.
@@ -78,7 +78,7 @@ needed by Pelican.
 > Do you want to upload your website using Rackspace Cloud Files? (y/N) N
 > Do you want to upload your website using GitHub Pages? (y/N) y
 > Is this your personal page (username.github.io)? (y/N) y
-Done. Your new project is available at /home/sk/se7en007.github.io
+Done. Your new project is available at /home/sk/saurabheights.github.io
 ```
 
 ### Create a sample article and generate site
@@ -134,7 +134,7 @@ We also added an images folder to store all images that will be used in our cont
 
 ## Adding and Configuring a New Theme
 
-Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean and responsive design. These themes provides different 
+Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean and responsive design.
 
 ### Download the Theme
 
@@ -169,8 +169,9 @@ $ pelican --autoreload --listen
 
 Here are the list of changes which I have done in [*pelicanconf.py*](http://pelicanconf.py/)
 
-- To add a profile picture I added `SITELOGO= '/images/avatar.jpg'`
-- Social widgets can also added `SOCIAL = ("github", "<https://github.com/saurabheights>")`
+- To add a profile picture, add: `SITELOGO= '/images/avatar.jpg'`
+- Social widgets can also be added via: `SOCIAL = ("github", "<https://github.com/saurabheights>")`
+- Update your name to appear on the left sidebar, add: `SITETITLE= 'Saurabh Khanduja'`
 
 We can adjust font size, colors etc in the theme's folder `style.min.css`
 
