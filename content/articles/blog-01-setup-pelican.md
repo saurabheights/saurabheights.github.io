@@ -146,7 +146,7 @@ $ git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
 
 ### Update Your Configuration
 
-Open your [pelicanconf.py](http://pelicanconf.py/) file and set the new theme and output directory. The output directory is changed since github only supports serving website using docs directory.
+Open your `pelicanconf.py` file and set the new theme and output directory. The output directory is changed since github only supports serving website using docs directory.
 
 ```
 THEME = "themes/Flex"
