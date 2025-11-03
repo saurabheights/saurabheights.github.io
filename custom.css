@@ -294,9 +294,14 @@ main article table.highlighttable td.linenos {
 }
 
 main article table.highlighttable td.linenos pre {
-    padding-right: .8em;
+    overflow: hidden;
     background-color: inherit;
-    text-align: right
+    text-align: center
+}
+
+main article table.highlighttable td.code pre {
+vertical-align: top;
+width: auto;
 }
 
 main article section#isso-thread .auth-section .input-wrapper {
