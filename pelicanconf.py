@@ -33,7 +33,7 @@ SUMMARY_MAX_PARAGRAPHS = 1
 DISABLE_URL_HASH = True
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["pelican-toc", "render_math"]
+PLUGINS = ["pelican-cite", "render_math","pelican-toc"]
 
 TOC = {
     "TOC_HEADERS": "^h[2-6]",
@@ -56,6 +56,10 @@ MARKDOWN = {
                        'css_class': 'highlight'}, # css for codeblock
     }
 }
+
+PUBLICATIONS_SRC = "content/reference.bib"
+BIBLIOGRAPHY_START = '<section id="references"><h2>References</h2>'
+BIBLIOGRAPHY_END = '</section>'
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

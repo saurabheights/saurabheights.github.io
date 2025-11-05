@@ -50,6 +50,11 @@ RENDER_MATH_ZIP_URL = (
 RENDER_MATH_DIR = PLUGINS_DIR / "render_math"
 ZIP_FILE_RM = Path("render-math.zip")
 
+PELICAN_CITE_ZIP_URL = ("https://github.com/VorpalBlade/pelican-cite/archive/refs/heads/master.zip")
+PELICAN_CITE_DIR = PLUGINS_DIR / "pelican-cite"
+ZIP_FILE_PC = Path("pelican-cite.zip")
+
+
 
 @task
 def clean(c):
@@ -238,6 +243,31 @@ def download_render_math(c):
     shutil.rmtree(PLUGINS_DIR / "render-math-main", ignore_errors=True)
     ZIP_FILE_RM.unlink()
 
+def download_pelican_cite(c):
+    print("⬇️  Downloading pelican-cite...")
+    response = requests.get(PELICAN_CITE_ZIP_URL)
+    with open(ZIP_FILE_PC, "wb") as f:
+        f.write(response.content)
+
+    # Remove old pelican-cite if it exists
+    if PELICAN_CITE_DIR.exists():
+        print("🗑 Removing old pelican-cite...")
+        shutil.rmtree(PELICAN_CITE_DIR)
+
+    # Extract new
+    print("📦 Extracting pelican-cite...")
+    with zipfile.ZipFile(ZIP_FILE_PC, "r") as zip_ref:
+        zip_ref.extractall(PLUGINS_DIR)
+
+    # Rename extracted folder (GitHub names it pelican-cite-master)
+    extracted_name = PLUGINS_DIR / "pelican-cite-master"
+    extracted_name.rename(PELICAN_CITE_DIR)
+
+    # Cleanup
+    ZIP_FILE_PC.unlink()
+    print(f"✅ pelican-cite installed at {PELICAN_CITE_DIR}")
+
+
 
 @task
 def clean_plugin(c):
@@ -253,6 +283,13 @@ def clean_plugin(c):
         print("🧹 render_math plugin removed.")
     else:
         print("⚠️ No render_math plugin folder found.")
+    # Remove the pelican-cite plugin
+    if PELICAN_CITE_DIR.exists():
+        shutil.rmtree(PELICAN_CITE_DIR)
+        print("🧹 pelican-cite plugin removed.")
+    else:
+        print("⚠️ No pelican-cite plugin folder found to delete.")
+
 
 
 @task
@@ -330,6 +367,7 @@ def download_themes(c):
     download_theme(c)
     download_plugin(c)
     download_render_math(c)
+    download_pelican_cite(c)
     replace_css(c)
 
 
