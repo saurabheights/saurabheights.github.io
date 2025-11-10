@@ -288,3 +288,63 @@ div.figure figcaption,
 figure figcaption {
     color: #eee
 }
+
+.contact-form {
+  max-width: 500px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #d3d3d3;
+  color: #eee;
+  padding: 3px 0;
+  font-size: 16px;
+  outline: none;
+}
+
+.contact-form textarea {
+  padding-top: 16px;  /* pushes placeholder text closer to the bottom border */
+  padding-bottom: 0px;
+  line-height: 1.2em;   /* controls vertical spacing inside textarea */
+  vertical-align: bottom;
+}
+
+.contact-form textarea::placeholder {
+  position: relative;
+  top: 15px;  /* manually nudges placeholder downward */
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-form button.submit-btn {
+  margin-top: 20px;
+  background: #111;
+  color: #fff;
+  border: 2px solid transparent;
+  border-color: #fff;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.contact-form button.submit-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 6px #ff5f6d, 0 0 9px #ffc371, 0 0 15px #00c3ff;
+}
