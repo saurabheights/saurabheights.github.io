@@ -936,28 +936,35 @@ html, body {
   gap: 15px;
 }
 
+.contact-form label {
+  display: block;
+  padding-left: 8px;
+}
+
 .contact-form input,
 .contact-form textarea {
   font-family: inherit;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #666;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 13px;
   color: #242121;
-  padding: 3px 0;
-  font-size: 16px;
+  padding: 8px 8px;
   outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-width: 2px;
+  border-color: #cdcdcd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .contact-form textarea {
-  padding-top: 16px;  /* pushes placeholder text closer to the bottom border */
-  padding-bottom: 0px;
-  line-height: 1.2em;   /* controls vertical spacing inside textarea */
-  vertical-align: bottom;
-}
-
-.contact-form textarea::placeholder {
-  position: relative;
-  top: 15px;  /* manually nudges placeholder downward */
+  resize: vertical;
+  min-height: 80px;
 }
 
 .contact-form input::placeholder,
@@ -966,7 +973,7 @@ html, body {
 }
 
 .contact-form button.submit-btn {
-  margin-top: 20px;
+  margin-top: 10px;
   background: #111;
   color: #fff;
   border: 2px solid transparent;
@@ -976,7 +983,7 @@ html, body {
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 6px;
+  border-radius: 13px;
   position: relative;
   transition: all 0.3s ease;
 }
