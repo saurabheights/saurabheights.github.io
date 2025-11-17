@@ -295,13 +295,13 @@ main article table.highlighttable td.linenos {
 
 main article table.highlighttable td.linenos pre {
     overflow: hidden;
-    background-color: inherit;
-    text-align: center
+    background-color: hsla(0, 0%, 50%, .05);
+    text-align: right;
 }
 
+main article table.highlighttable td.linenos pre,
 main article table.highlighttable td.code pre {
-vertical-align: top;
-width: auto;
+border-left: 0px;
 }
 
 main article section#isso-thread .auth-section .input-wrapper {
