@@ -1,3 +1,4 @@
+from pathlib import Path
 AUTHOR = "Saurabh Khanduja"
 SITENAME = "PixelPerception"
 SITEURL = ""
@@ -56,6 +57,8 @@ MARKDOWN = {
                        'css_class': 'highlight'}, # css for codeblock
     }
 }
+
+STATIC_PATHS = ['extra/js','extra/css',]
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
