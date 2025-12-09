@@ -13,6 +13,7 @@ from invoke.main import program
 from pelican import main as pelican_main
 from pelican.server import ComplexHTTPRequestHandler, RootedHTTPServer
 from pelican.settings import DEFAULT_CONFIG, get_settings_from_file
+from typing import TypedDict
 
 OPEN_BROWSER_ON_SERVE = True
 SETTINGS_FILE_BASE = "pelicanconf.py"
@@ -34,22 +35,39 @@ CONFIG = {
     "port": 8000,
 }
 
+class PluginInfo(TypedDict):
+    download_url: str
+    plugin_dir: str
+    plugin_filename: str
+    zip_file: str
+    
+PLUGINS_DIR = Path("plugins")
+
+PLUGINS: dict[str, PluginInfo] = {
+    "pelican_toc": {
+        "download_url": "https://github.com/ingwinlu/pelican-toc/archive/refs/heads/master.zip",
+        "plugin_dir": PLUGINS_DIR / "pelican-toc",
+        "plugin_filename": "pelican-toc-master",
+        "zip_file": Path("pelican-toc.zip"),
+    },
+    "render_math": {
+        "download_url": "https://github.com/pelican-plugins/render-math/archive/refs/heads/main.zip",
+        "plugin_dir": PLUGINS_DIR / "render_math",
+        "plugin_filename": "render-math-main/pelican/plugins/render_math",
+        "zip_file": Path("render-math.zip"),
+    },
+    "pelican_cite": {
+        "download_url": "https://github.com/VorpalBlade/pelican-cite/archive/refs/heads/master.zip",
+        "plugin_dir": PLUGINS_DIR / "pelican-cite",
+        "plugin_filename": "pelican-cite-master",
+        "zip_file": Path("pelican-cite.zip"),
+    },
+}
+
 FLEX_ZIP_URL = "https://github.com/alexandrevicenzi/Flex/archive/refs/heads/master.zip"
 THEMES_DIR = Path("themes")
 FLEX_DIR = THEMES_DIR / "Flex"
 ZIP_FILE = Path("flex.zip")
-
-TOC_ZIP_URL = "https://github.com/ingwinlu/pelican-toc/archive/refs/heads/master.zip"
-PLUGINS_DIR = Path("plugins")
-TOC_DIR = PLUGINS_DIR / "pelican-toc"
-ZIP_FILEP = Path("pelican-toc.zip")
-
-RENDER_MATH_ZIP_URL = (
-    "https://github.com/pelican-plugins/render-math/archive/refs/heads/main.zip"
-)
-RENDER_MATH_DIR = PLUGINS_DIR / "render_math"
-ZIP_FILE_RM = Path("render-math.zip")
-
 
 @task
 def clean(c):
@@ -180,80 +198,53 @@ def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
 
+@task
+def download_plugins(c):
+    """Download and extract all plugins defined in PLUGINS"""
+    for name, plugin in PLUGINS.items():
+        print(f"⬇️  Downloading {name}...")
+        response = requests.get(plugin["download_url"])
+        with open(plugin["zip_file"], "wb") as f:
+            f.write(response.content)
+
+        # Remove old plugin directory if it exists
+        if plugin["plugin_dir"].exists():
+            print(f"🗑 Removing old {name}...")
+            shutil.rmtree(plugin["plugin_dir"])
+
+        # Extract the new plugin
+        print(f"📦 Extracting {name}...")
+        with zipfile.ZipFile(plugin["zip_file"], "r") as zip_ref:
+            zip_ref.extractall(PLUGINS_DIR)
+
+        # Rename extracted folder (GitHub names it usually like "pluginname-master")
+        extracted_path = PLUGINS_DIR / plugin["plugin_filename"]
+        if extracted_path.exists():
+            extracted_path.rename(plugin["plugin_dir"])
+        
+        # Cleanup leftover extracted root (like render-math-main or pelican-toc-master)
+        for folder in PLUGINS_DIR.iterdir():
+            if folder.is_dir() and (folder.name.endswith("-main") or folder.name.endswith("-master")):
+                if folder != plugin["plugin_dir"]:
+                    shutil.rmtree(folder, ignore_errors=True)
+
+        # Cleanup zip file
+        plugin["zip_file"].unlink(missing_ok=True)
+        print(f"✅ {name} installed at {plugin['plugin_dir']}")
 
 @task
-def download_plugin(c):
-    print("⬇️  Downloading pelican-toc...")
-    response = requests.get(TOC_ZIP_URL)
-    with open(ZIP_FILEP, "wb") as f:
-        f.write(response.content)
+def clean_plugins(c):
+    """Remove all plugin directories defined in PLUGINS."""
+    for name, plugin in PLUGINS.items():
+        plugin_dir = plugin["plugin_dir"]
 
-    # Remove old pelican-toc if it exists
-    if TOC_DIR.exists():
-        print("🗑 Removing old pelican-toc...")
-        shutil.rmtree(TOC_DIR)
+        if plugin_dir.exists():
+            print(f"🗑 Removing {name}...")
+            shutil.rmtree(plugin_dir)
+        else:
+            print(f"⚠️ {name} not found, skipping...")
 
-    # Extract new
-    print("📦 Extracting pelican-toc...")
-    with zipfile.ZipFile(ZIP_FILEP, "r") as zip_ref:
-        zip_ref.extractall(PLUGINS_DIR)
-
-    # Rename extracted folder (GitHub names it pelican-toc-master)
-    extracted_name = PLUGINS_DIR / "pelican-toc-master"
-    extracted_name.rename(TOC_DIR)
-
-    # Cleanup
-    ZIP_FILEP.unlink()
-    print(f"✅ pelican-toc installed at {TOC_DIR}")
-
-
-def download_render_math(c):
-    print("⬇️  Downloading render-math...")
-    response = requests.get(RENDER_MATH_ZIP_URL)
-    with open(ZIP_FILE_RM, "wb") as f:
-        f.write(response.content)
-
-    # Remove old render_math if it exists
-    if RENDER_MATH_DIR.exists():
-        print("🗑 Removing old render_math...")
-        shutil.rmtree(RENDER_MATH_DIR)
-
-    # Extract zip into plugins/
-    print("📦 Extracting render-math...")
-    with zipfile.ZipFile(ZIP_FILE_RM, "r") as zip_ref:
-        zip_ref.extractall(PLUGINS_DIR)
-
-    # Path inside the extracted archive
-    extracted_root = (
-        PLUGINS_DIR / "render-math-main" / "pelican" / "plugins" / "render_math"
-    )
-
-    if extracted_root.exists():
-        shutil.move(str(extracted_root), str(RENDER_MATH_DIR))
-        print(f"✅ render_math plugin moved to {RENDER_MATH_DIR}")
-    else:
-        print("⚠️ Could not find extracted render_math directory!")
-
-    # Cleanup leftover "render-math-main" and zip
-    shutil.rmtree(PLUGINS_DIR / "render-math-main", ignore_errors=True)
-    ZIP_FILE_RM.unlink()
-
-
-@task
-def clean_plugin(c):
-    # Remove the pelican-toc plugin
-    if TOC_DIR.exists():
-        shutil.rmtree(TOC_DIR)
-        print("🧹 pelican-toc plugin removed.")
-    else:
-        print("⚠️ No pelican-toc plugin folder found to delete.")
-    # Remove render_math
-    if RENDER_MATH_DIR.exists():
-        shutil.rmtree(RENDER_MATH_DIR)
-        print("🧹 render_math plugin removed.")
-    else:
-        print("⚠️ No render_math plugin folder found.")
-
+    print("✅ All plugins cleaned.")
 
 @task
 def download_theme(c):  # Download theme in zip
@@ -263,9 +254,7 @@ def download_theme(c):  # Download theme in zip
         f.write(response.content)
 
     # 2. Remove old Flex theme if exists
-    if FLEX_DIR.exists():
-        print("🗑 Removing old Flex theme...")
-        shutil.rmtree(FLEX_DIR)
+    clean_theme(c)
 
     # 3. Unzip Flex into themes/Flex
     print("📦 Extracting Flex theme...")
@@ -279,6 +268,15 @@ def download_theme(c):  # Download theme in zip
     # Remove ZIP file
     ZIP_FILE.unlink()  # delete zip file
     print(f"✅ Flex theme installed at {FLEX_DIR}")
+
+@task
+def clean_theme(c):
+    """Remove the Flex theme after use"""
+    if THEMES_DIR.exists():
+        shutil.rmtree(THEMES_DIR)
+        print("🧹 Flex theme folder removed.")
+    else:
+        print("⚠️ No Flex theme folder found to delete.")
 
 
 @task
@@ -314,22 +312,11 @@ def replace_css(c):
 
 
 @task
-def clean_theme(c):
-    """Remove the Flex theme after use"""
-    if THEMES_DIR.exists():
-        shutil.rmtree(THEMES_DIR)
-        print("🧹 Flex theme folder removed.")
-    else:
-        print("⚠️ No Flex theme folder found to delete.")
-
-
-@task
-def download_themes(c):
+def download_build_artifacts(c):
     clean_theme(c)
-    clean_plugin(c)
+    clean_plugins(c)
     download_theme(c)
-    download_plugin(c)
-    download_render_math(c)
+    download_plugins(c)
     replace_css(c)
 
 

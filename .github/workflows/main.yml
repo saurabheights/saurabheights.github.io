@@ -72,7 +72,7 @@ jobs:
             pip install -r requirements.txt
           fi
       - name: Download theme and plugins
-        run: invoke download-themes
+        run: invoke download-theme
       - name: Build Pelican site
         shell: python
         run: |
