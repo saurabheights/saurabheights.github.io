@@ -30,7 +30,8 @@ BIBLIOGRAPHY_END = '</section>'  # HTML end tag for references section
 
 Create a BibTeX file (e.g., `content/reference.bib`) with our references. The path should match the `PUBLICATIONS_SRC` setting. 
 
-For example, let’s cite the references used in the ROAR (Remove And Retrain) paper:
+To given an example, I will show the references used in the [ROAR (Remove and Retrain) repository](https://github.com/saurabheights/roar) built for ranking different interpretability methods:
+
 ```bibtex
 @inproceedings{khakzar2021criticalpathways,
   title={Neural Response Interpretation through the Lens of Critical Pathways},
@@ -61,10 +62,10 @@ Then, inside our markdown post, you can cite them like this:
 Deep learning interpretation methods are an active research area 
 [@khakzar2021criticalpathways], [@hooker2019benchmark], [@samek2017evaluating].
 ```
-This is how it will appear in blog.
+
+And this is how it will appear in blog:
 
  Deep learning interpretation methods are an active research area 
 [@khakzar2021criticalpathways], [@hooker2019benchmark], [@samek2017evaluating].
-
 
 Pelican will automatically generate a **References** section at the end of the article using the pelican-cite plugin.
