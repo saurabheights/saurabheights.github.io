@@ -2,6 +2,19 @@
 
 {% block content %}
 
+{# Home-page hero #}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <h1 id="hero-title" class="hero__title">Hi, I'm Saurabh Khanduja</h1>
+      <p class="hero__subtitle">
+        Building intelligent systems that see and think. Writing about Computer Vision,
+        Object Re-Identification, Deep Learning, and AI Engineering.
+      </p>
+    </div>
+  </div>
+</section>
+
 {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.index_top %}
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <ins class="adsbygoogle ads-responsive"
@@ -12,6 +25,7 @@
   </script>
 {% endif %}
 
+<a id="articles"></a>
 {% for article in articles_page.object_list %}
 <article>
   <header>

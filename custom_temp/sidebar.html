@@ -1,99 +1,133 @@
-<aside>
-  <div>
-    <a href="{{ SITEURL }}/">
-      {% if SITELOGO %}
-      <img src="{{ SITELOGO }}" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
-      {% else %}
-      <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
-      {% endif %}
-    </a>
-
-  <h1>{{SITETITLE}}</h1>
-  <p class="title">AI / Computer Vision Engineer</p>
-  <p class="tagline">Building intelligent systems that see and think.</p>
-
-    {% if SITESUBTITLE %}
-    <p>{{ SITESUBTITLE }}</p>
-    {% endif %}
-
-    {% if PLUGINS %}
-    {% if ('tipue_search' in PLUGINS or 'pelican.plugins.tipue_search' in PLUGINS) %}
-    <form class="navbar-search" action="{{ SITEURL }}/search.html" role="search">
-      <input type="text" name="q" id="tipue_search_input" placeholder="{{ _('Search...') }}">
-    </form>
-    {% elif 'pelican.plugins.search' in PLUGINS %}
-    <div class="stork">
-      <input class="stork-input" type="text" autocomplete="off" name="q" data-stork="sitesearch" placeholder="{{ _('Search...') }}" onclick="loadStorkIndex()"/>
-      <div class="stork-output" data-stork="sitesearch-output"></div>
+{# Custom header replaces legacy sidebar to match new horizontal navigation design #}
+<header class="site-header" role="banner">
+  <div class="site-header__inner">
+    {# Branding cluster aligns logo/name to the left for quick recognition #}
+    <div class="site-brand">
+      <a href="{{ SITEURL }}/" class="brand-link" aria-label="{{ SITETITLE }}">
+        {% if SITELOGO %}
+          <img src="{{ SITELOGO }}" alt="{{ SITETITLE }}" title="{{ SITETITLE }}" />
+        {% else %}
+          <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}" />
+        {% endif %}
+        <div class="brand-copy">
+          <span class="brand-name">{{ SITETITLE }}</span>
+          {% if SITESUBTITLE %}
+            <span class="brand-role">{{ SITESUBTITLE }}</span>
+          {% else %}
+            <span class="brand-role">AI / Computer Vision Engineer</span>
+          {% endif %}
+        </div>
+      </a>
     </div>
-    {% endif %}
-    {% endif %}
 
+    {# Center-aligned nav menu for better information hierarchy in hero layout #}
     {% if (pages and DISPLAY_PAGES_ON_MENU) or LINKS %}
-    <nav>
-      <ul class="list">
-        {# Open links in new window depending on the LINKS_IN_NEW_TAB setting #}
-        {% macro get_target(link) -%}
-          {%- if LINKS_IN_NEW_TAB in ('all', true) -%}
-          _blank
-          {%- elif LINKS_IN_NEW_TAB == "external" and not link.startswith("/") and not link.startswith(SITEURL) -%}
-          _blank
-          {%- else -%}
-          _self
-          {%- endif -%}
-        {%- endmacro %}
+      <nav class="site-nav" aria-label="{{ _('Primary') }}">
+        <ul class="site-nav__list">
+          {% macro get_target(link) -%}
+            {%- if LINKS_IN_NEW_TAB in ('all', true) -%}
+              _blank
+            {%- elif LINKS_IN_NEW_TAB == "external" and not link.startswith("/") and not link.startswith(SITEURL) -%}
+              _blank
+            {%- else -%}
+              _self
+            {%- endif -%}
+          {%- endmacro %}
+          
+          <li><a href="/index.html">MY ARTICLES</a></li>
+          <li><a href="/pages/my-work.html">MY WORK</a></li>
+          <li><a href="/contact">CONTACT ME</a></li>
+        </ul>
+      </nav>
+    {% endif %}
 
-        {% for name, link in LINKS %}
+    {# Right-aligned social icons give quick access to external profiles #}
+    {% if SOCIAL %}
+      {% set solid = ['at', 'envelope', 'mailbox', 'rss'] %}
+      {% set relme = ['at', 'envelope', 'mailbox', 'mastodon'] %}
+      <ul class="site-social">
+        {% for name, link in SOCIAL %}
           <li>
-            <a target="{{ get_target(link) }}" href="{{ link }}" >{{ name }}</a>
+            <a class="sc-{{ name }}"
+               {% if name in relme %}rel="me"{% endif %}
+               href="{{ link }}"
+               target="_blank"
+               aria-label="{{ name }}">
+              <i class="{% if name in solid %}fa-solid{% else %}fa-brands{% endif %} fa-{{ name }}"></i>
+            </a>
           </li>
         {% endfor %}
-
-        {% if PAGES_SORT_ATTRIBUTE -%}
-          {% set pages = pages|sort(attribute=PAGES_SORT_ATTRIBUTE) %}
-        {%- endif %}
-
-        {% if DISPLAY_PAGES_ON_MENU %}
-          {% for page in pages %}
-            <li>
-              <a target="{{ get_target(SITEURL) }}"
-                 href="{{ SITEURL }}/{{ page.url }}{% if not DISABLE_URL_HASH %}#{{ page.slug }}{% endif %}">
-                {{ page.title }}
-              </a>
-            </li>
-          {% endfor %}
-        {% endif %}
-
-        
       </ul>
-    </nav>
     {% endif %}
 
-    {% if SOCIAL %}
-    {% set solid = ['at', 'envelope', 'mailbox', 'rss'] %}
-    {% set relme = ['at', 'envelope', 'mailbox', 'mastodon'] %}
-    <ul class="social">
-      {% for name, link in SOCIAL %}
-      <li>
-        <a class="sc-{{ name }}"
-           {% if name in relme %}rel="me"{% endif %}
-           href="{{ link }}"
-           target="_blank">
-          <i class="{% if name in solid %}fa-solid{% else %}fa-brands{% endif %} fa-{{ name }}"></i>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    {# Mobile hamburger menu button #}
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </span>
+    </button>
   </div>
+</header>
 
-  {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.aside %}
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle ads-aside"
-         data-ad-client="{{ GOOGLE_ADSENSE.ca_id }}"
-         data-ad-slot="{{ GOOGLE_ADSENSE.ads.aside }}"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  {% endif %}
-</aside>
+{# Mobile menu overlay #}
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  
+  <nav class="mobile-menu-nav">
+    <ul class="mobile-menu-list">
+      <li><a href="/index.html">MY ARTICLES</a></li>
+      <li><a href="/mywork">MY WORK</a></li>
+      <li><a href="/contact">CONTACT ME</a></li>
+    </ul>
+
+    {# Social icons in mobile menu (moved inside panel) #}
+    {% if SOCIAL %}
+      <ul class="mobile-menu-social">
+        {% for name, link in SOCIAL %}
+          <li>
+            <a href="{{ link }}" target="_blank" aria-label="{{ name }}">
+              <i class="{% if name in solid %}fa-solid{% else %}fa-brands{% endif %} fa-{{ name }}"></i>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </nav>
+</div>
+
+{# Mobile menu toggle script #}
+<script>
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  const closeBtn = document.getElementById('mobileMenuClose');
+  const menuLinks = document.querySelectorAll('.mobile-menu-list a, .mobile-menu-social a');
+
+  function openMenu() {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  toggleBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  
+  // Close menu when a link is clicked
+  menuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close menu when clicking outside (on overlay background)
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeMenu();
+  });
+</script>
