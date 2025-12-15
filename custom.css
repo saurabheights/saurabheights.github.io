@@ -1083,7 +1083,7 @@ h1#contact-me {
 
 .site-header__inner {
     width: auto;
-    padding: 0.6rem 2rem;
+    padding: 0.3rem 0.6rem;
     display: flex;
     align-items: center;
     justify-content: space-between; /* spread to edges */
@@ -1223,7 +1223,7 @@ main {
 }
 @media (max-width: 900px) {
     .site-header__inner {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         text-align: center;
@@ -1331,7 +1331,7 @@ h1#my-work {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem; 
 }
 
 /* Individual filter button */
@@ -1493,6 +1493,18 @@ h1#my-work {
 }
 
 /* Responsive: mobile */
+/* Wide screens: keep filters in one line */
+@media (min-width: 1200px) {
+    .category-filters {
+        flex-wrap: nowrap; /* fit all filters on one line */
+    }
+
+    .filter-btn {
+        white-space: nowrap;  /* button text stays on one line */
+        padding: 0.5rem 1.2rem; /* prevents wrapping due to width */
+    }
+}
+
 @media (max-width: 768px) {
     .portfolio-section {
         padding: 2rem 1rem;
@@ -1730,8 +1742,6 @@ h1#my-work {
     }
 
     .mobile-menu-social a {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 }
