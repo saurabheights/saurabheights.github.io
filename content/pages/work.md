@@ -27,7 +27,7 @@ URL: mywork
   <div class="projects-grid">
 
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision 3d-vision software-engineering deep-learning">
+  <article class="project-card-new" data-category="computer-vision 3d-vision software-engineering deep-learning" data-priority="5" data-date="2025-12-16">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -51,7 +51,7 @@ URL: mywork
   </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision software-engineering">
+  <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -73,7 +73,7 @@ URL: mywork
   </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision, 3d-vision">
+  <article class="project-card-new" data-category="computer-vision, 3d-vision" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -95,7 +95,7 @@ URL: mywork
 
 
   <!-- Project -->
-  <article class="project-card-new" data-category="deep-learning software-engineering">
+  <article class="project-card-new" data-category="deep-learning software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -121,7 +121,7 @@ URL: mywork
 
 
   <!-- Project -->
-  <article class="project-card-new" data-category="data-engineering">
+  <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">Scalable</span>
@@ -142,7 +142,7 @@ URL: mywork
   </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="deep-learning computer-vision software-engineering">
+  <article class="project-card-new" data-category="deep-learning computer-vision software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -163,7 +163,7 @@ URL: mywork
 </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision software-development">
+  <article class="project-card-new" data-category="computer-vision software-development" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -187,7 +187,7 @@ URL: mywork
 
 
   <!-- Project -->
-  <article class="project-card-new" data-category="software-engineering">
+  <article class="project-card-new" data-category="software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -207,7 +207,7 @@ URL: mywork
   </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="data-engineering">
+  <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">Scalable</span>
@@ -227,7 +227,7 @@ URL: mywork
   </article>
 
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision">
+  <article class="project-card-new" data-category="computer-vision" data-priority="4", data-date="2025-12-15">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -247,7 +247,7 @@ URL: mywork
   </article>
   
   <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision software-engineering">
+  <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -271,47 +271,81 @@ URL: mywork
 
 <!-- Portfolio Filtering Script -->
 <script>
-  // Portfolio Filtering Script — supports multiple categories per card
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card-new');
-
-  // helper: normalize string to lowercase, trim
-  const norm = s => (s || '').toString().trim().toLowerCase();
-
-  // convert card data-category into an array of tokens (space or comma separated)
+  // Extract and normalize categories from a project card
   function getCardCategories(card) {
-    const raw = card.getAttribute('data-category') || '';
-    // split on whitespace or commas, filter out empty tokens
-    return raw
-      .split(/[\s,]+/)
-      .map(t => norm(t))
-      .filter(Boolean);
+    const raw = card.dataset.category || '';
+    return raw.split(/[\s,]+/).map(c => c.trim().toLowerCase());
   }
 
+  // Read priority from the card and convert it to a number
+  // If no priority is defined, default to 0 & max is 5
+  function getCardPriority(card) {
+    return parseInt(card.dataset.priority || '0', 10);
+  }
+
+  // Read date from the card and convert it to a Date object
+  function getCardDate(card) {
+    const rawDate = card.dataset.date;
+    return rawDate ? new Date(rawDate) : new Date(0);
+  }
+
+  // Select all filter buttons (e.g., All, AI, CV, etc.)
+  const filterButtons = document.querySelectorAll('.filter-btn');
+
+  // Select all project cards and convert NodeList to Array
+  const projectCards = Array.from(document.querySelectorAll('.project-card-new'));
+
+  // Select the container that holds all project cards
+  const projectsGrid = document.querySelector('.projects-grid');
+
+  // Attach click handler to each filter button
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const rawFilter = button.getAttribute('data-filter');
-      const filterValue = norm(rawFilter);
+      // Get the selected filter value from the button
+      const filterValue = button.dataset.filter.toLowerCase();
 
-      // Update active button state
+      // Update active button
+      // Remove active state from all buttons first
       filterButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Add active state to the clicked button
       button.classList.add('active');
 
-      // Filter project cards
-      projectCards.forEach(card => {
-        if (filterValue === 'all') {
-          card.setAttribute('data-hidden', 'false');
-          return;
+      // Filter cards by category
+      const visibleCards = projectCards.filter(card => {
+        const categories = getCardCategories(card);
+        return filterValue === 'all' || categories.includes(filterValue);
+      });
+
+      // Sort by priority (HIGH -> LOW)
+      // Priority is the primary sorting rule
+      visibleCards.sort((a, b) => {
+        const priorityDiff = getCardPriority(b) - getCardPriority(a);
+
+        if (priorityDiff !== 0) {
+          return priorityDiff; // higher priority first
         }
 
-        const categories = getCardCategories(card);
-        // show card if categories include the filter value
-        const matches = categories.includes(filterValue);
-        card.setAttribute('data-hidden', matches ? 'false' : 'true');
+        // Date acts as a secondary sorting rule
+        return getCardDate(b) - getCardDate(a);
+      });
+
+      // Update DOM
+      // Hide all cards first
+      projectCards.forEach(card => card.setAttribute('data-hidden', 'true'));
+
+      // Show only filtered + sorted cards
+      visibleCards.forEach(card => {
+        card.setAttribute('data-hidden', 'false');
+        projectsGrid.appendChild(card); // reorder
       });
     });
   });
 
-  // Initialize: show all projects on page load
+  // Ensure all cards are visible before initial filtering
   projectCards.forEach(card => card.setAttribute('data-hidden', 'false'));
+
+  // Trigger initial filter click on page load so cards are sorted
+  // by priority/date without requiring user interaction
+  document.querySelector('.filter-btn[data-filter="all"]')?.click();
 </script>
