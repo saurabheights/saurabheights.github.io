@@ -281,7 +281,11 @@ main article table th {
 
 main article table.highlighttable {
     width: 100%;
-    table-layout: fixed
+    table-layout: fixed;
+    /*Added border around entire code block for clean frame */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 main article table.highlighttable td {
@@ -289,19 +293,34 @@ main article table.highlighttable td {
     padding: 0
 }
 
+/* Styled linenos (line numbers) column */
 main article table.highlighttable td.linenos {
-    width: 2.5em
+    width: 2.5em;
+    /* Added light background to distinguish line numbers */
+    background-color: hsla(0, 0%, 50%, .05);
+    /* Added right border as divider between line numbers and code */
+    vertical-align: top;
 }
 
 main article table.highlighttable td.linenos pre {
     overflow: hidden;
-    background-color: hsla(0, 0%, 50%, .05);
+    /* Made background transparent to use td background instead */
+    background-color: transparent;
     text-align: right;
+    /*  Added proper padding for spacing */
+    padding: 4px 8px;
+    margin: 0;
 }
 
-main article table.highlighttable td.linenos pre,
+/* Added code column styling to handle horizontal scroll */
+main article table.highlighttable td.code {
+    overflow-x: auto;
+}
+
 main article table.highlighttable td.code pre {
-border-left: 0px;
+    background-color: hsla(0, 0%, 50%, .05);
+    margin: 0;
+    padding: 4px 8px;
 }
 
 main article section#isso-thread .auth-section .input-wrapper {
