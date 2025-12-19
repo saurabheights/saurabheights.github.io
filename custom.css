@@ -290,7 +290,6 @@ main article table.highlighttable {
     table-layout: fixed;
     /*Added border around entire code block for clean frame */
     border: 1px solid #ddd;
-    border-radius: 4px;
     overflow: hidden;
 }
 
