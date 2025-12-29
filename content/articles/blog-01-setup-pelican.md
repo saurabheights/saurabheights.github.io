@@ -1,4 +1,4 @@
-Title: Deploying portfolio website using Pelican and Github Pages, Under 10 minutes.
+Title: Deploying portfolio website using Pelican and Github Pages, Under 10 minutes
 Date: 2025-08-19
 Tags: Pelican, Github Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
@@ -52,7 +52,7 @@ python -m pip install "pelican[markdown]"
 After pelican is installed we will create a structure of the project via the `pelican-quickstart` command, which begins by asking some questions about your site. The below code shows example I followed for my own website setup.
 
 ```bash
-$ pelican-quickstart 
+pelican-quickstart 
 Welcome to pelican-quickstart v4.11.0.post0.
 
 This script will help you create a new Pelican-based website.
@@ -81,9 +81,71 @@ needed by Pelican.
 Done. Your new project is available at /home/sk/saurabheights.github.io
 ```
 
-### Create a sample article and generate site
 
-We cannot run Pelican until we have created some content. Create an example article as shown below in Markdown format and save it in `content/keyboard-review.md`.
+## Adding Content
+
+Pelican organizes content mainly into Articles and Pages.
+Each type serves a different purpose and is stored in its own folder inside the content directory.
+
+**Pages (Static Content)**
+
+Pages are meant for content that does not change frequently and is not time based.
+
+Common use cases: About Me, Contact, Projects, Resume, 404 Error Page
+
+These pages usually appear in the navigation menu and stay fixed.
+
+Example: **About Me page**
+
+File path: `content/pages/about-me.md`
+
+Example content:
+
+```markdown
+Title: About Me
+Save_as: about.html
+URL: about
+
+Hi, I'm Saurabh Khanduja
+I build intelligent systems that see and think. 
+I write about Computer Vision, Object Re-ID, and the craft of AI Engineering.
+```
+
+What this does: Creates a page at username.github.io/about
+
+Example: **Contact page**
+
+File path: `content/pages/contact-me.md`
+
+Example content:
+
+```markdown
+Title: Contact Me
+Save_as: contact.html
+URL: contact
+
+Hi there! I'd love to hear from you.
+
+You can reach me at:
+* **Email**: [hello@example.com](mailto:hello@example.com)
+* **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/yourprofile)
+* **GitHub**: [github.com/yourusername](https://github.com/yourusername)
+```
+What this does: Just like the About Me page, this creates a static Contact page at username.github.io/contact
+
+
+**Articles (Blog Posts)**
+
+Articles are time-based and appear in reverse chronological order (newest first). These usually show up on the homepage and blog feed.
+
+
+Common use cases: Blog posts, News updates, Tutorials
+
+Example: **Blog Article**
+
+File path: `content/articles/keyboard-review.md`
+
+Example content:
 
 ```markdown
 Title: My First Review
@@ -93,32 +155,32 @@ Category: Review
 Following is a review of my favorite mechanical keyboard.
 ```
 
-From the project root directory, run this pelican command to generate the site:
+**Images Folder (Shared Assets)**
 
-```bash
-$ pelican content
-Done: Processed 1 article, 0 drafts, 0 hidden articles, 0 pages, 0 hidden pages and 0 draft pages in 0.05 seconds.
+The images folder is used to store all images that will be reused across our website, such as profile pictures, banners, and images inside articles or pages.
+
+Pelican automatically copies everything inside `content/images/` to the final website output.
+
+**Adding a Profile Picture**
+
+Many Pelican themes support displaying a profile picture using the `SITELOGO` setting, since our chosen theme requires this, we will add profile picture to the directed folder now.
+
+Add the image: Place your avatar image inside `content/images/avatar.jpg`
+
+Open `pelicanconf.py` and add
+```python
+SITELOGO = "/images/avatar.jpg"
 ```
+What this does
 
-Your site is now generated inside the `output/` directory. To preview the site we can run the following command.
+* Tells the theme where your profile image is located
 
-```bash
-$ pelican --listen
-```
+*  The image is usually shown in the header or sidebar (theme-dependent)
 
-This command generates a local web address. Navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see a preview of your website. Right now, pelican is using the default theme "notmyidea", but we'll be customizing this theme soon.
-
-## Adding Content
-
-In Pelican, there are two primary content types:
-
-- **Articles** are used for chronological content like blog posts, whereas
-- **Pages** are used for static content such as an 'About' or 'Contact' page.
-
-We will make separate directories to store them inside the `content` folder as shown below: 
+With all files in place, here is how our final folder structure should appear
 
 ```bash
-$ tree content
+tree content
 content/
 ├── pages/
 │   ├── about-me.md
@@ -129,8 +191,22 @@ content/
 │   ├── avatar.jpg
 
 ```
+### Generate Site
 
-We also added an images folder to store all images that will be used in our content.
+From the project root directory, run this pelican command to generate the site:
+
+```bash
+pelican content
+Done: Processed 1 article, 0 drafts, 0 hidden articles, 2 pages, 0 hidden pages and 0 draft pages in 0.05 seconds.
+```
+
+Your site is now generated inside the `output/` directory. To preview the site we can run the following command.
+
+```bash
+ pelican --listen
+```
+
+This command generates a local web address. Navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see a preview of your website. Right now, pelican is using the default theme "notmyidea", but we'll be customizing this theme soon.
 
 ## Adding and Configuring a New Theme
 
@@ -141,7 +217,7 @@ Pelican has many themes and there is a community-managed repository [Github](htt
 Let’s clone the theme repository to `themes/Flex` directory.
 
 ```bash
-$ git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
+git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
 ```
 
 ### Update Your Configuration
@@ -156,39 +232,35 @@ OUTPUT_PATH = "docs/"
 Now generate the site again and see the new theme will be applied.
 
 ```bash
-$ pelican content && pelican --listen
+pelican content && pelican --listen
 ```
 
-## Customize the theme
+### Customize the theme
 
-The theme can be customized by editing the templates and stylesheet present inside the theme folder (`/theme/Flex`). Before doing any customization, setup pelican to autoreload the website. This allows us to quickly see results of our changes:
+The theme can be customized by editing the templates and stylesheet present inside the theme folder (`/themes/Flex`). Before doing any customization, setup pelican to autoreload the website. This allows us to quickly see results of our changes:
 
 ```bash
-$ pelican --autoreload --listen
+pelican --autoreload --listen
 ```
 
 Here are the list of changes which I have done in [*pelicanconf.py*](http://pelicanconf.py/)
 
-- To add a profile picture, add: `SITELOGO= '/images/avatar.jpg'`
 - Social widgets can also be added via: `SOCIAL = ("github", "<https://github.com/saurabheights>")`
 - Update your name to appear on the left sidebar, add: `SITETITLE= 'Saurabh Khanduja'`
 
 We can adjust font size, colors etc in the theme's folder `style.min.css`
 
-
-## Commit & Push changes to github
+## Make Site Live
 
 All our changes are currently saved locally. To sync them with GitHub and update the remote repository, use the following commands:
 
 ```bash
-git add docs/ content/ Makefile pelicanconf.py publishconf.py tasks.py
+git add docs/ content/ themes/ Makefile pelicanconf.py publishconf.py tasks.py
 git commit -m "Add initial version of my portfolio website"
 git push origin main
 ```
 
-This will not add Flex Theme to our github repository and hence we will need to download it again when rebuilding our website.
-
-## Enable GitHub Pages
+**Enable GitHub Pages**
 
 - Go to your GitHub repo’s **Settings → Pages**.
 - Select the main branch and  `docs/` folder.
