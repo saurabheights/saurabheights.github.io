@@ -194,7 +194,7 @@ What this does
 
 * Tells the theme where your profile image is located
 
-*  The image is usually shown in the header or sidebar (theme-dependent)
+* The image is usually shown in the header or sidebar (theme-dependent)
 
 With all files in place, here is how our final folder structure should appear
 
@@ -245,7 +245,7 @@ The theme can be customized by editing the templates and stylesheet present insi
 - Social widgets can also be added via: `SOCIAL = ("github", "<https://github.com/saurabheights>")`
 - Update your name to appear on the left sidebar, add: `SITETITLE= 'Saurabh Khanduja'`
 
-We can adjust font size, colors etc in the theme's folder `style.min.css`
+We can adjust font size, colors, etc. in the theme's folder `style.min.css`.
 
 ## Make Site Live
 
