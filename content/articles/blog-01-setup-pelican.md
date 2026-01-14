@@ -81,21 +81,43 @@ needed by Pelican.
 Done. Your new project is available at /home/sk/saurabheights.github.io
 ```
 
+## Generate Site
 
-## Adding Content
+From the project root directory, run this pelican command to generate the site:
+
+```bash
+pelican content
+Done: Processed 1 article, 0 drafts, 0 hidden articles, 2 pages, 0 hidden pages and 0 draft pages in 0.05 seconds.
+```
+
+Your site is now generated inside the `output/` directory. To preview the site we can run the following command.
+
+```bash
+ pelican --listen
+```
+
+This command generates a local web address. Navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see a preview of your website. Right now, pelican is using the default theme "notmyidea", but we'll be customizing this theme soon.
+
+
+### Setup Live Reload
+
+As done above, to see the results of any changes, we have to rerun pelican to build website. This is followed with refreshing browser webpage. We can speed this up by utilizing live/hot reload option. This feature works by detecting file changes in content directory, followed with refreshing browser tab automatically. Just make sure to save your file to trigger live reload feature.
+
+```bash
+pip install invoke livereload
+invoke livereload  # Executes livereload task in tasks.py which runs a server that refreshes browser upon any file changes.
+```
+
+### Adding Content
 
 Pelican organizes content mainly into Articles and Pages.
 Each type serves a different purpose and is stored in its own folder inside the content directory.
 
-**Pages (Static Content)**
+#### Pages (Static Content)
 
-Pages are meant for content that does not change frequently and is not time based.
+Pages are meant for content that does not change frequently and is not time based. The common use cases are: About Me, Contact, Projects, Resume, 404 Error Page. These pages usually appear in the navigation menu and stay fixed. Let's create a few pages.
 
-Common use cases: About Me, Contact, Projects, Resume, 404 Error Page
-
-These pages usually appear in the navigation menu and stay fixed.
-
-Example: **About Me page**
+**About Me page**
 
 File path: `content/pages/about-me.md`
 
@@ -111,9 +133,9 @@ I build intelligent systems that see and think.
 I write about Computer Vision, Object Re-ID, and the craft of AI Engineering.
 ```
 
-What this does: Creates a page at username.github.io/about
+This will generate a page at url username.github.io/about.
 
-Example: **Contact page**
+**Contact page**
 
 File path: `content/pages/contact-me.md`
 
@@ -134,12 +156,9 @@ You can reach me at:
 What this does: Just like the About Me page, this creates a static Contact page at username.github.io/contact
 
 
-**Articles (Blog Posts)**
+#### Articles (Blog Posts)
 
-Articles are time-based and appear in reverse chronological order (newest first). These usually show up on the homepage and blog feed.
-
-
-Common use cases: Blog posts, News updates, Tutorials
+Articles are time-based and appear in reverse chronological order (newest first). These usually show up on the homepage and blog feed. Common use cases: Blog posts, News updates, Tutorials, Recipes, etc.
 
 Example: **Blog Article**
 
@@ -155,13 +174,13 @@ Category: Review
 Following is a review of my favorite mechanical keyboard.
 ```
 
-**Images Folder (Shared Assets)**
+#### Images Folder (Shared Assets)
 
 The images folder is used to store all images that will be reused across our website, such as profile pictures, banners, and images inside articles or pages.
 
 Pelican automatically copies everything inside `content/images/` to the final website output.
 
-**Adding a Profile Picture**
+#### Adding a Profile Picture
 
 Many Pelican themes support displaying a profile picture using the `SITELOGO` setting, since our chosen theme requires this, we will add profile picture to the directed folder now.
 
@@ -191,28 +210,12 @@ content/
 │   ├── avatar.jpg
 
 ```
-### Generate Site
 
-From the project root directory, run this pelican command to generate the site:
-
-```bash
-pelican content
-Done: Processed 1 article, 0 drafts, 0 hidden articles, 2 pages, 0 hidden pages and 0 draft pages in 0.05 seconds.
-```
-
-Your site is now generated inside the `output/` directory. To preview the site we can run the following command.
-
-```bash
- pelican --listen
-```
-
-This command generates a local web address. Navigate to [http://localhost:8000/](http://localhost:8000/) in your browser to see a preview of your website. Right now, pelican is using the default theme "notmyidea", but we'll be customizing this theme soon.
-
-## Adding and Configuring a New Theme
+### Adding and Configuring a New Theme
 
 Pelican has many themes and there is a community-managed repository [Github](https://github.com/getpelican/pelican-themes) of [Pelican Themes](https://pelicanthemes.com/) for people to share and use. I chose **Flex** for its clean and responsive design.
 
-### Download the Theme
+#### Download the Theme
 
 Let’s clone the theme repository to `themes/Flex` directory.
 
@@ -220,7 +223,7 @@ Let’s clone the theme repository to `themes/Flex` directory.
 git clone https://github.com/alexandrevicenzi/Flex.git themes/Flex
 ```
 
-### Update Your Configuration
+#### Update Your Configuration
 
 Open your `pelicanconf.py` file and set the new theme and output directory. The output directory is changed since github only supports serving website using docs directory.
 
@@ -235,15 +238,9 @@ Now generate the site again and see the new theme will be applied.
 pelican content && pelican --listen
 ```
 
-### Customize the theme
+#### Customize the theme
 
-The theme can be customized by editing the templates and stylesheet present inside the theme folder (`/themes/Flex`). Before doing any customization, setup pelican to autoreload the website. This allows us to quickly see results of our changes:
-
-```bash
-pelican --autoreload --listen
-```
-
-Here are the list of changes which I have done in [*pelicanconf.py*](http://pelicanconf.py/)
+The theme can be customized by editing the templates and stylesheet present inside the theme folder (`/themes/Flex`). Here are the list of changes which I have done in [*pelicanconf.py*](http://pelicanconf.py/):
 
 - Social widgets can also be added via: `SOCIAL = ("github", "<https://github.com/saurabheights>")`
 - Update your name to appear on the left sidebar, add: `SITETITLE= 'Saurabh Khanduja'`
