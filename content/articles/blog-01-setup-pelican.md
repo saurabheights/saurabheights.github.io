@@ -47,7 +47,7 @@ conda activate portfolio
 python -m pip install "pelican[markdown]"
 ```
 
-### Create Website using Pelican Stemplate
+### Create Website using Pelican template
 
 After pelican is installed we will create a structure of the project via the `pelican-quickstart` command, which begins by asking some questions about your site. The below code shows example I followed for my own website setup.
 
