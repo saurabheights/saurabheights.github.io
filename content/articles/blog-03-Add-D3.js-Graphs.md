@@ -38,9 +38,14 @@ This setup keeps things organized where each blog gets its own script file, whil
 
 ## Include D3.js in Article Template
 
-Earlier, we added **Giscus** by editing `article.html`. Similarly, for **D3.js**, we include the D3 library and its stylesheet inside `article.html`, allowing each blog to load its own graph scripts independently.
+Earlier, to add **Giscus** in all our blogs, we inserted Giscus-load script in `article.html` which stores templates 
+for article-style pages like blogs. Similarly, for **D3.js**, we include the D3 library and its stylesheet inside 
+`article.html`, allowing each blog to load its own graph scripts independently.
 
-However, instead of loading every graph globally, we’ll load only the graphs defined in each article’s metadata (for example, `graph: blog-01-graph.js, blog-01-graph.js`). This keeps pages faster and ensures each post loads just the visualizations it needs.
+However, instead of loading all graphs in `js` directory, we load only the graphs needed for a given blog. 
+To do this, we define a custom `graph` key in each article’s metadata (for e.g. `graph: blog-01-graph-01.js, 
+blog-01-graph-02.js`). This ensures each post loads just the visualizations it needs reducing memory needs and 
+improves website performance.
 
 Add the following code inside your `article.html` file:
 
