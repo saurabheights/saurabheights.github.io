@@ -45,15 +45,14 @@ However, instead of loading every graph globally, we’ll load only the graphs d
 Add the following code inside your `article.html` file:
 
 ``` html
-<!-- D3.js Library -->
-  <link rel="stylesheet" href="extra/css/graph-style.css">
-  <script src="https://d3js.org/d3.v7.min.js"></script> 
-  {% if article.graph %}
-    {% for g in article.graph.split(',') %}
-      <script src="{{ SITEURL }}/extra/js/{{ g|trim }}"></script>
-    {% endfor %}
-  {% endif %}
-  
+<!-- Load D3.js Library and graph scripts for this blog if present -->
+<link rel="stylesheet" href="extra/css/graph-style.css">
+<script src="https://d3js.org/d3.v7.min.js"></script> 
+{% if article.graph %}
+  {% for g in article.graph.split(',') %}
+    <script src="{{ SITEURL }}/extra/js/{{ g|trim }}"></script>
+  {% endfor %}
+{% endif %}
 ```
 We add the Jinja **for loop** to make the setup reusable across multiple blogs. Instead of hardcoding each graph file, this loop automatically loads any number of graph scripts listed in a post’s metadata. This means you can reuse the same visualization (like `blog-01-graph.js`) in different posts without editing the template again, keeping your workflow flexible and scalable.
 
