@@ -36,8 +36,6 @@ In the `css` **folder**, we’ll include only **one main CSS file** (for example
 
 This setup keeps things organized where each blog gets its own script file, while all visual styling is handled in one place.
 
----
-
 ## Include D3.js in Article Template
 
 Earlier, we added **Giscus** by editing `article.html`. Similarly, for **D3.js**, we include the D3 library and its stylesheet inside `article.html`, allowing each blog to load its own graph scripts independently.
@@ -65,7 +63,6 @@ To let Pelican know where your graph files are stored, add the following setting
 ``` python
 STATIC_PATHS = ['extra/js', 'extra/css']
 ```
----
 
 ## Create Your First Graph Script
 
@@ -101,7 +98,6 @@ Then place a target div where you want it to appear:
 ```html 
 <div id="test-graph"></div>
 ```
----
 
 ## Organize Styles
 
