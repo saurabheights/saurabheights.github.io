@@ -3,6 +3,7 @@ Date: 2025-10-22
 Tags: Pelican, GitHub Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: add-d3.js for interactive visualization
+graph: d3-charts.js
 
 In the previous parts, we explored how to add several powerful features to our Pelican blog. But what if you want to make your posts even more engaging with interactive charts and data visualizations? That’s where D3.js comes in.
 
@@ -102,6 +103,7 @@ Then place a target div where you want it to appear:
 ```html 
 <div id="test-graph"></div>
 ```
+<div id="d3-test"></div>
 
 ## Organize Styles
 
