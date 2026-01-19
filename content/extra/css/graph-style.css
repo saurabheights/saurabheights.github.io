@@ -1,3 +1,16 @@
+/* D3 Tooltip Styling */
+.d3-tooltip {
+  position: absolute;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity 0.15s ease;
+}
+
 /* D3 Bar Chart Styling */
 #d3-test .bar {
   fill: #FF8DA1; /* 🎨 Your pink color */
@@ -7,4 +20,46 @@
 /* Optional: hover effect */
 #d3-test .bar:hover {
   fill: #ff6f91; /* slightly darker on hover */
+}
+
+/* ================================
+   Line Chart Styling
+================================ */
+
+/* Line path */
+#line-graph .line-point{
+  stroke: #FF8DA1;
+  stroke-width: 2.5;
+}
+
+/* Line data points */
+#line-graph circle,
+#scatter-chart circle {
+  fill: #AD56C4;
+  transition: r 0.2s ease, fill 0.2s ease;
+}
+
+/* Hover effect on points */
+#scatter-chart circle:hover {
+  fill: #FF9CE9;
+}
+
+/* ================================
+   Pie Chart Styling
+================================ */
+
+/* Pie slices use all theme colors */
+#pie path:nth-child(1) { fill: #FF8DA1; }
+#pie path:nth-child(2) { fill: #FFC2BA; }
+#pie path:nth-child(3) { fill: #FF9CE9; }
+#pie path:nth-child(4) { fill: #AD56C4; }
+
+/* Smooth hover effect for pie */
+#pie path {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#pie path:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
