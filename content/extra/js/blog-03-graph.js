@@ -6,7 +6,7 @@ const tooltip = d3.select("body")
 
 // Blue circle test graph
 document.addEventListener("DOMContentLoaded", function () {
-  const svg = d3.select("#blog-01-graph-test")
+  const svg = d3.select("#blog-03-graph-test")
                 .append("svg")
                 .attr("width", 300)
                 .attr("height", 150);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create SVG
-  const svg = d3.select("#d3-test")
+  const svg = d3.select("#blog-03-bar-graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create SVG (responsive-friendly)
-  const svg = d3.select("#line-graph")
+  const svg = d3.select("#blog-03-line-graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create responsive SVG
-  const svg = d3.select("#scatter-chart")
+  const svg = d3.select("#blog-03-scatter-chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .style("width", width)
@@ -264,7 +264,7 @@ const height = 500;
   const total = d3.sum(data, d => d.value);
 
   // SVG container
-  const svg = d3.select("#pie")
+  const svg = d3.select("#blog-03-pie-chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .style("width", "100%")

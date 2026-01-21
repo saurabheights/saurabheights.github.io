@@ -12,13 +12,13 @@
 }
 
 /* D3 Bar Chart Styling */
-#d3-test .bar {
+#blog-03-bar-graph .bar {
   fill: #FF8DA1; /* 🎨 Your pink color */
   transition: fill 0.3s ease, height 0.3s ease;
 }
 
 /* Optional: hover effect */
-#d3-test .bar:hover {
+#blog-03-bar-graph .bar:hover {
   fill: #ff6f91; /* slightly darker on hover */
 }
 
@@ -27,20 +27,20 @@
 ================================ */
 
 /* Line path */
-#line-graph .line-point{
+#blog-03-line-graph .line-point{
   stroke: #FF8DA1;
   stroke-width: 2.5;
 }
 
 /* Line data points */
-#line-graph circle,
-#scatter-chart circle {
+#blog-03-line-graph circle,
+#blog-03-scatter-chart circle {
   fill: #AD56C4;
   transition: r 0.2s ease, fill 0.2s ease;
 }
 
 /* Hover effect on points */
-#scatter-chart circle:hover {
+#blog-03-scatter-chart circle:hover {
   fill: #FF9CE9;
 }
 
@@ -49,17 +49,17 @@
 ================================ */
 
 /* Pie slices use all theme colors */
-#pie path:nth-child(1) { fill: #FF8DA1; }
-#pie path:nth-child(2) { fill: #FFC2BA; }
-#pie path:nth-child(3) { fill: #FF9CE9; }
-#pie path:nth-child(4) { fill: #AD56C4; }
+#blog-03-pie-chart path:nth-child(1) { fill: #FF8DA1; }
+#blog-03-pie-chart path:nth-child(2) { fill: #FFC2BA; }
+#blog-03-pie-chart path:nth-child(3) { fill: #FF9CE9; }
+#blog-03-pie-chart path:nth-child(4) { fill: #AD56C4; }
 
 /* Smooth hover effect for pie */
-#pie path {
+#blog-03-pie-chart path {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-#pie path:hover {
+#blog-03-pie-chart path:hover {
   opacity: 0.9;
   transform: scale(1.05);
 }

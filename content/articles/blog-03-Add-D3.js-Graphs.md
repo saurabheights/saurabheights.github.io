@@ -104,13 +104,13 @@ Then place a target div where you want it to appear:
 <div id="blog-01-graph-test"></div>
 ```
 
-<div id="blog-01-graph-test"></div>
+<div id="blog-03-graph-test"></div>
 
 ## More complex examples
 
 ### Bar Chart
 
-<div id="d3-test"></div>
+<div id="blog-03-bar-graph"></div>
 
 <details>
 <summary><b>Sample Code</b></summary>
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create SVG
-  const svg = d3.select("#d3-test")
+  const svg = d3.select("#blog-01-bar-graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 ### Line Chart
 
-<div id="line-graph"></div>
+<div id="blog-03-line-graph"></div>
 
 
 <details>
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create SVG (responsive-friendly)
-  const svg = d3.select("#line-graph")
+  const svg = d3.select("#blog-01-line-graph")
     .append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -277,7 +277,7 @@ svg.append("g")
 
 ### Scatter Plot
 
-<div id="scatter-chart"></div>
+<div id="blog-03-scatter-chart"></div>
 
 
 <details>
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const margin = { top: 20, right: 20, bottom: 30, left: 40 };
 
   // Create responsive SVG
-  const svg = d3.select("#scatter-chart")
+  const svg = d3.select("#blog-01-scatter-chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .style("width", width)
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 ### Pie Chart
 
-<div id="pie"></div>
+<div id="blog-03-pie-chart"></div>
 
 <details>
 <summary><b>Sample Code</b></summary>
@@ -393,7 +393,7 @@ const height = 500;
   const total = d3.sum(data, d => d.value);
 
   // SVG container
-  const svg = d3.select("#pie-chart")
+  const svg = d3.select("#blog-01-pie-chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .style("width", "100%")
