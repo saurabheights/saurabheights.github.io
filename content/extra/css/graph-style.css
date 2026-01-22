@@ -63,3 +63,13 @@
   opacity: 0.9;
   transform: scale(1.05);
 }
+/* Center all graphs */
+#blog-03-bar-graph,
+#blog-03-line-graph,
+#blog-03-scatter-chart,
+#blog-03-pie-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

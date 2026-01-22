@@ -396,8 +396,8 @@ const height = 500;
   const svg = d3.select("#blog-01-pie-chart")
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
-    .style("width", "100%")
-    .style("height", "auto")
+    .style("width", width)
+    .style("height", height)
     .append("g")
     .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
