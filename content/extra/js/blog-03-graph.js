@@ -31,8 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Create SVG
   const svg = d3.select("#blog-03-bar-graph")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .style("width", width)
+    .style("height", height);
 
   // Create scales
   const x = d3.scaleBand()
@@ -88,8 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Create SVG (responsive-friendly)
   const svg = d3.select("#blog-03-line-graph")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .style("width", width)
+    .style("height", height);
 
   // X scale — spreads points evenly across width
    const x = d3.scaleBand()
