@@ -106,6 +106,15 @@ Then place a target div where you want it to appear:
 
 <div id="blog-03-graph-test"></div>
 
+!!! tip 
+    **Live Reload for D3.js Graphs:** If you already configured livereload in this blog: [How to Build a Portfolio Website with Pelican](https://saurabheights.github.io/building-website-using-pelican.html#setup-live-reload), update your `tasks.py` file like this:
+
+    ```
+    content_file_extensions = [".md", ".rst", ".css", ".js"]
+    ```
+
+    This allows Pelican to reload the page automatically when you change JavaScript or CSS files.
+
 ## More complex examples
 
 ### Bar Chart
