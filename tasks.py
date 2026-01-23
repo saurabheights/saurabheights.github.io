@@ -71,6 +71,8 @@ THEMES_DIR = Path("themes")
 FLEX_DIR = THEMES_DIR / "Flex"
 ZIP_FILE = Path("flex.zip")
 
+SRC_DIR = Path("src") / "overrides"
+
 
 @task
 def clean(c):
@@ -284,13 +286,15 @@ def clean_theme(c):
 
 @task
 def replace_css(c):
-    source = Path("custom.css")  # file in root folder
-    destination = FLEX_DIR / "static" / "stylesheet" / "style.min.css"  # path inside theme
+    source = SRC_DIR / "css" / "light-theme.css"  # file in root folder
+    destination = (
+        FLEX_DIR / "static" / "stylesheet" / "style.min.css"
+    )  # path inside theme
     # Copy the file
     shutil.copy2(source, destination)
     print(f"✅ Replaced {destination} with {source}")
 
-    source_dark = Path("dark-theme.css")  # replace dark theme
+    source_dark = SRC_DIR / "css" / "dark-theme.css"  # replace dark theme
     destination_dark = FLEX_DIR / "static" / "stylesheet" / "dark-theme.min.css"
     shutil.copy2(source_dark, destination_dark)
     print(f"✅ Replaced {destination_dark} with {source_dark}")
@@ -298,13 +302,15 @@ def replace_css(c):
     templates = ["index.html", "base.html", "article.html"]
 
     for tmpl in templates:
-        source1 = Path("custom_temp") / tmpl
+        source1 = SRC_DIR / "html" / tmpl
         destination1 = FLEX_DIR / "templates" / tmpl
         shutil.copy2(source1, destination1)
         print(f"✅ Replaced {destination1} with {source1}")
 
-    source2 = Path("custom_temp") / "sidebar.html"
-    destination2 = FLEX_DIR / "templates" / "partial" / "sidebar.html"  # path inside theme
+    source2 = SRC_DIR / "html" / "sidebar.html"
+    destination2 = (
+        FLEX_DIR / "templates" / "partial" / "sidebar.html"
+    )  # path inside theme
     # Copy the file
     shutil.copy2(source2, destination2)
     print(f"✅ Replaced {destination2} with {source2}")
