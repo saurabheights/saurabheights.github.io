@@ -107,7 +107,7 @@ Then place a target div where you want it to appear:
 <div id="blog-03-graph-test"></div>
 
 !!! tip 
-    **Live Reload for D3.js Graphs:** If you already configured livereload in this blog: [How to Build a Portfolio Website with Pelican](https://saurabheights.github.io/building-website-using-pelican.html#setup-live-reload), update your `tasks.py` file like this:
+    **Live Reload for D3.js Graphs:** We saw how to use livereload in this blog: [How to Build a Portfolio Website with Pelican](https://saurabheights.github.io/building-website-using-pelican.html#setup-live-reload). By default, livereload monitors files with `.md` or `.rst` extensions inside `content` directory. Update your `tasks.py` file to also include `.css` and `.js` files, like this:
 
     ```
     content_file_extensions = [".md", ".rst", ".css", ".js"]

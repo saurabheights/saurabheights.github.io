@@ -35,12 +35,14 @@ CONFIG = {
     "port": 8000,
 }
 
+
 class PluginInfo(TypedDict):
     download_url: str
     plugin_dir: str
     plugin_filename: str
     zip_file: str
-    
+
+
 PLUGINS_DIR = Path("plugins")
 
 PLUGINS: dict[str, PluginInfo] = {
@@ -68,6 +70,7 @@ FLEX_ZIP_URL = "https://github.com/alexandrevicenzi/Flex/archive/refs/heads/mast
 THEMES_DIR = Path("themes")
 FLEX_DIR = THEMES_DIR / "Flex"
 ZIP_FILE = Path("flex.zip")
+
 
 @task
 def clean(c):
@@ -153,14 +156,13 @@ def livereload(c):
         content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
         watched_globs.append(content_glob)
 
-
     static_file_extensions = [".css", ".js"]
     for extension in static_file_extensions:
         static_file_glob = f"{theme_path}/static/**/*{extension}"
         watched_globs.append(static_file_glob)
 
-    print(f"Watching livereload on: {watched_globs}") 
-    
+    print(f"Watching livereload on: {watched_globs}")
+
     for glob in watched_globs:
         server.watch(glob, cached_build)
 
@@ -180,9 +182,7 @@ def publish(c):
     c.run(
         'rsync --delete --exclude ".DS_Store" -pthrvz -c '
         '-e "ssh -p {ssh_port}" '
-        "{} {ssh_user}@{ssh_host}:{ssh_path}".format(
-            CONFIG["deploy_path"].rstrip("/") + "/", **CONFIG
-        )
+        "{} {ssh_user}@{ssh_host}:{ssh_path}".format(CONFIG["deploy_path"].rstrip("/") + "/", **CONFIG)
     )
 
 
@@ -190,16 +190,13 @@ def publish(c):
 def gh_pages(c):
     """Publish to GitHub Pages"""
     preview(c)
-    c.run(
-        "ghp-import -b {github_pages_branch} "
-        "-m {commit_message} "
-        "{deploy_path} -p".format(**CONFIG)
-    )
+    c.run("ghp-import -b {github_pages_branch} -m {commit_message} {deploy_path} -p".format(**CONFIG))
 
 
 def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
+
 
 @task
 def download_plugins(c):
@@ -224,7 +221,7 @@ def download_plugins(c):
         extracted_path = PLUGINS_DIR / plugin["plugin_filename"]
         if extracted_path.exists():
             extracted_path.rename(plugin["plugin_dir"])
-        
+
         # Cleanup leftover extracted root (like render-math-main or pelican-toc-master)
         for folder in PLUGINS_DIR.iterdir():
             if folder.is_dir() and (folder.name.endswith("-main") or folder.name.endswith("-master")):
@@ -234,6 +231,7 @@ def download_plugins(c):
         # Cleanup zip file
         plugin["zip_file"].unlink(missing_ok=True)
         print(f"✅ {name} installed at {plugin['plugin_dir']}")
+
 
 @task
 def clean_plugins(c):
@@ -248,6 +246,7 @@ def clean_plugins(c):
             print(f"⚠️ {name} not found, skipping...")
 
     print("✅ All plugins cleaned.")
+
 
 @task
 def download_theme(c):  # Download theme in zip
@@ -272,6 +271,7 @@ def download_theme(c):  # Download theme in zip
     ZIP_FILE.unlink()  # delete zip file
     print(f"✅ Flex theme installed at {FLEX_DIR}")
 
+
 @task
 def clean_theme(c):
     """Remove the Flex theme after use"""
@@ -285,9 +285,7 @@ def clean_theme(c):
 @task
 def replace_css(c):
     source = Path("custom.css")  # file in root folder
-    destination = (
-        FLEX_DIR / "static" / "stylesheet" / "style.min.css"
-    )  # path inside theme
+    destination = FLEX_DIR / "static" / "stylesheet" / "style.min.css"  # path inside theme
     # Copy the file
     shutil.copy2(source, destination)
     print(f"✅ Replaced {destination} with {source}")
@@ -306,9 +304,7 @@ def replace_css(c):
         print(f"✅ Replaced {destination1} with {source1}")
 
     source2 = Path("custom_temp") / "sidebar.html"
-    destination2 = (
-        FLEX_DIR / "templates" / "partial" / "sidebar.html"
-    )  # path inside theme
+    destination2 = FLEX_DIR / "templates" / "partial" / "sidebar.html"  # path inside theme
     # Copy the file
     shutil.copy2(source2, destination2)
     print(f"✅ Replaced {destination2} with {source2}")

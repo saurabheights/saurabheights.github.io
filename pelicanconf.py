@@ -1,4 +1,3 @@
-from pathlib import Path
 AUTHOR = "Saurabh Khanduja"
 SITENAME = "PixelPerception"
 SITEURL = ""
@@ -34,7 +33,7 @@ SUMMARY_MAX_PARAGRAPHS = 1
 DISABLE_URL_HASH = True
 
 PLUGIN_PATHS = ["plugins"]
-PLUGINS = ["pelican-cite", "render_math","pelican-toc"]
+PLUGINS = ["pelican-cite", "render_math", "pelican-toc"]
 
 TOC = {
     "TOC_HEADERS": "^h[2-6]",
@@ -44,25 +43,30 @@ TOC = {
 THEME_COLOR_AUTO_DETECT_BROWSER_PREFERENCE = True
 
 MARKDOWN = {
-    'extensions': [
-        'admonition', # Admonition blocks
-        'toc',        # Table of Contents
-        'codehilite', # Syntax highlighting for code
-        'extra',      # Extra markdown features (tables, footnotes, etc.)
-        'smarty',     # Smart quotes, dashes
+    "extensions": [
+        "admonition",  # Admonition blocks
+        "toc",  # Table of Contents
+        "codehilite",  # Syntax highlighting for code
+        "extra",  # Extra markdown features (tables, footnotes, etc.)
+        "smarty",  # Smart quotes, dashes
     ],
-    'extension_configs': {
-        'toc': {'baselevel': 2}, # start headings at <h2>
-        'codehilite': {'linenums': True, # for code line number
-                       'css_class': 'highlight'}, # css for codeblock
-    }
+    "extension_configs": {
+        "toc": {"baselevel": 2},  # start headings at <h2>
+        "codehilite": {
+            "linenums": True,  # for code line number
+            "css_class": "highlight",
+        },  # css for codeblock
+    },
 }
 
-STATIC_PATHS = ['extra/js','extra/css',]
+STATIC_PATHS = [
+    "extra/js",
+    "extra/css",
+]
 
 PUBLICATIONS_SRC = "content/reference.bib"
 BIBLIOGRAPHY_START = '<section id="references"><h2>References</h2>'
-BIBLIOGRAPHY_END = '</section>'
+BIBLIOGRAPHY_END = "</section>"
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
