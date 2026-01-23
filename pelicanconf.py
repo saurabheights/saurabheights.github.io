@@ -1,4 +1,3 @@
-from pathlib import Path
 AUTHOR = "Saurabh Khanduja"
 SITENAME = "PixelPerception"
 SITEURL = ""
