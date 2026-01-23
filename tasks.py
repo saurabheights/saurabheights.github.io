@@ -148,19 +148,16 @@ def livereload(c):
         f"{theme_path}/templates/**/*.html",
     ]
 
-    content_file_extensions = [".md", ".rst", ".css", ".js"]
+    content_file_extensions = [".md", ".rst"]
     for extension in content_file_extensions:
         content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
         watched_globs.append(content_glob)
-
 
     static_file_extensions = [".css", ".js"]
     for extension in static_file_extensions:
         static_file_glob = f"{theme_path}/static/**/*{extension}"
         watched_globs.append(static_file_glob)
 
-    print(f"Watching livereload on: {watched_globs}") 
-    
     for glob in watched_globs:
         server.watch(glob, cached_build)
 
