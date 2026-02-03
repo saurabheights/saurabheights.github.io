@@ -71,6 +71,8 @@ THEMES_DIR = Path("themes")
 FLEX_DIR = THEMES_DIR / "Flex"
 ZIP_FILE = Path("flex.zip")
 
+SRC_DIR = Path("src") / "overrides"
+
 
 @task
 def clean(c):
@@ -284,31 +286,30 @@ def clean_theme(c):
 
 @task
 def replace_css(c):
-    source = Path("custom.css")  # file in root folder
-    destination = FLEX_DIR / "static" / "stylesheet" / "style.min.css"  # path inside theme
-    # Copy the file
-    shutil.copy2(source, destination)
-    print(f"✅ Replaced {destination} with {source}")
 
-    source_dark = Path("dark-theme.css")  # replace dark theme
-    destination_dark = FLEX_DIR / "static" / "stylesheet" / "dark-theme.min.css"
-    shutil.copy2(source_dark, destination_dark)
-    print(f"✅ Replaced {destination_dark} with {source_dark}")
+    files_to_copy = [
+    (
+        SRC_DIR / "css" / "light-theme.css",
+        FLEX_DIR / "static" / "stylesheet" / "style.min.css",
+    ),
+    (
+        SRC_DIR / "css" / "dark-theme.css",
+        FLEX_DIR / "static" / "stylesheet" / "dark-theme.min.css",
+    ),
 
-    templates = ["index.html", "base.html", "article.html"]
+    # HTML templates
+    (SRC_DIR / "html" / "index.html", FLEX_DIR / "templates" / "index.html"),
+    (SRC_DIR / "html" / "base.html", FLEX_DIR / "templates" / "base.html"),
+    (SRC_DIR / "html" / "article.html", FLEX_DIR / "templates" / "article.html"),
+    (
+        SRC_DIR / "html" / "sidebar.html",
+        FLEX_DIR / "templates" / "partial" / "sidebar.html",
+    ),
+    ]
 
-    for tmpl in templates:
-        source1 = Path("custom_temp") / tmpl
-        destination1 = FLEX_DIR / "templates" / tmpl
-        shutil.copy2(source1, destination1)
-        print(f"✅ Replaced {destination1} with {source1}")
-
-    source2 = Path("custom_temp") / "sidebar.html"
-    destination2 = FLEX_DIR / "templates" / "partial" / "sidebar.html"  # path inside theme
-    # Copy the file
-    shutil.copy2(source2, destination2)
-    print(f"✅ Replaced {destination2} with {source2}")
-
+    for source, destination in files_to_copy:
+        shutil.copy2(source, destination)
+        print(f"✅ Replaced {destination} with {source}")
 
 @task
 def download_build_artifacts(c):
