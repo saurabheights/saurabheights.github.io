@@ -60,6 +60,7 @@ MARKDOWN = {
 }
 
 STATIC_PATHS = [
+    "images",
     "extra/js",
     "extra/css",
 ]
