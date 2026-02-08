@@ -26,14 +26,14 @@ URL: mywork
   <!-- Projects Grid -->
   <div class="projects-grid">
 
-  <!-- Project -->
+  <!-- Project Multi-Camera Multi-Person Tracking -->
   <article class="project-card-new" data-category="computer-vision 3d-vision software-engineering deep-learning" data-priority="5" data-date="2025-12-16">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
         <span class="badge">Computer Vision</span>
       </div>
-      <h3 class="project-card-new__title">Multi-Camera Multi-Person Tracking </h3>
+      <h3 class="project-card-new__title">Multi-Camera Multi-Person Tracking</h3>
       <p class="project-card-new__description">Real-time tracking solution for customer behavioral and site security analysis with high focus on reidentification.</p>
       <ul class="project-card-new__features">
         <li>Developed real-time multi-camera tracking solution across synchronized cameras for secure site monitoring</li>
@@ -50,8 +50,8 @@ URL: mywork
     </div>
   </article>
 
-  <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="">
+  <!-- Project Live-Camera Anonymization Software for VMS -->
+  <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="4" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
@@ -67,19 +67,19 @@ URL: mywork
       <div class="project-card-new__tech">
         <img src="https://skillicons.dev/icons?i=cpp&theme=dark" alt="C++" title="C++">
         <img src="https://skillicons.dev/icons?i=fastapi&theme=dark" alt="FastAPI" title="FastAPI">
-        <img src="https://skillicons.dev/icons?i=pyt&theme=dark" alt="PyTorch" title="PyTorch">
+        <img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" title="PyTorch">
       </div>
     </div>
   </article>
 
-  <!-- Project -->
-  <article class="project-card-new" data-category="computer-vision, 3d-vision" data-priority="0" data-date="">
+  <!-- Project Cargo Volume Measurement (Airline) -->
+  <article class="project-card-new" data-category="computer-vision, 3d-vision" data-priority="3" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
         <span class="badge">Scalable</span>
       </div>
-      <h3 class="project-card-new__title">Cargo Volume Measurement (Airline) </h3>
+      <h3 class="project-card-new__title">Cargo Volume Measurement (Airline)</h3>
       <p class="project-card-new__description">Real-time 3D reconstruction & contour fitting using depth cameras and Open3D.</p>
       <ul class="project-card-new__features">
         <li>Multi-process real-time pipe & filter architecture for 3D Reconstruction, pointcloud cleaning and contour fitting.</li>
@@ -93,35 +93,8 @@ URL: mywork
     </div>
   </article>
 
-
-  <!-- Project -->
-  <article class="project-card-new" data-category="deep-learning software-engineering" data-priority="0" data-date="">
-    <div class="project-card-new__body">
-      <div class="project-card-new__badges">
-        <span class="badge">High Performance</span>
-        <span class="badge">Scalable</span>
-      </div>
-      <h3 class="project-card-new__title">Model Robustness Tests for Autonomous Vehicles</h3>
-      <p class="project-card-new__description">Kubernetes based model serving, benchmarking & safety evaluation for ML products.</p>
-      <ul class="project-card-new__features">
-      <li>Implement serving and testing of PyTorch models over Kubernetes pods.</li>
-      <!-- <li>Implement tracking metrics to benchmark multi-object tracking associators</li> -->
-      <li>Designed benchmark to evaluate internal defect predictors on real data as well as synthetically introduced defects</li>
-      <li>Designed 4 new safety performance indicators to measure safety of autonomous vehicles</li></ul>
-      
-      <div class="project-card-new__tech"> 
-        <img src="https://skillicons.dev/icons?i=py&theme=dark" alt="Python" title="Python">
-        <img src="https://skillicons.dev/icons?i=go&theme=dark" alt="Go" title="Go">
-        <img src="https://skillicons.dev/icons?i=pyt&theme=dark" alt="PyTorch" title="PyTorch">
-        <img src="https://skillicons.dev/icons?i=docker&theme=dark" alt="Docker" title="Docker">
-        <img src="https://skillicons.dev/icons?i=kubernetes&theme=dark" alt="Kubernetes" title="Kubernetes">
-      </div>
-    </div>
-  </article>
-
-
-  <!-- Project -->
-  <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="">
+  <!-- Project Geo-Data Management Tool -->
+  <article class="project-card-new" data-category="data-engineering" data-priority="2" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">Scalable</span>
@@ -141,7 +114,32 @@ URL: mywork
     </div>
   </article>
 
-  <!-- Project -->
+  <!-- Project Model Robustness Tests for Autonomous Vehicles -->
+  <article class="project-card-new" data-category="deep-learning software-engineering" data-priority="1" data-date="">
+    <div class="project-card-new__body">
+      <div class="project-card-new__badges">
+        <span class="badge">High Performance</span>
+        <span class="badge">Scalable</span>
+      </div>
+      <h3 class="project-card-new__title">Model Robustness Tests for Autonomous Vehicles</h3>
+      <p class="project-card-new__description">Kubernetes based model serving, benchmarking & safety evaluation for ML products.</p>
+      <ul class="project-card-new__features">
+        <li>Implement serving and testing of PyTorch models over Kubernetes pods.</li>
+        <!-- <li>Implement tracking metrics to benchmark multi-object tracking associators</li> -->
+        <li>Designed benchmark to evaluate internal defect predictors on real data as well as synthetically introduced defects</li>
+        <li>Designed 4 new safety performance indicators to measure safety of autonomous vehicles</li>
+      </ul>
+      <div class="project-card-new__tech"> 
+        <img src="https://skillicons.dev/icons?i=py&theme=dark" alt="Python" title="Python">
+        <img src="https://skillicons.dev/icons?i=go&theme=dark" alt="Go" title="Go">
+        <img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" title="PyTorch">
+        <img src="https://skillicons.dev/icons?i=docker&theme=dark" alt="Docker" title="Docker">
+        <img src="https://skillicons.dev/icons?i=kubernetes&theme=dark" alt="Kubernetes" title="Kubernetes">
+      </div>
+    </div>
+  </article>
+
+  <!-- Project Multi-Task Deep Learning Pipeline -->
   <article class="project-card-new" data-category="deep-learning computer-vision software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
@@ -162,14 +160,14 @@ URL: mywork
     </div>
 </article>
 
-  <!-- Project -->
+  <!-- Project - Media Processing Service for Social Platform -->
   <article class="project-card-new" data-category="computer-vision software-development" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
         <span class="badge">Scalable</span>
       </div>
-      <h3 class="project-card-new__title">Image Processing Service Development </h3>
+      <h3 class="project-card-new__title">Media Processing Service @ Roposo</h3>
       <p class="project-card-new__description">Cost-efficient media compression, metadata analysis & beautification using OpenCV/FFmpeg.</p>
       <ul class="project-card-new__features">
         <li>Optimizations to efficiently use servers, leading to 70% cost reduction</li>
@@ -185,15 +183,14 @@ URL: mywork
     </div>
   </article>
 
-
-  <!-- Project -->
+  <!-- Project Resell Product Form (Amazon) -->
   <article class="project-card-new" data-category="software-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">High Performance</span>
         <span class="badge">Full-Stack Dev</span>
       </div>
-      <h3 class="project-card-new__title">Resell Product Form (Amazon)</h3>
+      <h3 class="project-card-new__title">Resell Product Form @ Amazon</h3>
       <p class="project-card-new__description">High-performance DynamoDB workflow improving completion rate 5× with 99.5% payload reduction</p>
       <ul class="project-card-new__features">
         <li>Development of data model to reduce user interaction for form completion and data payload for mobile usage</li>
@@ -206,14 +203,14 @@ URL: mywork
     </div>
   </article>
 
-  <!-- Project -->
+  <!-- Project Catalog Labeling Quality Platform-->
   <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="">
     <div class="project-card-new__body">
       <div class="project-card-new__badges">
         <span class="badge">Scalable</span>
         <span class="badge">Machine Learning</span>
       </div>
-      <h3 class="project-card-new__title">Catalog Labeling Quality Platform</h3>
+      <h3 class="project-card-new__title">Catalog Labeling Quality Platform @ Amazon</h3>
       <p class="project-card-new__description">Spark based clustering system reducing labeling time from weeks to under an hour.</p>
       <ul class="project-card-new__features">
         <li>Built a platform for QA team to analyze and correct incorrectly labelled products</li>
@@ -273,19 +270,19 @@ URL: mywork
 <script>
   // Extract and normalize categories from a project card
   function getCardCategories(card) {
-    const raw = card.dataset.category || '';
+    const raw = card.data.category || '';
     return raw.split(/[\s,]+/).map(c => c.trim().toLowerCase());
   }
 
   // Read priority from the card and convert it to a number
   // If no priority is defined, default to 0 & max is 5
   function getCardPriority(card) {
-    return parseInt(card.dataset.priority || '0', 10);
+    return parseInt(card.data.priority || '0', 10);
   }
 
   // Read date from the card and convert it to a Date object
   function getCardDate(card) {
-    const rawDate = card.dataset.date;
+    const rawDate = card.data.date;
     return rawDate ? new Date(rawDate) : new Date(0);
   }
 

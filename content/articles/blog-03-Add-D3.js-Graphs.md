@@ -62,11 +62,15 @@ Add the following code inside your `article.html` file:
 ```
 We add the Jinja **for loop** to make the setup reusable across multiple blogs. Instead of hardcoding each graph file, this loop automatically loads any number of graph scripts listed in a post’s metadata. This means you can reuse the same visualization (like `blog-01-graph.js`) in different posts without editing the template again, keeping your workflow flexible and scalable.
 
-To let Pelican know where your graph files are stored, add the following settings inside your `pelicanconf.py` file:
+To let Pelican know where your graph files are stored and move them to output directory, we will update the variable `STATIC_PATHS`. By default, `STATIC_PATHS` is set to `images` directory. Since we are overriding this variable, we will explicity add `images` directory along with our `css` and `js` directories. Update your `pelicanconf.py` file with:
 
 
 ``` python
-STATIC_PATHS = ['extra/js', 'extra/css']
+STATIC_PATHS = [
+  "images",
+  "extra/js",
+  "extra/css"
+]
 ```
 
 ## Create Your First Graph Script
