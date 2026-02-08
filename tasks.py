@@ -324,4 +324,4 @@ def download_build_artifacts(c):
 def build_flex(c):
     replace_css(c)
     build(c)
-    subprocess.run(["pelican", "--listen"])
+    livereload(c)
