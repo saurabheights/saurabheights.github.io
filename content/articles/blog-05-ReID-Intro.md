@@ -153,8 +153,6 @@ ReID performance is not measured by classification accuracy but by how well embe
 
 <!-- ***Add diagrams here.*** -->
 
-20000 * 20000
-
 ## **Standard Models for ReID**
 
 ReID models are typically built on strong image feature extractors. Common approaches include:

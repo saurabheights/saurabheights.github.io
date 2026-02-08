@@ -153,9 +153,9 @@ def livereload(c):
         f"{theme_path}/templates/**/*.html",
     ]
 
-    content_file_extensions = [".md", ".rst", ".css", ".js"]
-    for extension in content_file_extensions:
-        content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
+    content_file_paths = ["**/*.md", "**/*.rst", "**/*.css", "**/*.js", "reference.bib"]
+    for content_file_path in content_file_paths:
+        content_glob = "{}/{}".format(SETTINGS["PATH"], content_file_path)
         watched_globs.append(content_glob)
 
     static_file_extensions = [".css", ".js"]
