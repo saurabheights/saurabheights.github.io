@@ -3,6 +3,11 @@ Date: 2025-11-13
 Tags: pelican, plugin, citation, references, blogging, markdown
 Author: Saurabh Khanduja
 Slug: add-pelican-cite-plugin
+Summary: This short guide covers how to add structured citations and a generated references section to a Pelican blog using the pelican-cite plugin.
+Kicker: Research Workflow
+Read_Mins: 3
+Essay_No: 04
+Word_Count: 300
 
 If we want to manage references or citations in our blog, the [Pelican-cite](https://github.com/VorpalBlade/pelican-cite) plugin makes it simple. Here’s how to set it up.
 

@@ -4,6 +4,11 @@ Tags: Computer Vision, Machine Learning, Deep Learning, Re-ID
 Author: Saurabh Khanduja
 Slug: intro-to-reid
 graph: blog-05-graphs.js
+Summary: This introduction breaks down re-identification from first principles and frames the main modeling choices behind practical ReID systems.
+Kicker: Re-Identification
+Read_Mins: 13
+Essay_No: 05
+Word_Count: 1,567
 
 # Introduction
 

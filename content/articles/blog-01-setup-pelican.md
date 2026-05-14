@@ -3,6 +3,11 @@ Date: 2025-08-19
 Tags: Pelican, Github Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: building-website-using-pelican
+Summary: This guide walks through building and deploying a personal portfolio site with Pelican and GitHub Pages, with a focus on keeping the workflow simple and fully under your control.
+Kicker: Web Development
+Read_Mins: 12
+Essay_No: 01
+Word_Count: 1,458
 
 This article provides a step-by-step walkthrough on how to deploy a personal portfolio website using the Pelican, a static site generator and GitHub Pages.
 

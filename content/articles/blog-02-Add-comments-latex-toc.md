@@ -3,6 +3,11 @@ Date: 2025-09-11
 Tags: Pelican, Table of Content, Giscus, Latex Rendering, Math Equations, Comments
 Author: Saurabh Khanduja
 Slug: 
+Summary: This post shows how to make a Pelican blog more usable for technical writing by adding a better table of contents, comments, and reliable LaTeX rendering.
+Kicker: Scientific Writing
+Read_Mins: 12
+Essay_No: 02
+Word_Count: 1,559
 
 This is the second blog of building our own portfolio website. If you’re new to Pelican and haven’t yet set up your portfolio blog, I recommend checking out my earlier blog: [How to Build a Portfolio Website with Pelican](https://saurabheights.github.io/building-website-using-pelican.html). That post covers the initial setup so you can follow this article without confusion.
 

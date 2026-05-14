@@ -4,6 +4,11 @@ Tags: Pelican, GitHub Pages, SSG, Web Development, Hosting
 Author: Saurabh Khanduja
 Slug: add-d3.js-for-interactive-visualization
 graph: blog-03-graph.js
+Summary: This article explains how to add D3.js to a Pelican blog so each post can load only the interactive visualizations it needs without bloating the rest of the site.
+Kicker: Data Visualization
+Read_Mins: 14
+Essay_No: 03
+Word_Count: 1,817
 
 In the previous parts, we explored how to add several powerful features to our Pelican blog. But what if you want to make your posts even more engaging with interactive charts and data visualizations? That’s where D3.js comes in.
 

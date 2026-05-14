@@ -1,4 +1,5 @@
 AUTHOR = "Saurabh Khanduja"
+AUTHOR_BIO = "I write about computer vision, object re-identification, and the engineering decisions behind production AI systems."
 SITENAME = "PixelPerception"
 SITEURL = ""
 SITELOGO = "/images/avatar-400x400.jpg"

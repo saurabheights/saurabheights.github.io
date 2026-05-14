@@ -24,14 +24,28 @@
       {% import 'partial/translations.html' as translations with context %}
       {{ translations.translations_for(article) }}
     {% endif %}
-    <h1 id="{{ article.slug }}">{{ article.title }}</h1>
-    <p>
-      {{ _(article.locale_date,)}}
-
-      {% if PLUGINS and 'post_stats' in PLUGINS %}
-        &#8226; {{ _('%(minutes)s min read', minutes=article.stats['read_mins']) }}
+    <p class="article-kicker">
+      <span>{{ article.metadata.get('kicker', article.tags[0] if article.tags else 'Essay') }}</span>
+      {% if article.metadata.get('read_mins') %}
+        <span>{{ article.metadata.get('read_mins') }} min read</span>
+      {% elif PLUGINS and 'post_stats' in PLUGINS %}
+        <span>{{ article.stats['read_mins'] }} min read</span>
+      {% endif %}
+      <span>{{ article.date.strftime('%d %B %Y') }}</span>
+      {% if article.metadata.get('essay_no') %}
+        <span>Essay № {{ article.metadata.get('essay_no') }}</span>
+      {% endif %}
+      {% if article.metadata.get('word_count') %}
+        <span>{{ article.metadata.get('word_count') }} words</span>
       {% endif %}
     </p>
+    <h1 id="{{ article.slug }}">{{ article.title }}</h1>
+    <p class="article-meta">
+      <span class="article-byline">By {{ article.author.name }}</span>
+    </p>
+    {% if article.summary %}
+      <div class="article-dek">{{ article.summary }}</div>
+    {% endif %}
   </header>
   {% if article.toc %}
   <div class="toc">
@@ -51,7 +65,12 @@
     </script>
   {% endif %}
 
-  <div>
+  <div class="article-body">
+    {% if article.featured_image %}
+      <figure class="article-feature">
+        <img src="{{ article.featured_image }}" alt="{{ article.title }}">
+      </figure>
+    {% endif %}
     {{ article.content }}
   </div>
   <div class="tag-cloud">
@@ -63,6 +82,20 @@
       {% endif %}
     </p>
   </div>
+
+  <section class="author-note">
+    <div class="author-note__body">
+      <p class="author-note__eyebrow">Written by</p>
+      <h4>{{ article.author.name }}</h4>
+      <p>{{ AUTHOR_BIO }}</p>
+    </div>
+    <div class="author-note__actions">
+      <button class="author-note__share" type="button" data-share-url="{{ SITEURL }}/{{ article.url }}">
+        Copy article link
+      </button>
+      <p class="author-note__share-state" aria-live="polite"></p>
+    </div>
+  </section>
 
   {% if article.share_post %}
   {% include "partial/share_post.html" %}
@@ -127,22 +160,10 @@
 
   {% include "partial/disqus.html" %}
   {% include "partial/isso.html" %}
-<!-- To add Giscus -->
-  <script src="https://giscus.app/client.js"
-        data-repo="saurabheights/saurabheights.github.io"
-        data-repo-id="R_kgDOKBLy1g"
-        data-category="Portfolio Comments"
-        data-category-id="DIC_kwDOKBLy1s4CvAE2"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
+  <section class="article-comments">
+    <p class="article-comments__eyebrow">Discussion</p>
+    <div id="giscus-thread"></div>
+  </section>
 
 <!-- D3.js Library -->
   <link rel="stylesheet" href="extra/css/graph-style.css">
@@ -190,6 +211,49 @@ document.addEventListener("DOMContentLoaded", function() { // To add permalink
       heading.appendChild(anchor);
     }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const shareButton = document.querySelector(".author-note__share");
+  const shareState = document.querySelector(".author-note__share-state");
+  if (!shareButton) return;
+
+  shareButton.addEventListener("click", async function() {
+    const shareUrl = shareButton.getAttribute("data-share-url");
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      if (shareState) shareState.textContent = "Link copied.";
+    } catch (err) {
+      if (shareState) shareState.textContent = shareUrl;
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const mount = document.getElementById("giscus-thread");
+  if (!mount) return;
+
+  const themeUrl = new URL(
+    "{{ (SITEURL ~ '/extra/css/giscus-editorial.css') if SITEURL else '/extra/css/giscus-editorial.css' }}",
+    window.location.origin
+  ).toString();
+
+  const script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "saurabheights/saurabheights.github.io");
+  script.setAttribute("data-repo-id", "R_kgDOKBLy1g");
+  script.setAttribute("data-category", "Portfolio Comments");
+  script.setAttribute("data-category-id", "DIC_kwDOKBLy1s4CvAE2");
+  script.setAttribute("data-mapping", "pathname");
+  script.setAttribute("data-strict", "0");
+  script.setAttribute("data-reactions-enabled", "1");
+  script.setAttribute("data-emit-metadata", "0");
+  script.setAttribute("data-input-position", "bottom");
+  script.setAttribute("data-theme", themeUrl);
+  script.setAttribute("data-lang", "en");
+  script.setAttribute("crossorigin", "anonymous");
+  script.async = true;
+  mount.appendChild(script);
 });
 
 </script>

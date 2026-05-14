@@ -1202,6 +1202,15 @@ main article :not(pre)>code {
     color: var(--ed-bg);
 }
 
+.contact-hero .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+}
+
+.contact-hero .contact-content {
+    grid-template-columns: minmax(0, 1.1fr) minmax(420px, 0.9fr);
+}
+
 .contact-form button.submit-btn:hover {
     background: var(--ed-accent);
     border-color: var(--ed-accent);
@@ -1214,6 +1223,183 @@ main article :not(pre)>code {
     color: var(--ed-ink);
 }
 
+.contact-form {
+    width: 100%;
+    max-width: none;
+}
+
 .hamburger-line {
     background: var(--ed-ink);
+}
+
+.article-kicker,
+.article-comments__eyebrow,
+.author-note__eyebrow,
+.article-dek,
+.author-note__share-state {
+    color: var(--ed-mute);
+}
+
+.article-kicker,
+.article-comments__eyebrow,
+.author-note__eyebrow {
+    font-family: "Geist Mono", ui-monospace, monospace;
+}
+
+.article-dek,
+.author-note p,
+.author-note h4 {
+    color: var(--ed-ink);
+}
+
+.author-note,
+.article-comments,
+.tag-cloud,
+.related-posts,
+main article.single header {
+    border-top-color: var(--ed-soft);
+    border-bottom-color: var(--ed-soft);
+}
+
+.contact-hero .contact-content {
+    gap: 56px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ed-soft);
+}
+
+.contact-left {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+}
+
+.contact-left .hero__title {
+    max-width: 9ch;
+    margin-bottom: 0;
+}
+
+.contact-left .hero__subtitle,
+.contact-note,
+.contact-facts dt,
+.contact-facts dd span {
+    color: var(--ed-mute);
+}
+
+.contact-left .hero__title,
+.contact-facts dd {
+    color: var(--ed-ink);
+}
+
+.contact-facts div {
+    border-top: 1px solid var(--ed-soft);
+}
+
+.contact-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 26px;
+    margin: 10px 0 0;
+}
+
+.contact-facts__wide {
+    grid-column: 1 / -1;
+}
+
+.contact-facts dt {
+    margin: 0 0 8px;
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contact-facts dd {
+    margin: 0;
+}
+
+.contact-note {
+    max-width: 34ch;
+    margin: 6px 0 0;
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+}
+
+.contact-form {
+    padding: 26px 26px 24px;
+    border: 1px solid var(--ed-soft);
+    background: var(--ed-paper);
+    box-shadow: 24px 24px 0 color-mix(in srgb, var(--ed-accent) 12%, transparent);
+}
+
+.author-note__share {
+    border: 1px solid var(--ed-soft);
+    background: transparent;
+    color: var(--ed-ink);
+    font-family: "Geist Mono", ui-monospace, monospace;
+}
+
+.author-note__share:hover {
+    background: var(--ed-ink);
+    color: var(--ed-bg);
+}
+
+main article .highlight,
+main article .highlight pre,
+main article table.highlighttable,
+main article table.highlighttable td.code,
+main article table.highlighttable td.code pre,
+main article table.highlighttable td.linenos,
+main article table.highlighttable td.linenos pre {
+    background: var(--ed-paper);
+}
+
+main article .highlight,
+main article table.highlighttable {
+    border: 1px solid var(--ed-soft);
+    border-left: 2px solid var(--ed-accent);
+}
+
+main article table.highlighttable td.linenos {
+    border-right: 1px solid var(--ed-soft);
+}
+
+main article table.highlighttable td.linenos pre {
+    color: var(--ed-mute);
+}
+
+main article.single .admonition {
+    background: var(--ed-paper);
+    border: 1px solid var(--ed-soft);
+    border-left: 3px solid var(--ed-accent);
+    color: var(--ed-ink);
+}
+
+main article.single .admonition.note,
+main article.single .admonition.tip,
+main article.single .admonition.important {
+    border-left-color: var(--ed-tag);
+}
+
+main article.single .admonition.warning,
+main article.single .admonition.caution,
+main article.single .admonition.attention {
+    border-left-color: var(--ed-accent);
+}
+
+main article.single .admonition.seealso,
+main article.single .admonition.todo {
+    border-left-color: var(--ed-ink);
+}
+
+@media (max-width: 980px) {
+    .contact-hero .contact-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .contact-facts {
+        grid-template-columns: 1fr;
+    }
 }
