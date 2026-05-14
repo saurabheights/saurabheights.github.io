@@ -7,9 +7,10 @@ URL: contact
   <div class="hero__inner">
     <div class="contact-content">
       <div class="contact-left">
-        <h1 id="contact-hero-title" class="hero__title">Contact Me</h1>
-        <p class="hero__subtitle">Drawing from a decade in Computer Vision and Software Engineering, I craft holistic strategies to elevate your business through tech innovation.</p> 
-        <p class="hero__subtitle">Reach out to me using the form or mail me at <a href="mailto:khandujasaurabh@gmail.com" style="text-decoration: underline;">khandujasaurabh@gmail.com</a>.</p>
+        <p class="hero__eyebrow">Contact · PixelPerception</p>
+        <h1 id="contact-hero-title" class="hero__title">Bring a perception problem.</h1>
+        <p class="hero__subtitle">I help teams reason about computer vision systems, model behavior, data quality, and the software that carries models into production.</p>
+        <p class="hero__subtitle">Reach out using the form or mail me at <a href="mailto:khandujasaurabh@gmail.com">khandujasaurabh@gmail.com</a>.</p>
       </div>
 
       <form action="https://api.staticforms.xyz/submit" method="post" class="contact-form">

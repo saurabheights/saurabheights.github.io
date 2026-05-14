@@ -1103,3 +1103,117 @@ h1#my-work {
         font-size: 1.6rem;
     }
 }
+
+/* Quiet Editorial dark mode tokens. */
+:root {
+    --ed-bg: #16130f;
+    --ed-paper: #1f1b16;
+    --ed-ink: #f2ede3;
+    --ed-mute: #9c9388;
+    --ed-rule: #f2ede3;
+    --ed-soft: rgba(242, 237, 227, 0.14);
+    --ed-accent: #e8895c;
+    --ed-tag: #7fc496;
+    --ed-shadow: rgba(0, 0, 0, 0.3);
+}
+
+html,
+body {
+    background: var(--ed-bg);
+    color: var(--ed-ink);
+}
+
+a,
+.article-title,
+.brand-name,
+.project-card-new__title {
+    color: var(--ed-ink);
+}
+
+a:hover,
+main article a:hover,
+.article-title:hover {
+    color: var(--ed-accent);
+}
+
+.site-header {
+    background: color-mix(in srgb, var(--ed-bg) 88%, transparent);
+    border-bottom-color: var(--ed-soft);
+}
+
+.brand-role,
+.site-nav__list a,
+.site-social a,
+.mobile-menu-social a,
+.hero__subtitle,
+.work-hero__count,
+.hero__eyebrow,
+.section-kicker,
+.article-card header p,
+main article header p,
+.project-card-new__description,
+.project-card-new__meta,
+.project-card-new__features li,
+.badge,
+.filter-btn,
+.toc,
+.toc a {
+    color: var(--ed-mute);
+}
+
+.hero,
+.mobile-menu-nav {
+    background: var(--ed-bg);
+    color: var(--ed-ink);
+}
+
+.hero__title,
+.work-hero .contact-content,
+.work-hero .contact-content > .contact-left,
+.now-strip p,
+main article.single header h1,
+main article.single h2,
+main article.single h3,
+main article.single > div:not(.toc):not(.tag-cloud):not(.related-posts),
+main article blockquote,
+.project-card-new__meta b {
+    color: var(--ed-ink);
+}
+
+.hero__stamp,
+.project-card-new__tech img {
+    background: var(--ed-bg);
+    color: var(--ed-ink);
+}
+
+.project-card-new:hover,
+.contact-form input,
+.contact-form textarea,
+main article pre,
+main article table.highlighttable,
+main article :not(pre)>code {
+    background: var(--ed-paper);
+}
+
+.filter-btn.active,
+.contact-form button.submit-btn {
+    background: var(--ed-ink);
+    border-color: var(--ed-ink);
+    color: var(--ed-bg);
+}
+
+.contact-form button.submit-btn:hover {
+    background: var(--ed-accent);
+    border-color: var(--ed-accent);
+    color: var(--ed-bg);
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-color: var(--ed-soft);
+    color: var(--ed-ink);
+}
+
+.hamburger-line {
+    background: var(--ed-ink);
+}

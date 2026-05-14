@@ -301,6 +301,7 @@ def replace_css(c):
     (SRC_DIR / "html" / "index.html", FLEX_DIR / "templates" / "index.html"),
     (SRC_DIR / "html" / "base.html", FLEX_DIR / "templates" / "base.html"),
     (SRC_DIR / "html" / "article.html", FLEX_DIR / "templates" / "article.html"),
+    (SRC_DIR / "html" / "page.html", FLEX_DIR / "templates" / "page.html"),
     (
         SRC_DIR / "html" / "sidebar.html",
         FLEX_DIR / "templates" / "partial" / "sidebar.html",

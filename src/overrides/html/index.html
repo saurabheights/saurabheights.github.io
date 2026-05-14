@@ -3,15 +3,50 @@
 {% block content %}
 
 {# Home-page hero #}
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero home-hero" aria-labelledby="hero-title">
   <div class="hero__inner">
     <div class="hero__content">
-      <h1 id="hero-title" class="hero__title">Hi, I'm Saurabh Khanduja</h1>
+      <h1 id="hero-title" class="hero__title">Hi, <em>I'm Saurabh.</em></h1>
       <p class="hero__subtitle">
-        Building intelligent systems that see and think. Writing about Computer Vision,
-        Object Re-Identification, Deep Learning, and AI Engineering.
+        An AI and computer vision engineer building intelligent systems that see and think,
+        then writing down the parts that took longer than expected.
       </p>
+      <dl class="hero__meta">
+        <div><dt>Based in</dt><dd>Germany</dd></div>
+        <div><dt>Currently</dt><dd>AI / Computer Vision Engineer</dd></div>
+        <div><dt>Specialism</dt><dd>Object re-identification, multi-camera tracking, deep learning</dd></div>
+        <div class="hero__meta-elsewhere">
+          <dt>Elsewhere</dt>
+          <dd>
+            <a href="https://github.com/saurabheights">github.com/saurabheights</a>
+            <span>·</span>
+            <a href="https://www.linkedin.com/in/saurabheights/?originalSubdomain=de">in/saurabheights</a>
+            <span>·</span>
+            <a href="{{ SITEURL }}/feeds/all.atom.xml">rss</a>
+          </dd>
+        </div>
+      </dl>
     </div>
+    <div class="hero__portrait" aria-hidden="true">
+      <span class="hero__block hero__block--accent"></span>
+      <span class="hero__block hero__block--ink"></span>
+      <span class="hero__block hero__block--paper"></span>
+    </div>
+  </div>
+</section>
+
+<section class="now-strip" aria-label="Current focus">
+  <div>
+    <h2>Now building</h2>
+    <p>Multi-camera tracking systems and practical ReID tooling.</p>
+  </div>
+  <div>
+    <h2>Now exploring</h2>
+    <p>D3.js visual explanations embedded directly inside articles.</p>
+  </div>
+  <div>
+    <h2>Now available</h2>
+    <p>Architecture, prototyping, and review for perception products.</p>
   </div>
 </section>
 
@@ -26,8 +61,11 @@
 {% endif %}
 
 <a id="articles"></a>
+<section class="article-index" aria-labelledby="articles-title">
+<div class="section-kicker">Articles</div>
+<h2 id="articles-title">Field notes from computer vision work.</h2>
 {% for article in articles_page.object_list %}
-<article>
+<article class="article-card">
   <header>
 <h2><a class="article-title" href="{{ SITEURL }}/{{ article.url }}{% if not DISABLE_URL_HASH %}#{{ article.slug }}{% endif %}">{{ article.title }}</a></h2>
     <p>
@@ -69,6 +107,7 @@
   {% endif %}
 </article>
 {% endfor %}
+</section>
 
 {% include "partial/pagination.html" %}
 

@@ -10,12 +10,7 @@
           <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}" />
         {% endif %}
         <div class="brand-copy">
-          <span class="brand-name">{{ SITETITLE }}</span>
-          {% if SITESUBTITLE %}
-            <span class="brand-role">{{ SITESUBTITLE }}</span>
-          {% else %}
-            <span class="brand-role">AI / Computer Vision Engineer</span>
-          {% endif %}
+          <span class="brand-name">Pixel<span>Perception</span></span>
         </div>
       </a>
     </div>
@@ -34,30 +29,11 @@
             {%- endif -%}
           {%- endmacro %}
           
-          <li><a href="/index.html">MY ARTICLES</a></li>
-          <li><a href="/mywork">MY WORK</a></li>
-          <li><a href="/contact">CONTACT ME</a></li>
+          <li><a href="/index.html">Articles</a></li>
+          <li><a href="/mywork.html">Work</a></li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
-    {% endif %}
-
-    {# Right-aligned social icons give quick access to external profiles #}
-    {% if SOCIAL %}
-      {% set solid = ['at', 'envelope', 'mailbox', 'rss'] %}
-      {% set relme = ['at', 'envelope', 'mailbox', 'mastodon'] %}
-      <ul class="site-social">
-        {% for name, link in SOCIAL %}
-          <li>
-            <a class="sc-{{ name }}"
-               {% if name in relme %}rel="me"{% endif %}
-               href="{{ link }}"
-               target="_blank"
-               aria-label="{{ name }}">
-              <i class="{% if name in solid %}fa-solid{% else %}fa-brands{% endif %} fa-{{ name }}"></i>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
     {% endif %}
 
     {# Mobile hamburger menu button #}
@@ -79,23 +55,10 @@
   
   <nav class="mobile-menu-nav">
     <ul class="mobile-menu-list">
-      <li><a href="/index.html">MY ARTICLES</a></li>
-      <li><a href="/mywork">MY WORK</a></li>
-      <li><a href="/contact">CONTACT ME</a></li>
+      <li><a href="/index.html">Articles</a></li>
+      <li><a href="/mywork.html">Work</a></li>
+      <li><a href="/contact.html">Contact</a></li>
     </ul>
-
-    {# Social icons in mobile menu (moved inside panel) #}
-    {% if SOCIAL %}
-      <ul class="mobile-menu-social">
-        {% for name, link in SOCIAL %}
-          <li>
-            <a href="{{ link }}" target="_blank" aria-label="{{ name }}">
-              <i class="{% if name in solid %}fa-solid{% else %}fa-brands{% endif %} fa-{{ name }}"></i>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
   </nav>
 </div>
 
