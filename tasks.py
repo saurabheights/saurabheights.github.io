@@ -153,6 +153,12 @@ def livereload(c):
         f"{theme_path}/templates/**/*.html",
     ]
 
+    # Watch src/overrides for CSS and HTML changes
+    override_extensions = ["**/*.css", "**/*.html"]
+    for extension in override_extensions:
+        override_glob = f"{SRC_DIR}/{extension}"
+        watched_globs.append(override_glob)
+
     content_file_paths = ["**/*.md", "**/*.rst", "**/*.css", "**/*.js", "reference.bib"]
     for content_file_path in content_file_paths:
         content_glob = "{}/{}".format(SETTINGS["PATH"], content_file_path)
