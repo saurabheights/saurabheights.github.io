@@ -321,9 +321,10 @@ main article blockquote,
 }
 
 .project-card-new {
-    background: #0f1115;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9);
+    background: var(--ed-paper);
+    border: none;
+    border-bottom: 1px solid var(--ed-soft);
+    box-shadow: none;
 }
 
 .project-card-new:hover,
