@@ -2446,6 +2446,10 @@ main article.single table td {
     vertical-align: top;
 }
 
+main article.single table.highlighttable {
+    margin: 0;
+}
+
 main article.single table th {
     color: var(--ed-ink);
     font-family: "Geist Mono", ui-monospace, monospace;
