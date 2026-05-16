@@ -7,7 +7,6 @@ URL: contact
   <p class="ed-contact__crumb">
     <span>Contact</span>
     <span>PixelPerception</span>
-    <span>by post, signal &amp; weekly digest</span>
   </p>
 
   <div class="ed-contact__layout">
@@ -66,7 +65,7 @@ URL: contact
       <div class="ed-field">
         <span class="ed-field__num">04</span>
         <label class="ed-field__label" for="ed-msg">Your thoughts</label>
-        <textarea id="ed-msg" name="message" rows="6" placeholder="Tell me about the problem, the constraints, and the deadline. Links welcome." required></textarea>
+        <textarea id="ed-msg" name="message" rows="6" placeholder="Tell me your perception problem, hiring opportunity, speaking pitch, or vision idea. Links welcome." required></textarea>
         <span class="ed-field__status"></span>
         <span class="ed-field__error"></span>
       </div>
@@ -101,7 +100,7 @@ URL: contact
   </div>  <!-- /.ed-contact__layout -->
 
   <p class="ed-contact__sign">
-    <span>Berlin · 2026-05-14 · Set in Instrument Serif &amp; Newsreader</span>
+    <span>Berlin · 2026-05-14</span>
     <span>— Saurabh</span>
   </p>
 </section>
@@ -233,18 +232,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     field.addEventListener('input', function() {
-      if (field.id === 'ed-email') {
-        if (field.value.trim() && isValidEmail(field.value.trim())) {
-          hideValidationError(field);
-        } else if (field.value.trim()) {
-          showValidationError(field, 'Please enter a valid email address');
-        } else {
-          hideValidationError(field);
-        }
-      } else if (field.value.trim()) {
-        hideValidationError(field);
-      }
+      // Clear error on input
+      hideValidationError(field);
+      updateProgress();
     });
+    
+    // For email field, validate on blur (when user leaves the field)
+    if (field.id === 'ed-email') {
+      field.addEventListener('blur', function() {
+        if (field.value.trim() && !isValidEmail(field.value.trim())) {
+          showValidationError(field, 'Please enter a valid email address');
+        }
+      });
+    }
   });
 });
 </script>
@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>
 .ed-field__error {
   display: none;
-  grid-column: 2;
+  grid-column: 1 / -1;
   font-style: italic;
   font-size: 0.875rem;
   padding: 0.5rem 0.75rem;
