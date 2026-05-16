@@ -429,6 +429,7 @@ main article .highlight pre {
 
 main article table.highlighttable {
     background: var(--ed-paper);
+    margin: 0;
 }
 
 
