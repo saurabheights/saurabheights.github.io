@@ -36,6 +36,13 @@
       </nav>
     {% endif %}
 
+    {# Theme switcher button #}
+    <button class="theme-switcher" id="themeSwitcher" aria-label="Toggle theme" title="Light / Dark / System">
+      <i class="fa-solid fa-sun theme-icon-light"></i>
+      <i class="fa-solid fa-moon theme-icon-dark" style="display: none;"></i>
+      <i class="fa-solid fa-circle-half-stroke theme-icon-system" style="display: none;"></i>
+    </button>
+
     {# Mobile hamburger menu button #}
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-expanded="false">
       <span class="hamburger">
@@ -83,7 +90,7 @@
 
   toggleBtn.addEventListener('click', openMenu);
   closeBtn.addEventListener('click', closeMenu);
-  
+
   // Close menu when a link is clicked
   menuLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
@@ -93,4 +100,106 @@
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeMenu();
   });
+
+  // Theme switcher functionality
+  const themeSwitcher = document.getElementById('themeSwitcher');
+  const darkThemeStyle = document.getElementById('dark-theme-style');
+  const pygmentsDarkTheme = document.getElementById('pygments-dark-theme');
+  const pygmentsLightTheme = document.getElementById('pygments-light-theme');
+
+  // Theme cycle: 'light' -> 'dark' -> 'system' -> 'light'
+  const themeOrder = ['light', 'dark', 'system'];
+
+  function getCurrentTheme() {
+    return localStorage.getItem('theme-preference') || 'system';
+  }
+
+  function setTheme(theme) {
+    localStorage.setItem('theme-preference', theme);
+    applyTheme(theme);
+    updateThemeIcon(theme);
+  }
+
+  function applyTheme(theme) {
+    const htmlElement = document.documentElement;
+    const body = document.body;
+
+    if (theme === 'light') {
+      // Force light theme
+      if (darkThemeStyle) {
+        darkThemeStyle.disabled = true;
+        darkThemeStyle.media = '';
+      }
+      if (pygmentsDarkTheme) {
+        pygmentsDarkTheme.disabled = true;
+        pygmentsDarkTheme.media = '';
+      }
+      if (pygmentsLightTheme) {
+        pygmentsLightTheme.disabled = false;
+        pygmentsLightTheme.media = '';
+      }
+      htmlElement.style.colorScheme = 'light';
+      body.className = body.className.replace(/\b(light|dark)-theme\b/g, '').trim() + ' light-theme';
+    } else if (theme === 'dark') {
+      // Force dark theme
+      if (darkThemeStyle) {
+        darkThemeStyle.disabled = false;
+        darkThemeStyle.media = '';
+      }
+      if (pygmentsDarkTheme) {
+        pygmentsDarkTheme.disabled = false;
+        pygmentsDarkTheme.media = '';
+      }
+      if (pygmentsLightTheme) {
+        pygmentsLightTheme.disabled = true;
+        pygmentsLightTheme.media = '';
+      }
+      htmlElement.style.colorScheme = 'dark';
+      body.className = body.className.replace(/\b(light|dark)-theme\b/g, '').trim() + ' dark-theme';
+    } else {
+      // System preference - restore original media queries
+      if (darkThemeStyle) {
+        darkThemeStyle.removeAttribute('disabled');
+        darkThemeStyle.media = '(prefers-color-scheme: dark)';
+      }
+      if (pygmentsDarkTheme) {
+        pygmentsDarkTheme.removeAttribute('disabled');
+        pygmentsDarkTheme.media = '(prefers-color-scheme: dark)';
+      }
+      if (pygmentsLightTheme) {
+        pygmentsLightTheme.removeAttribute('disabled');
+        pygmentsLightTheme.media = '(prefers-color-scheme: light), (prefers-color-scheme: no-preference)';
+      }
+      htmlElement.style.colorScheme = 'light dark';
+      body.className = body.className.replace(/\b(light|dark)-theme\b/g, '').trim();
+    }
+  }
+
+  function updateThemeIcon(theme) {
+    document.querySelectorAll('.theme-icon-light, .theme-icon-dark, .theme-icon-system').forEach(el => {
+      el.style.display = 'none';
+    });
+
+    if (theme === 'light') {
+      document.querySelector('.theme-icon-light').style.display = 'inline';
+    } else if (theme === 'dark') {
+      document.querySelector('.theme-icon-dark').style.display = 'inline';
+    } else {
+      document.querySelector('.theme-icon-system').style.display = 'inline';
+    }
+  }
+
+  function cycleTheme() {
+    const currentTheme = getCurrentTheme();
+    const currentIndex = themeOrder.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    const nextTheme = themeOrder[nextIndex];
+    setTheme(nextTheme);
+  }
+
+  // Initialize theme on page load
+  updateThemeIcon(getCurrentTheme());
+
+  // Add click listener to theme switcher
+  themeSwitcher.addEventListener('click', cycleTheme);
 </script>

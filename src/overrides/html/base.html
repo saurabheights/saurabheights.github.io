@@ -99,6 +99,46 @@
   <link rel="icon" href="{{ SITEURL }}/images/favicon-light.png" media="(prefers-color-scheme: light)">
   <link rel="icon" href="{{ SITEURL }}/images/favicon-dark.png"  media="(prefers-color-scheme: dark)">
 
+  {# Early theme initialization to prevent flash of unstyled content #}
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme-preference') || 'system';
+      const darkThemeStyle = document.getElementById('dark-theme-style');
+      const pygmentsDarkTheme = document.getElementById('pygments-dark-theme');
+      const pygmentsLightTheme = document.getElementById('pygments-light-theme');
+
+      if (theme === 'light') {
+        if (darkThemeStyle) {
+          darkThemeStyle.disabled = true;
+          darkThemeStyle.media = '';
+        }
+        if (pygmentsDarkTheme) {
+          pygmentsDarkTheme.disabled = true;
+          pygmentsDarkTheme.media = '';
+        }
+        if (pygmentsLightTheme) {
+          pygmentsLightTheme.disabled = false;
+          pygmentsLightTheme.media = '';
+        }
+        document.documentElement.style.colorScheme = 'light';
+      } else if (theme === 'dark') {
+        if (darkThemeStyle) {
+          darkThemeStyle.disabled = false;
+          darkThemeStyle.media = '';
+        }
+        if (pygmentsDarkTheme) {
+          pygmentsDarkTheme.disabled = false;
+          pygmentsDarkTheme.media = '';
+        }
+        if (pygmentsLightTheme) {
+          pygmentsLightTheme.disabled = true;
+          pygmentsLightTheme.media = '';
+        }
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    })();
+  </script>
+
   {% include "partial/color.html" %}
 
   {% include "partial/feed.html" %}

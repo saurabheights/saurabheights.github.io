@@ -32,7 +32,7 @@ CONFIG = {
     "commit_message": f"'Publish site on {datetime.date.today().isoformat()}'",
     # Host and port for `serve`
     "host": "localhost",
-    "port": 8000,
+    "port": 8765,
 }
 
 
