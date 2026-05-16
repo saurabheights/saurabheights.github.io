@@ -288,10 +288,9 @@ main article table th {
 
 main article .highlight {
     border: 1px solid rgba(100, 100, 100, 0.2);
-    border-left: 3px solid #258fb8;
+    border-left: 2px solid #258fb8;
     border-radius: 6px;
     overflow: hidden;
-    margin: 0;
 }
 
 main article .highlight pre {

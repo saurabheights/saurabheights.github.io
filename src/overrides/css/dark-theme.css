@@ -291,6 +291,10 @@ main article header p,
     color: var(--ed-mute);
 }
 
+.theme-switcher {
+    color: var(--ed-ink);
+}
+
 .hero,
 .mobile-menu-nav {
     background: var(--ed-bg);
@@ -314,6 +318,12 @@ main article blockquote,
 .project-card-new__tech img {
     background: var(--ed-bg);
     color: var(--ed-ink);
+}
+
+.project-card-new {
+    background: #0f1115;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.9);
 }
 
 .project-card-new:hover,
@@ -409,7 +419,7 @@ main article.single header {
 
 main article .highlight {
     border: 1px solid var(--ed-soft);
-    border-left: 3px solid var(--ed-accent);
+    border-left: 2px solid var(--ed-accent);
 }
 
 main article .highlight pre {
