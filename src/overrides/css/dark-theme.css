@@ -420,6 +420,7 @@ main article.single header {
 main article .highlight {
     border: 1px solid var(--ed-soft);
     border-left: 2px solid var(--ed-accent);
+    margin: 0;
 }
 
 main article .highlight pre {

@@ -291,6 +291,7 @@ main article .highlight {
     border-left: 2px solid #258fb8;
     border-radius: 6px;
     overflow: hidden;
+    margin: 0;
 }
 
 main article .highlight pre {
