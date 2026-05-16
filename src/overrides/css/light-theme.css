@@ -1365,11 +1365,12 @@ h1#my-work {
 
 /* Individual project card */
 .project-card-new {
-    background: #fff;
-    border-radius: 16px;
+    background: var(--ed-paper);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    border: 1px solid #f0f0f0;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid var(--ed-soft);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -1388,7 +1389,7 @@ h1#my-work {
 
 /* Project card body */
 .project-card-new__body {
-    padding: 1.25rem;
+    padding: 1.25rem 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1399,7 +1400,9 @@ h1#my-work {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--ed-soft);
 }
 
 /* Individual badge */
@@ -1453,7 +1456,7 @@ h1#my-work {
     content: "•";
     position: absolute;
     left: 0;
-    color: #258fb8;
+    color: var(--ed-accent);
     font-weight: bold;
 }
 
