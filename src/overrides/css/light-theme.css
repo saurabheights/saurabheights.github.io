@@ -286,47 +286,85 @@ main article table th {
     border-top: 1px solid #ddd
 }
 
+main article .highlight {
+    border: 1px solid rgba(100, 100, 100, 0.2);
+    border-left: 3px solid #258fb8;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0;
+}
+
+main article .highlight pre {
+    background: hsla(0, 0%, 50%, .05);
+    margin: 0;
+}
+
 main article table.highlighttable {
     width: 100%;
-    table-layout: fixed;
-    /*Added border around entire code block for clean frame */
-    border: 1px solid #ddd;
-    overflow: hidden;
+    border-collapse: collapse;
+    background-color: hsla(0, 0%, 50%, .05);
+    margin: 0;
+    border: none;
+}
+
+main article table.highlighttable tr {
+    border: none;
 }
 
 main article table.highlighttable td {
     border-style: none;
-    padding: 0
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    border: none;
 }
 
 /* Styled linenos (line numbers) column */
 main article table.highlighttable td.linenos {
-    width: 2.5em;
-    /* Added light background to distinguish line numbers */
-    background-color: hsla(0, 0%, 50%, .05);
-    /* Added right border as divider between line numbers and code */
-    vertical-align: top;
+    width: 1%;
+    background-color: rgba(200, 200, 200, 0.1);
+    padding: 16px 12px;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid rgba(100, 100, 100, 0.15);
+}
+
+main article table.highlighttable td.linenos div.linenodiv {
+    margin: 0;
+    padding: 0;
 }
 
 main article table.highlighttable td.linenos pre {
     overflow: hidden;
-    /* Made background transparent to use td background instead */
     background-color: transparent;
     text-align: right;
-    /*  Added proper padding for spacing */
-    padding: 4px 8px;
+    padding: 0;
     margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2d7a4a;
+    border: none;
 }
 
 /* Added code column styling to handle horizontal scroll */
 main article table.highlighttable td.code {
     overflow-x: auto;
+    padding: 16px;
+    width: 99%;
+}
+
+main article table.highlighttable td.code div {
+    margin: 0;
+    padding: 0;
 }
 
 main article table.highlighttable td.code pre {
-    background-color: hsla(0, 0%, 50%, .05);
+    background-color: transparent;
     margin: 0;
-    padding: 4px 8px;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    border: none;
 }
 
 main article section#isso-thread .auth-section .input-wrapper {
@@ -1092,7 +1130,7 @@ h1#contact-me {
 
 
 .site-brand {
-    flex: 0 0 auto;
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -1213,6 +1251,32 @@ h1#contact-me {
     font-size: 1.6rem;
 }
 
+/* Theme switcher button */
+.theme-switcher {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-right: 1rem;
+}
+
+.theme-switcher:hover,
+.theme-switcher:focus {
+    transform: translateY(-2px);
+    color: #0ea5e9;
+    outline: none;
+}
+
+.theme-switcher i {
+    font-size: 1.6rem;
+}
+
 /* Align main content width with header for consistent columns */
 
 main {
@@ -1264,52 +1328,6 @@ main {
 /* Work page hero - remove article margin to sit flush with navbar */
 .work-hero {
     margin-top: -2.5rem;
-}.hero__inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero__content {
-    max-width: 720px;
-}
-
-.hero__title {
-    font-size: clamp(2.6rem, 4vw, 3.4rem);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    margin: 0 0 1.2rem;
-    color: #f9fafb;
-}
-
-.hero__subtitle {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0 auto 2rem;
-    max-width: 640px;
-    color: #d1d5db;
-}
-
-@media (max-width: 768px) {
-    .hero {
-        padding: 4rem 0 3rem;
-    }
-
-    .hero__inner {
-        padding: 0 1.5rem;
-    }
-
-    .hero__title {
-        font-size: clamp(2.2rem, 7vw, 2.8rem);
-    }
-
-    .hero__subtitle {
-        font-size: 0.98rem;
-    }
 }
 
 /* ===== PORTFOLIO SECTION ===== */
@@ -1336,31 +1354,6 @@ h1#my-work {
 }
 
 /* Individual filter button */
-.filter-btn {
-    padding: 0.65rem 1.5rem;
-    border: none;
-    border-radius: 24px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: #f0f0f0;
-    color: #666;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.filter-btn:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-/* Active filter button */
-.filter-btn.active {
-    background-color: #1a1a1a;
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
 
 /* Projects grid container */
 .projects-grid {
@@ -2397,45 +2390,9 @@ main article table.highlighttable {
     border-radius: 0;
 }
 
-main article .highlight,
-main article .highlight pre,
-main article table.highlighttable,
-main article table.highlighttable td.code,
-main article table.highlighttable td.code pre,
-main article table.highlighttable td.linenos,
-main article table.highlighttable td.linenos pre {
-    background: var(--ed-paper);
-}
-
-main article .highlight,
-main article table.highlighttable {
-    border: 1px solid var(--ed-soft);
-    border-left: 2px solid var(--ed-accent);
-}
-
 main article pre {
     padding: 20px 24px;
     overflow-x: auto;
-}
-
-main article .highlight pre {
-    margin: 0;
-    padding: 20px 24px;
-}
-
-main article table.highlighttable td.linenos {
-    width: 3.5rem;
-    border-right: 1px solid var(--ed-soft);
-}
-
-main article table.highlighttable td.linenos pre {
-    color: var(--ed-mute);
-    text-align: right;
-    padding: 20px 12px;
-}
-
-main article table.highlighttable td.code pre {
-    padding: 20px 24px;
 }
 
 main article :not(pre)>code {
@@ -2762,23 +2719,6 @@ main article.single .admonition.todo {
     display: grid;
     grid-template-columns: 80px minmax(0, 1fr);
     gap: 32px;
-    padding: 28px 0;
-    background: transparent;
-    border: 0;
-    border-bottom: 1px solid var(--ed-soft);
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
-}
-
-.project-card-new::before {
-    content: "No " counter(project, decimal-leading-zero);
-    padding-top: 14px;
-    color: var(--ed-mute);
-    font-family: "Geist Mono", ui-monospace, monospace;
-    font-size: 0.56rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
 }
 
 .project-card-new:hover {
