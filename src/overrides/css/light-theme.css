@@ -1371,6 +1371,7 @@ h1#my-work {
     box-shadow: none;
     border: none;
     border-bottom: 1px solid var(--ed-soft);
+    padding: 20px;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -1389,7 +1390,7 @@ h1#my-work {
 
 /* Project card body */
 .project-card-new__body {
-    padding: 1.25rem 1.5rem;
+    padding: 0;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1400,9 +1401,7 @@ h1#my-work {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--ed-soft);
+    margin-bottom: 0.75rem;
 }
 
 /* Individual badge */
@@ -2733,6 +2732,17 @@ main article.single .admonition.todo {
     gap: 32px;
 }
 
+.project-card-new::before {
+    content: counter(project, decimal-leading-zero);
+    align-self: start;
+    text-align: right;
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--ed-mute);
+    letter-spacing: 0.05em;
+    padding-top: 4px;
+}
+
 .project-card-new:hover {
     transform: none;
     background: var(--ed-paper);
@@ -2795,12 +2805,20 @@ main article.single .admonition.todo {
 }
 
 .project-card-new__meta {
+    display: flex;
+    flex-direction: column;
     padding-top: 14px;
     color: var(--ed-mute);
     font-family: "Geist Mono", ui-monospace, monospace;
     font-size: 0.66rem;
     line-height: 1.85;
     text-align: right;
+}
+
+.project-card-new__meta div:last-child {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px solid var(--ed-accent);
 }
 
 .project-card-new__meta b {
@@ -3011,7 +3029,10 @@ main article.single .admonition.todo {
         grid-template-columns: 1fr;
     }
 
-    .project-card-new::before,
+    .project-card-new::before {
+        display: none;
+    }
+
     .project-card-new__body,
     .project-card-new__main,
     .project-card-new__meta {

@@ -9,7 +9,7 @@ URL: mywork
     </div>
     <div class="work-hero__aside">
       <p class="hero__subtitle">A working archive of projects in computer vision, 3D perception, and the infrastructure that keeps them honest.</p>
-      <p class="work-hero__count"><span class="visible-project-count">11</span> projects · <span class="total-project-count">11</span> total</p>
+      <p class="work-hero__count"><span class="visible-project-count">12</span> projects · <span class="total-project-count">12</span> total</p>
     </div>
   </div>
 </section>
@@ -25,7 +25,7 @@ URL: mywork
   </div>
 
   <div class="projects-grid">
-    <article class="project-card-new" data-category="computer-vision 3d-vision software-engineering deep-learning" data-priority="5" data-date="2025-12-16">
+    <article class="project-card-new" data-category="computer-vision 3d-vision software-engineering deep-learning" data-priority="0" data-date="2025-12-16">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Tracking</em> - Multi-Camera Multi-Person Tracking</h3>
@@ -38,13 +38,14 @@ URL: mywork
         </div>
         <div class="project-card-new__meta">
           <div><b>2025</b></div>
-          <div>Tech Lead</div>
-          <div>PyTorch · Docker</div>
+          <div>Head of Perception</div>
+          <div>Ikara Vision Systems</div>
+          <div>PyTorch<br>Docker</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="4" data-date="">
+    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="2024-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>VMS</em> - Live-Camera Anonymization Software</h3>
@@ -56,13 +57,14 @@ URL: mywork
         </div>
         <div class="project-card-new__meta">
           <div><b>2024</b></div>
-          <div>Engineer</div>
-          <div>C++ · FastAPI · PyTorch</div>
+          <div>ML Engineer</div>
+          <div>Ikara Vision Systems</div>
+          <div>C++<br>FastAPI<br>PyTorch</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="computer-vision 3d-vision" data-priority="3" data-date="">
+    <article class="project-card-new" data-category="computer-vision 3d-vision" data-priority="0" data-date="2023-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Cargo</em> - Volume Measurement</h3>
@@ -74,30 +76,33 @@ URL: mywork
         </div>
         <div class="project-card-new__meta">
           <div><b>2023</b></div>
-          <div>Lead</div>
-          <div>C++ · Python · Docker · Qt</div>
+          <div>ML Engineer</div>
+          <div>Ikara Vision Systems</div>
+          <div>C++<br>Python<br>Docker<br>Qt</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="data-engineering" data-priority="2" data-date="">
+    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="6" data-date="2022-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
-          <h3 class="project-card-new__title"><em>Data</em> - Geo-Data Management Tool</h3>
-          <p class="project-card-new__description">A PostgreSQL and PostGIS platform for curated dataset storage, geographic querying, and sampling. Included a Django backend, Celery workers for heavy compute jobs, and a client library for dataset access.</p>
+          <h3 class="project-card-new__title"><em>Platform</em> - Enterprise CV for Customer Behavior Analytics</h3>
+          <p class="project-card-new__description">Took over a 30,000-line monolith already running across 1,000+ stores in three EU countries, with undocumented workflows and mounting client complaints. Directed a seven-person team through a full audit, closing every open client complaint and securing a contract renewal. Improved the perception pipeline with SOTA models, migrated from centralized polling to an event-driven architecture that cut read traffic by 94%, and built platform tooling (automated deployments, rollback, and site management) that made scaling across 1,000+ stores operationally tractable.</p>
           <div class="project-card-new__badges">
-            <span class="badge">Data Engineering</span>
+            <span class="badge">Computer Vision</span>
+            <span class="badge">Software Engineering</span>
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2023</b></div>
-          <div>Engineer</div>
-          <div>Django · PostgreSQL · Python</div>
+          <div><b>2022</b></div>
+          <div>Head of Perception</div>
+          <div>Ikara Vision Systems</div>
+          <div>Python<br>Docker<br>Celery<br>PostgreSQL<br>TensorRT</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="deep-learning software-engineering" data-priority="1" data-date="">
+    <article class="project-card-new" data-category="deep-learning software-engineering" data-priority="0" data-date="2021-06-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Safety</em> - Model Robustness Tests for AVs</h3>
@@ -108,14 +113,15 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2022</b></div>
-          <div>Engineer</div>
-          <div>Go · Kubernetes · PyTorch</div>
+          <div><b>2021</b></div>
+          <div>ML Engineer</div>
+          <div>Terraloupe</div>
+          <div>Go<br>Kubernetes<br>PyTorch</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="deep-learning computer-vision software-engineering" data-priority="0" data-date="">
+    <article class="project-card-new" data-category="deep-learning computer-vision software-engineering" data-priority="0" data-date="2021-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Pipeline</em> - Multi-Task Deep Learning</h3>
@@ -128,13 +134,32 @@ URL: mywork
         </div>
         <div class="project-card-new__meta">
           <div><b>2021</b></div>
-          <div>Engineer</div>
-          <div>Python · TensorFlow · Docker</div>
+          <div>ML Engineer</div>
+          <div>Terraloupe</div>
+          <div>Python<br>Keras<br>TensorFlow<br>Docker</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="">
+    <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="2020-01-01">
+      <div class="project-card-new__body">
+        <div class="project-card-new__main">
+          <h3 class="project-card-new__title"><em>Data</em> - Geo-Data Management Tool</h3>
+          <p class="project-card-new__description">A PostgreSQL and PostGIS platform for curated dataset storage, geographic querying, and sampling. Included a Django backend, Celery workers for heavy compute jobs, and a client library for dataset access.</p>
+          <div class="project-card-new__badges">
+            <span class="badge">Data Engineering</span>
+          </div>
+        </div>
+        <div class="project-card-new__meta">
+          <div><b>2020</b></div>
+          <div>ML Engineer</div>
+          <div>Terraloupe</div>
+          <div>Django<br>PostgreSQL<br>Python</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="2016-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Media</em> - Processing Service at Roposo</h3>
@@ -145,14 +170,15 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2020</b></div>
-          <div>Engineer</div>
-          <div>Java · OpenCV · AWS</div>
+          <div><b>2016</b></div>
+          <div>Image Team Lead</div>
+          <div>Roposo</div>
+          <div>Java<br>OpenCV<br>AWS</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="software-engineering" data-priority="0" data-date="">
+    <article class="project-card-new" data-category="software-engineering" data-priority="0" data-date="2015-06-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Resell</em> - Product Form at Amazon</h3>
@@ -162,14 +188,15 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2019</b></div>
-          <div>Engineer</div>
-          <div>Java · DynamoDB</div>
+          <div><b>2015</b></div>
+          <div>SDE</div>
+          <div>Amazon</div>
+          <div>Java<br>DynamoDB</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="">
+    <article class="project-card-new" data-category="data-engineering" data-priority="0" data-date="2015-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Catalog</em> - Labeling Quality Platform</h3>
@@ -180,14 +207,15 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2019</b></div>
-          <div>Engineer</div>
-          <div>Python · Spark</div>
+          <div><b>2015</b></div>
+          <div>SDE</div>
+          <div>Amazon</div>
+          <div>Python<br>Spark</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="computer-vision" data-priority="4" data-date="2025-12-15">
+    <article class="project-card-new" data-category="computer-vision" data-priority="0" data-date="2014-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Turbulence</em> - Removal Module</h3>
@@ -197,14 +225,15 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2022</b></div>
-          <div>Engineer</div>
-          <div>C++ · OpenCV · Qt</div>
+          <div><b>2014</b></div>
+          <div>SDE</div>
+          <div>KritiKal Solutions</div>
+          <div>C++<br>CUDA<br>OpenCV<br>Qt</div>
         </div>
       </div>
     </article>
 
-    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="">
+    <article class="project-card-new" data-category="computer-vision software-engineering" data-priority="0" data-date="2013-01-01">
       <div class="project-card-new__body">
         <div class="project-card-new__main">
           <h3 class="project-card-new__title"><em>Wide Area</em> - Tracking Module</h3>
@@ -215,9 +244,10 @@ URL: mywork
           </div>
         </div>
         <div class="project-card-new__meta">
-          <div><b>2018</b></div>
-          <div>Engineer</div>
-          <div>C++ · OpenCV · Qt</div>
+          <div><b>2013</b></div>
+          <div>SDE</div>
+          <div>KritiKal Solutions</div>
+          <div>C++<br>OpenCV<br>Qt</div>
         </div>
       </div>
     </article>
