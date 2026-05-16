@@ -419,8 +419,7 @@ main article.single header {
 
 main article .highlight {
     border: 1px solid var(--ed-soft);
-    border-left: 2px solid var(--ed-accent);
-    margin: 0;
+    border-left: 6px solid var(--ed-accent);
 }
 
 main article .highlight pre {
@@ -429,7 +428,6 @@ main article .highlight pre {
 
 main article table.highlighttable {
     background: var(--ed-paper);
-    margin: 0;
 }
 
 

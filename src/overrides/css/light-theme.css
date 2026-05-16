@@ -288,7 +288,7 @@ main article table th {
 
 main article .highlight {
     border: 1px solid rgba(100, 100, 100, 0.2);
-    border-left: 2px solid #258fb8;
+    border-left: 6px solid var(--ed-accent);
     border-radius: 6px;
     overflow: hidden;
     margin: 0;
@@ -2382,11 +2382,15 @@ main article blockquote li {
     max-width: none;
 }
 
-main article pre,
+main article pre {
+    background: var(--ed-paper);
+    border: 0;
+    border-radius: 0;
+}
+
 main article table.highlighttable {
     background: var(--ed-paper);
     border: 0;
-    border-left: 2px solid var(--ed-accent);
     border-radius: 0;
     margin: 0;
 }
